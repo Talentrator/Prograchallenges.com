@@ -5,7 +5,7 @@ $duration: 0.2s;
 $distance: 8px;
 $easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
-.gig-underline-appear {
+.pc-underline-appear {
   position: relative;
   text-decoration: none;
 
@@ -45,13 +45,13 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
   }
 }
 
-.gig-progress-bar-outter {
+.pc-progress-bar-outter {
   height: 7px; /* Can be anything */
   position: relative;
   background: var(--dark);
 }
 
-.gig-progress-bar-outter > span {
+.pc-progress-bar-outter > span {
   display: block;
   height: 100%;
   background-color: var(--primary);
@@ -111,7 +111,7 @@ $spacer: 2rem;
   border-radius: 0.0625rem;
 }
 
-.gig-decor-center-secondary {
+.pc-decor-center-secondary {
   border-color: map-get($theme-colors, secondary);
   width: 3rem;
   border-width: 0.4rem;
@@ -129,7 +129,7 @@ $spacer: 2rem;
   border-radius: 0.0625rem;
 }
 
-.gig-decor-left-secondary {
+.pc-decor-left-secondary {
   border-color: map-get($theme-colors, secondary);
   width: 3rem;
   border-width: 0.4rem;
@@ -148,7 +148,7 @@ $spacer: 2rem;
   font-family: "Gotham book", sans-serif;
 }
 
-.gig-heading-decor-secondary {
+.pc-heading-decor-secondary {
   font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 0.25rem;
@@ -158,22 +158,22 @@ $spacer: 2rem;
   font-family: "Gotham book", sans-serif;
 }
 
-.gig-cursor-pointer {
+.pc-cursor-pointer {
   cursor: pointer;
 }
-.gig-cursor-forbidden {
+.pc-cursor-forbidden {
   cursor: not-allowed;
 }
 
-.gig-large-container {
+.pc-large-container {
   max-width: 1000px !important;
 }
 
-.gig-medium-container {
+.pc-medium-container {
   max-width: 800px !important;
 }
 
-.gig-small-container {
+.pc-small-container {
   max-width: 500px !important;
 }
 
@@ -189,7 +189,7 @@ $spacer: 2rem;
 
 @import "bootstrap";
 
-.gig-text-gotham-black,
+.pc-text-gotham-black,
 h1,
 h2,
 h3,
@@ -329,6 +329,6 @@ ul.timeline > li:before {
   z-index: 400;
 }
 
-.gig-borderline-top {
+.pc-borderline-top {
   border-top: 15px solid var(--primary);
 }
