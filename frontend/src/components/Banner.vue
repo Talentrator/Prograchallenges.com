@@ -22,7 +22,7 @@ export default {
 <style scoped>
 .bannerDiv {
   background-color: black;
-  padding-top:0.25rem;
+  padding-top: 0.25rem;
   padding-bottom: 0.5rem;
   color: white;
 }

@@ -1,0 +1,334 @@
+/*
+//////////////
+*/
+$duration: 0.2s;
+$distance: 8px;
+$easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+.gig-underline-appear {
+  position: relative;
+  text-decoration: none;
+
+  &:before,
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: 2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: var(--secondary);
+  }
+  &:before {
+    opacity: 0;
+    transform: translateY(-$distance);
+    transition: transform 0s $easeOutBack, opacity 0s;
+  }
+  &:after {
+    opacity: 0;
+    transform: translateY($distance/2);
+    transition: transform $duration $easeOutBack, opacity $duration;
+  }
+  &:hover,
+  &:focus {
+    &:before,
+    &:after {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    &:before {
+      transition: transform $duration $easeOutBack, opacity $duration;
+    }
+    &:after {
+      transition: transform 0s $duration $easeOutBack, opacity 0s $duration;
+    }
+  }
+}
+
+.gig-progress-bar-outter {
+  height: 7px; /* Can be anything */
+  position: relative;
+  background: var(--dark);
+}
+
+.gig-progress-bar-outter > span {
+  display: block;
+  height: 100%;
+  background-color: var(--primary);
+  position: relative;
+  overflow: hidden;
+}
+
+// Options
+//
+// Quickly modify global styling by enabling or disabling optional features.
+
+$enable-rounded: false !default;
+$enable-shadows: false;
+$enable-transitions: true;
+$enable-hover-media-query: false;
+$enable-grid-classes: true;
+$enable-print-styles: true;
+
+// Variables
+//
+// Colors
+
+$theme-colors: (
+  primary: #dbb880,
+  secondary: #c07095,
+  light: #ededed,
+  dark: #151515,
+  info: #131254,
+  success: #080808,
+  warning: #ffc107,
+  danger: #dc3545,
+);
+
+$body-bg: #fff;
+$body-color: #222222;
+
+$body-color-inverse: invert($body-color) !default;
+$link-color: map-get($theme-colors, secondary);
+
+// Fonts
+$font-family-base: "Gotham Book", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+  sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+$headings-font-family: $font-family-base;
+$display-font-family: $font-family-base;
+$font-weight-normal: 400;
+$headings-font-weight: 400;
+$lead-font-size: 1.4rem;
+
+$spacer: 2rem;
+
+.decor-center {
+  border-color: map-get($theme-colors, primary);
+  width: 3rem;
+  border-width: 0.4rem;
+  padding: 4px;
+  margin: 0 auto 0 auto;
+  border-radius: 0.0625rem;
+}
+
+.gig-decor-center-secondary {
+  border-color: map-get($theme-colors, secondary);
+  width: 3rem;
+  border-width: 0.4rem;
+  padding: 4px;
+  margin: 0 auto 0 auto;
+  border-radius: 0.0625rem;
+}
+
+.decor-left {
+  border-color: map-get($theme-colors, primary);
+  width: 3rem;
+  border-width: 0.4rem;
+  padding: 4px;
+  margin: 0 auto 0 0;
+  border-radius: 0.0625rem;
+}
+
+.gig-decor-left-secondary {
+  border-color: map-get($theme-colors, secondary);
+  width: 3rem;
+  border-width: 0.4rem;
+  padding: 4px;
+  margin: 0 auto 0 0;
+  border-radius: 0.0625rem;
+}
+
+.heading-decor {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.25rem;
+  color: map-get($theme-colors, primary);
+  padding: 0 0 0.5rem 0;
+  margin: 0;
+  font-family: "Gotham book", sans-serif;
+}
+
+.gig-heading-decor-secondary {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.25rem;
+  color: map-get($theme-colors, secondary);
+  padding: 0 0 0.5rem 0;
+  margin: 0;
+  font-family: "Gotham book", sans-serif;
+}
+
+.gig-cursor-pointer {
+  cursor: pointer;
+}
+.gig-cursor-forbidden {
+  cursor: not-allowed;
+}
+
+.gig-large-container {
+  max-width: 1000px !important;
+}
+
+.gig-medium-container {
+  max-width: 800px !important;
+}
+
+.gig-small-container {
+  max-width: 500px !important;
+}
+
+.full-height {
+  width: 100%;
+  height: 100%;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+}
+
+@import "bootstrap";
+
+.gig-text-gotham-black,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+.display-1,
+.display-2,
+.display-3,
+.display-4 {
+  font-family: "Gotham Black", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.btn {
+  text-transform: uppercase;
+  padding: 1rem 2rem;
+}
+
+
+.b-form-datepicker .btn {
+  padding: 0.5em;
+}
+
+.badge {
+  border-radius: 0;
+}
+
+@media (min-width: 720px) {
+  .h1-md {
+    font-size: 2.5rem;
+  }
+  .h2-md {
+    font-size: 2rem;
+  }
+  .h3-md {
+    font-size: 1.75rem;
+  }
+  .h4-md {
+    font-size: 1.5rem;
+  }
+  .h5-md {
+    font-size: 1.25rem;
+  }
+  .h6-md {
+    font-size: 1rem;
+  }
+}
+
+
+@media (min-width: 1024px) {
+  .h1-lg {
+    font-size: 2.5rem;
+  }
+  .h2-lg {
+    font-size: 2rem;
+  }
+  .h3-lg {
+    font-size: 1.75rem;
+  }
+  .h4-lg {
+    font-size: 1.5rem;
+  }
+  .h5-lg {
+    font-size: 1.25rem;
+  }
+  .h6-lg {
+    font-size: 1rem;
+  }
+}
+
+.blink {
+  opacity: 0;
+  animation-name: bounceIn;
+  animation-duration: 0.2s;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3) translate3d(0, 0, 0);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.1);
+  }
+  80% {
+    opacity: 1;
+    transform: scale(0.89);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+}
+
+.form-control::-webkit-input-placeholder {
+  color: #bbb;
+}
+
+ul.timeline {
+  list-style-type: none;
+  position: relative;
+}
+ul.timeline:before {
+  content: ' ';
+  background: lightgray;
+  display: inline-block;
+  position: absolute;
+  left: 29px;
+  width: 2px;
+  height: 100%;
+  z-index: 400;
+}
+ul.timeline > li {
+  margin: 20px 0;
+  padding-left: 20px;
+}
+ul.timeline > li:before {
+  content: ' ';
+  background: white;
+  display: inline-block;
+  position: absolute;
+  border-radius: 50%;
+  border: 3px solid var(--secondary);
+  left: 20px;
+  width: 20px;
+  height: 20px;
+  z-index: 400;
+}
+
+.gig-borderline-top {
+  border-top: 15px solid var(--primary);
+}

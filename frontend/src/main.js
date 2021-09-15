@@ -1,4 +1,4 @@
-import auth from "firebase";
+import firebase from "firebase";
 import VueRouter from "vue-router";
 import Vue from "vue";
 import App from "./App.vue";
@@ -8,6 +8,7 @@ import { BootstrapVue } from "bootstrap-vue";
 
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
+import "./theme.scss";
 
 Vue.use(VueRouter);
 Vue.use(BootstrapVue);
@@ -16,7 +17,7 @@ Vue.config.productionTip = false;
 
 let vueInstance;
 
-auth.onAuthStateChanged(() => {
+firebase.auth().onAuthStateChanged(() => {
   if (!vueInstance) {
     vueInstance = new Vue({
       router,
