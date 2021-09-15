@@ -1,12 +1,17 @@
 <template>
   <div id="app">
+    <Navbar />
     <router-view />
   </div>
 </template>
 
 <script>
+import Navbar from "./components/Navbar.vue";
 export default {
   name: "App",
+  components: {
+    Navbar,
+  },
 };
 </script>
 
@@ -34,5 +39,9 @@ export default {
 
 #app {
   font-family: "Gotham Book", sans-serif;
+}
+
+.nav-link {
+  color: #e4e3e3 !important;
 }
 </style>
