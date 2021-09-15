@@ -1,4 +1,4 @@
-import auth from "../firebase";
+import auth from "firebase";
 import VueRouter from "vue-router";
 import Vue from "vue";
 import App from "./App.vue";
