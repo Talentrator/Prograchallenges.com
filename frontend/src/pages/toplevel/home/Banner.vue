@@ -2,7 +2,7 @@
   <div class="bannerDiv">
       <b-container class="pc-medium-container text-center py-5">
         <img class="responsive-image" src="@/assets/logo.jpeg" alt="Responsive Image" >
-        <h2>I challlenge you to challlenge your friends!</h2>
+        <h2 id="banner-tagline">I challenge you to challenge your friends!</h2>
       </b-container>
   </div>
 </template>
@@ -27,4 +27,8 @@ export default {
     max-width: 400px;
     height: auto;
 }
+#banner-tagline{
+  margin-top: 1rem;
+}
+
 </style>
