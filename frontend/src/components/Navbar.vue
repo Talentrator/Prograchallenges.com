@@ -13,7 +13,7 @@
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
       <b-collapse id="nav-collapse" is-nav>
-        <b-navbar-nav style="margin-left: auto;">
+        <b-navbar-nav style="margin-left: auto">
           <b-nav-item href="#">Home</b-nav-item>
           <b-nav-item href="#">Challenges</b-nav-item>
           <b-nav-item href="#">Support</b-nav-item>
@@ -53,5 +53,14 @@ export default {
   background-color: #dbb880;
   color: #151515 !important;
   font-weight: 700;
+}
+
+@media (max-width: 769px) {
+  .nav-bg {
+    padding: 10px 20px !important;
+  }
+  .nav-btn {
+    margin: 10px 0 !important;
+  }
 }
 </style>

@@ -2,7 +2,7 @@
   <div class="bannerDiv">
     <center>
       <img
-        class="b-img b-img-fluid"
+        class="banner-img"
         src="../assets/logo.jpeg"
         alt="Responsive image"
       />
@@ -11,20 +11,25 @@
   </div>
 </template>
 
-
 <script>
 export default {
   name: "Banner",
 };
 </script>
 
-
 <style scoped>
 .bannerDiv {
   background-color: black;
-  padding-top:0.25rem;
+  padding-top: 0.25rem;
   padding-bottom: 0.5rem;
   color: white;
 }
-</style>>
-
+.banner-img {
+  width: 40%;
+}
+@media (max-width: 768px) {
+  .banner-img {
+    width: 100%;
+  }
+}
+</style>
