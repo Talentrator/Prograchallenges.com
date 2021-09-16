@@ -1,5 +1,5 @@
 <template>
-  <b-navbar toggleable="md" variant="dark" class="px-5 nav-bg">
+  <b-navbar toggleable="md" variant="dark" class="text-white px-5 nav-bg">
     <b-navbar-brand href="#">
       <img
         src="@/assets/temporary-logo.svg"
@@ -24,7 +24,7 @@
         <b-nav-item href="#" class="align-self-center nav-btn text-center">
           <div class="border px-2 py-1">LOG IN</div>
         </b-nav-item>
-        <b-nav-item href="#">
+        <b-nav-item :to="{ name: 'usr-register' }">
           <div class="text-dark text-center bg-primary px-3 py-1 align-center">
             REGISTER
             <b-icon-arrow-right-circle-fill />

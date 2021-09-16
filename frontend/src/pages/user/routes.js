@@ -1,16 +1,16 @@
 export default [
   {
     path: "/user/register",
-    name: "tld-register",
-    component: () => import("./Regtister.vue"),
+    name: "usr-register",
+    component: () => import("./Register.vue"),
     meta: {
       title: "Register - Prograchallenges",
     },
   },
   {
-    path: "/auth",
-    name: "Auth",
-    component: () => import("./Auth.vue"),
+    path: "/user/log-in",
+    name: "usr-login",
+    component: () => import("./LogIn.vue"),
     meta: {
       title: "Log In - Prograchallenges",
     },
