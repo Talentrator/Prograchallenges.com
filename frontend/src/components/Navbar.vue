@@ -18,14 +18,29 @@
 
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav style="margin-left: auto">
-        <b-nav-item href="#" class="align-self-center">Home</b-nav-item>
-        <b-nav-item href="#" class="align-self-center">Challenges</b-nav-item>
-        <b-nav-item href="#" class="align-self-center">Support</b-nav-item>
-        <b-nav-item href="#" class="align-self-center nav-btn text-center">
+        <b-nav-item href="#" class="align-self-center nav-text"
+          >Home</b-nav-item
+        >
+        <b-nav-item href="#" class="align-self-center nav-text"
+          >Challenges</b-nav-item
+        >
+        <b-nav-item href="#" class="align-self-center nav-text"
+          >Support</b-nav-item
+        >
+        <b-nav-item href="#" class="align-self-center text-center nav-text">
           <div class="border px-2 py-1">LOG IN</div>
         </b-nav-item>
         <b-nav-item href="#">
-          <div class="text-dark text-center bg-primary px-3 py-1 align-center">
+          <div
+            class="
+              text-dark text-center
+              bg-primary
+              px-3
+              py-1
+              align-center
+              nav-signup-btn
+            "
+          >
             SIGN UP
             <b-icon-arrow-right-circle-fill />
           </div>
@@ -42,4 +57,16 @@ export default {
 </script>
 
 <style scoped>
+@media (max-width: 768px) {
+  .nav-bg {
+    padding: 10px 20px !important;
+  }
+  .nav-text {
+    align-self: flex-start !important;
+  }
+  .nav-signup-btn {
+    text-align: left !important;
+    padding-left: 14px !important;
+  }
+}
 </style>
