@@ -24,18 +24,3 @@ export default {
 };
 </script>
 
-<style lang="scss">
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-#app {
-  font-family: "Gotham Book", sans-serif;
-}
-
-.nav-link {
-  color: #e4e3e3 !important;
-}
-</style>
