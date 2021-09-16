@@ -26,7 +26,7 @@
         </b-nav-item>
         <b-nav-item href="#">
           <div class="text-dark text-center bg-primary px-3 py-1 align-center">
-            SIGN UP
+            REGISTER
             <b-icon-arrow-right-circle-fill />
           </div>
         </b-nav-item>
