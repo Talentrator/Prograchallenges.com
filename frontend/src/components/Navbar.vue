@@ -18,15 +18,15 @@
 
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav style="margin-left: auto">
-        <b-nav-item href="#" class="align-self-start align-self-md-center"
-          >Home</b-nav-item
-        >
-        <b-nav-item href="#" class="align-self-start align-self-md-center"
-          >Challenges</b-nav-item
-        >
-        <b-nav-item href="#" class="align-self-start align-self-md-center"
-          >Support</b-nav-item
-        >
+        <b-nav-item href="#" class="align-self-start align-self-md-center">
+          Home
+        </b-nav-item>
+        <b-nav-item href="#" class="align-self-start align-self-md-center">
+          Challenges
+        </b-nav-item>
+        <b-nav-item href="#" class="align-self-start align-self-md-center">
+          Support
+        </b-nav-item>
         <b-nav-item
           href="#"
           class="align-self-start align-self-md-center text-center nav-text"
