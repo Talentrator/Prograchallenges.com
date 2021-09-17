@@ -3,7 +3,9 @@
     <b-container>
       <b-row>
         <b-col>
-          <b-link class="d-block text-light">Home</b-link>
+          <b-link class="d-block text-light" :to="{ name: 'tld-home' }">
+            Home
+          </b-link>
           <b-link class="d-block text-light">How It Works</b-link>
           <b-link class="d-block text-light">Challenges</b-link>
           <b-link class="d-block text-light">Support</b-link>
