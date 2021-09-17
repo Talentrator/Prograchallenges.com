@@ -1,12 +1,7 @@
 export default [
   {
     path: "/",
-    name: "Home",
+    name: "tld-home",
     component: () => import("./Home.vue"),
-  },
-  {
-    path: "/auth",
-    name: "Auth",
-    component: () => import("./Auth.vue"),
   },
 ];

@@ -33,18 +33,9 @@
         >
           <div class="border px-2 py-1">LOG IN</div>
         </b-nav-item>
-        <b-nav-item href="#">
-          <div
-            class="
-              text-dark text-left text-md-center
-              bg-primary
-              px-2 px-md-3
-              py-1
-              align-center
-              nav-signup-btn
-            "
-          >
-            SIGN UP
+        <b-nav-item :to="{ name: 'usr-register' }">
+          <div class="text-dark text-center bg-primary px-3 py-1 align-center">
+            REGISTER
             <b-icon-arrow-right-circle-fill />
           </div>
         </b-nav-item>
