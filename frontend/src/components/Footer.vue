@@ -1,5 +1,4 @@
 <template>
-  <!--<div style="background-color:black;">-->
   <div class="bg-dark text-light pt-4">
     <b-container>
       <footer class="horizontal">
@@ -21,7 +20,6 @@
       </footer>
     </b-container>
   </div>
-  <!--</div>-->
 </template>
 
 
