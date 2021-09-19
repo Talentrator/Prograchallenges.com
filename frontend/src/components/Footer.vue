@@ -46,9 +46,4 @@ export default {
 </script>
 
 <style scoped>
-#Title {
-  font-family: "Gotham Bold", sans-serif;
-  font-size: xx-large;
-  margin-bottom: 1rem;
-}
 </style>
