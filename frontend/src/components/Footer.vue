@@ -1,8 +1,9 @@
 <template>
-  <div class="bg-dark text-light p-4">
+  <div class="bg-dark text-light p-4 custom-border">
     <b-container fluid>
       <div class="d-flex w-100 justify-content-around flex-md-row flex-column">
         <div class="my-2 my-md-0">
+          <h2>Navigation</h2>
           <b-link class="d-block text-light" :to="{ name: 'tld-home' }">
             Home
           </b-link>
@@ -11,6 +12,7 @@
           <b-link class="d-block text-light">Support</b-link>
         </div>
         <div class="my-2 my-md-0 mb-4">
+          <h2>Contact Us</h2>
           <div class="d-flex align-items-center">
             <b-icon-envelope />&nbsp;
             <b-link class="d-block text-light">prograchallenges@gmail.com</b-link>
@@ -46,4 +48,7 @@ export default {
 </script>
 
 <style scoped>
+.custom-border{
+  border-top: 2px solid #c07095;
+}
 </style>
