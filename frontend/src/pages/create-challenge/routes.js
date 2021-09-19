@@ -1,7 +1,7 @@
 export default [
     {
-      path: "/create-challenge",
-      name: "create-challenge",
+      path: "/challenges/create",
+      name: "clg-create",
       component: () => import("./CreateChallenge.vue"),
       meta: {
         title: "Create Challenge - Prograchallenges",

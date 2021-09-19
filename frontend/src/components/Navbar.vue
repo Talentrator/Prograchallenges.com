@@ -1,6 +1,6 @@
 <template>
   <b-navbar toggleable="md" variant="dark" class="text-white px-2 px-md-4">
-    <b-navbar-brand href="#" :to="{ name: 'tld-home' }">
+    <b-navbar-brand :to="{ name: 'tld-home' }">
       <img
         src="@/assets/temporary-logo.svg"
         alt="Prograchallenges | Logo"
