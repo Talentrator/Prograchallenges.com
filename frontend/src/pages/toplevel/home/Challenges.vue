@@ -10,7 +10,7 @@
       </p>
       <div>
         <b-row>
-          <b-col><b-button variant="primary" block class="mt-2"> </b-button></b-col>
+          <b-col><b-button variant="primary" block class="mt-2">RANDOM</b-button></b-col>
           <b-col class="mt-3">or</b-col>
           <b-col>
             <b-dropdown id="dropdown-1" text="Language" class="m-md-2 mt-1">
