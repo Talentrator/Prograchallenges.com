@@ -10,7 +10,7 @@
       </p>
       <div>
         <b-row>
-          <b-col><button class="button-random mt-2">RANDOM</button></b-col>
+          <b-col><b-button variant="primary" block class="mt-2"> </b-button></b-col>
           <b-col class="mt-3">or</b-col>
           <b-col>
             <b-dropdown id="dropdown-1" text="Language" class="m-md-2 mt-1">
@@ -62,14 +62,5 @@ export default {
   },
 };
 </script>
-<style scoped>
-.button-random {
-  background-color: #dbb880;
-  border: none;
-  color: black;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-}
-</style>
+
 
