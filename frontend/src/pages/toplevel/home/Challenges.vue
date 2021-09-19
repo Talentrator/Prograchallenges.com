@@ -3,10 +3,6 @@
     <b-container class="text-light">
       <center>
         <h1 class="pb-2" style="font-size: 3.5rem">C h a l l e n g e s</h1>
-        <p style="letter-spacing: 1.25px">
-          Test your skills with thousands of challenges,<br />
-          easy and industry standard<br />just for you.
-        </p>
       </center>
       <h2 class="mt-4" style="">Browse...</h2>
       <p style="letter-spacing: 1.4px">
