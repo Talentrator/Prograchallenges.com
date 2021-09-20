@@ -9,7 +9,7 @@
       />
     </b-navbar-brand>
 
-    <b-navbar-toggle target="nav-collapse" class="border-0">
+    <b-navbar-toggle target="nav-collapse" class="border-0 shadow-none">
       <template v-slot:default="{ expanded }" class="text-white">
         <b-icon class="text-white" v-if="expanded" font-scale="1.3" icon="x" />
         <b-icon class="text-white" v-else font-scale="1.3" icon="list"></b-icon>
