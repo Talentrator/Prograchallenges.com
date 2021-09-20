@@ -1,29 +1,36 @@
 <template>
-  <div class="bg-dark text-light pt-4">
-    <b-container>
-      <b-row>
-        <b-col>
+  <div class="bg-dark text-light p-4 custom-border">
+    <b-container fluid>
+      <div class="d-flex w-100 justify-content-around flex-md-row flex-column">
+        <div class="my-2 my-md-0">
+          <h2>Navigation</h2>
           <b-link class="d-block text-light" :to="{ name: 'tld-home' }">
             Home
           </b-link>
           <b-link class="d-block text-light">How It Works</b-link>
           <b-link class="d-block text-light">Challenges</b-link>
           <b-link class="d-block text-light">Support</b-link>
-        </b-col>
-
-        <b-col>
-          <!--Email Logo-->
-          <b-link class="d-block text-light">prograchallenges@gmail.com</b-link>
-          <!--Telegram Logo-->
-          <b-link class="d-block text-light">Programming Challenges</b-link>
-          <!--Reddit Logo-->
-          <b-link class="d-block text-light">r/prograchallenges</b-link>
-        </b-col>
-        <b-col>
+        </div>
+        <div class="my-2 my-md-0 mb-4">
+          <h2>Contact Us</h2>
+          <div class="d-flex align-items-center">
+            <b-icon-envelope />&nbsp;
+            <b-link class="d-block text-light">prograchallenges@gmail.com</b-link>
+          </div>
+          <div class="d-flex align-items-center">
+            <img src='@/assets/telegram-logo.svg' alt='Prograchallenges | Telegram' />&nbsp;
+            <b-link class="d-block text-light">Programming Challenges</b-link>
+          </div>
+          <div class="d-flex align-items-center">
+            <img src='@/assets/reddit-logo.svg' alt='Prograchallenges | Reddit' />&nbsp;
+            <b-link class="d-block text-light">r/prograchallenges</b-link>
+          </div>
+        </div>
+        <div>
           <!-- something about our webpack config seems broken? -->
           <b-img :src="require('../assets/temporary-logo.svg')"></b-img>
-        </b-col>
-      </b-row>
+        </div>
+      </div>
     </b-container>
   </div>
 </template>
@@ -36,9 +43,7 @@ export default {
 </script>
 
 <style scoped>
-#Title {
-  font-family: "Gotham Bold", sans-serif;
-  font-size: xx-large;
-  margin-bottom: 1rem;
+.custom-border{
+  border-top: 2px solid #c07095;
 }
 </style>

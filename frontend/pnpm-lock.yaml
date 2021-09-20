@@ -13,6 +13,7 @@ specifiers:
   eslint: ^6.7.2
   eslint-plugin-vue: ^6.2.2
   firebase: ^8.10.0
+  regenerator-runtime: ^0.13.9
   sass: ^1.40.1
   sass-loader: ^8.0.2
   vue: ^2.6.11
@@ -25,6 +26,7 @@ dependencies:
   bootstrap-vue: 2.21.2_vue@2.6.14
   core-js: 3.17.3
   firebase: 8.10.0
+  regenerator-runtime: 0.13.9
   vue: 2.6.14
   vue-router: 3.5.2
   vuex: 3.6.2_vue@2.6.14
@@ -7460,7 +7462,6 @@ packages:
 
   /regenerator-runtime/0.13.9:
     resolution: {integrity: sha512-p3VT+cOEgxFsRRA9X4lkI1E+k2/CtnKtU4gcxyaCUreilL/vqI6CdZ3wxVUx3UOUg+gnUOQQcRI7BmSI656MYA==}
-    dev: true
 
   /regenerator-transform/0.14.5:
     resolution: {integrity: sha512-eOf6vka5IO151Jfsw2NO9WpGX58W6wWmefK3I1zEGr0lOD0u8rwPaNqQL1aRxUaxLeKO3ArNh3VYg1KbaD+FFw==}
