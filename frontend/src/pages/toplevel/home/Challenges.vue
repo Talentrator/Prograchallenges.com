@@ -1,14 +1,14 @@
 <template>
   <div class="bg-dark my-5">
     <b-container class="text-light">
-      <center>
+      <div class="text-center">
         <h1 class="pb-2" style="font-size: 3.5rem">C h a l l e n g e s</h1>
-      </center>
+      </div>
       <h2 class="mt-4" style="">Browse...</h2>
-      <p style="letter-spacing: 1.4px">
+      <p>
         Choose a challenge, read the problem, write code, submit , that's it!
       </p>
-      <div>
+      
         <b-row>
           <b-col><b-button variant="primary" block class="mt-2">RANDOM</b-button></b-col>
           <b-col class="mt-3">or</b-col>
@@ -34,13 +34,13 @@
             </b-dropdown>
           </b-col>
         </b-row>
-      </div>
+      
 
-      <div>
-        <center>
+      
+        <div class="text-center">
           <b-table  :items="items" class="text-light mt-4"></b-table>
-        </center>
-      </div>
+        </div>
+      
     </b-container>
   </div>
 </template>
