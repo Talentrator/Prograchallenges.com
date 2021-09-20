@@ -45,7 +45,7 @@
         <h1 class="display-4 pb-4 pt-5">ABOUT US</h1>
         <b-row>
             
-            <b-col style="border-right:2px solid #c07095;">
+            <b-col class="divider">
                 <h2>The Team</h2>
                 <h5 class="mx-auto subtitle">We are programmers just like you ! Helping and inspiring each other to improve themselves </h5>
                 <a href="#" class="btn btn-secondary mt-3">View Collaborators</a>
@@ -71,5 +71,13 @@ export default {
     font-family:'Gotham Book',sans-serif;
     text-transform: none;
     max-width:20rem;
+}
+.divider{
+  border-right:2px solid #c07095;
+}
+@media only screen and (max-width: 600px) {
+  .divider{
+    border-right: none;
+  }
 }
 </style>
