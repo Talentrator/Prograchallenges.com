@@ -2,7 +2,7 @@
   <div class="bg-dark my-5">
     <b-container class="text-light">
       <div class="text-center">
-        <h1 class="pb-2" style="font-size: 3.5rem">C h a l l e n g e s</h1>
+        <h1 class="pb-2 display-4">C h a l l e n g e s</h1>
       </div>
       <h2 class="mt-4" style="">Browse...</h2>
       <p>
