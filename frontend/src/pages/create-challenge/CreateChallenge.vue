@@ -5,8 +5,25 @@
         <p class="text-muted text-center mb-3">Create a challenge for others to face!</p>
         <b-form class="px-0 px-md-5">
           <b-form-group id="input-group-1" class="px-1 px-md-5">
-            <b-form-textarea rows="10" name="text" placeholder="Your awesome challenge here" />
-            <b-button variant="primary" class="mt-2 w-100 mx-auto">Submit</b-button>
+            <!-- <div class="d-md-flex p-2"> -->
+              <b-row>
+                <b-col lg='6' md='12'>
+                  <b-form-input name='email' v-model="form.email" type='email' class="mb-2" placeholder='codemonkey@gmail.com' />
+                </b-col>
+                <b-col lg='6' md='12'>
+                  <b-form-input name='name' v-model="form.nickname" type='text' class="mb-2" placeholder='greatcoder12' />
+                </b-col>
+              </b-row>
+            <!-- </div> -->
+            <b-form-textarea v-model="form.text" rows="10" name="text" placeholder="Your awesome challenge here" />
+
+            <div class="d-md-flex my-2 justify-content-end text-primary">
+              <div class="border border-primary d-flex align-items-center p-2 justify-content-center justify-content-md-start" style="cursor: pointer;" @click="handleSubmit">
+                <h4 class="m-0">SUBMIT</h4>&nbsp;
+                <b-icon-arrow-right-circle-fill class="text-primary" />
+              </div>
+            </div>
+
           </b-form-group>
         </b-form>
       </div>
@@ -15,7 +32,23 @@
 
 <script>
 export default {
-  name: 'CreateChallenge'
+  name: 'CreateChallenge',
+  data(){
+    return {
+      form: {
+        email: '',
+        nickname: '',
+        text: ''
+      }
+    }
+  },
+  methods: {
+    handleSubmit: function () {
+      console.log('email >>>', this.form.email)
+      console.log('nickname >>>', this.form.nickname)
+      console.log('text >>>', this.form.text)
+    }
+  }
 }
 </script>
 

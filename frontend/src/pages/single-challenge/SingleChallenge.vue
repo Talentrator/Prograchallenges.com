@@ -9,21 +9,23 @@
           <h3 class="mt-4 text-white">Your Answers</h3>
           <b-form class="d-flex flex-column">
               <b-form-group>
-                <b-form-textarea rows="3" name="text" placeholder="Leave your answer here.." />
+                <b-row>
+                    <b-col lg='6' md='12'>
+                        <b-form-input name='email' v-model="form.email" type='email' class="mb-2" placeholder='codemonkey@gmail.com' />
+                    </b-col>
+                    <b-col lg='6' md='12'>
+                        <b-form-input name='name' v-model="form.nickname" type='text' class="mb-2" placeholder='greatcoder12' />
+                    </b-col>
+                </b-row>
+                <b-form-textarea rows="3" v-model="form.text" name="text" placeholder="Leave your answer here.." />
               </b-form-group>
-              <b-button variant="primary" class="mt-2 align-self-end">Post</b-button>
+              <b-button variant="primary" class="mt-2 align-self-end" @click="handleSubmit">Post</b-button>
           </b-form>
-          <div class="mt-3 my-2">
-              <p class="text-muted m-0">edf456@gmail.com</p>
-              <p class="text-white">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cupiditate quasi distinctio placeat, nemo fuga nobis deserunt voluptas sit nihil. Voluptatem.</p>
-          </div>
-          <div class="mt-3 my-2">
-              <p class="text-muted m-0">edf456@gmail.com</p>
-              <p class="text-white">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cupiditate quasi distinctio placeat, nemo fuga nobis deserunt voluptas sit nihil. Voluptatem.</p>
-          </div>
-          <div class="mt-3 my-2">
-              <p class="text-muted m-0">edf456@gmail.com</p>
-              <p class="text-white">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cupiditate quasi distinctio placeat, nemo fuga nobis deserunt voluptas sit nihil. Voluptatem.</p>
+          <div class="mb-5">
+              <div v-for="item in comments" :key="item.index" :class="{'mt-3': true, 'my-2': true, 'border-bottom': (comments.indexOf(item) + 1 !== comments.length), 'border-secondary': true}">
+                <p class="text-muted m-0">{{ item.email }}</p>
+                <p class="text-white">{{ item.text }}</p>
+              </div>
           </div>
       </b-container>
   </div>
@@ -31,7 +33,37 @@
 
 <script>
 export default {
-
+    name: 'SingleChallenge',
+    data(){
+        return {
+            form: {
+                email: '',
+                nickname: '',
+                text: ''
+            },
+            comments: [
+                {
+                    email: 'edf456@gmail.com',
+                    text: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cupiditate quasi distinctio placeat, nemo fuga nobis deserunt voluptas sit nihil. Voluptatem.'
+                },
+                {
+                    email: 'edf456@gmail.com',
+                    text: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cupiditate quasi distinctio placeat, nemo fuga nobis deserunt voluptas sit nihil. Voluptatem.'
+                },
+                {
+                    email: 'edf456@gmail.com',
+                    text: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cupiditate quasi distinctio placeat, nemo fuga nobis deserunt voluptas sit nihil. Voluptatem.'
+                }
+            ]
+        }
+    },
+    methods: {
+        handleSubmit: function () {
+            console.log('email >>>', this.form.email)
+            console.log('nickname >>>', this.form.nickname)
+            console.log('text >>>', this.form.text)
+        },
+    }
 }
 </script>
 
