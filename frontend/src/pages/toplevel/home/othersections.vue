@@ -67,7 +67,7 @@ export default {
 .divider {
   border-right: 2px solid #c07095;
 }
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 767.98px) {
   .divider {
     border-right: none;
   }
