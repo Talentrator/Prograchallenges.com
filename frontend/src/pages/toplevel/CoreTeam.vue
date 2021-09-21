@@ -15,15 +15,9 @@
   </div>
 </template>
 
-<style scoped>
-    .row {
-        row-gap: 2rem;
-        column-gap: 1rem;
-    }
-</style>
 
 <script>
-import MemberCard from "../../components/TeamMember.vue";
+import MemberCard from "@/components/MemberCard.vue";
 export default {
   name: "CoreTeam",
   components: { MemberCard },
@@ -107,3 +101,10 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+    .row {
+        row-gap: 2rem;
+        column-gap: 1rem;
+    }
+</style>

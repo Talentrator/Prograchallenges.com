@@ -24,6 +24,18 @@
   </div>
 </template>
 
+
+<script>
+export default {
+  name: "MemberCard",
+  props: {
+    member: {
+      type: Object,
+    },
+  },
+};
+</script>
+
 <style scoped>
     .card {
         width: min-content;
@@ -45,14 +57,3 @@
         }
     }
 </style>
-
-<script>
-export default {
-  name: "Member",
-  props: {
-    member: {
-      type: Object,
-    },
-  },
-};
-</script>
