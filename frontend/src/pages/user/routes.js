@@ -15,4 +15,12 @@ export default [
       title: "Log In - Prograchallenges",
     },
   },
+  {
+    path: "/user/comingsoon",
+    name: "usr-coming-soon",
+    component: () => import("./FeatureComingSoon.vue"),
+    meta: {
+      title: "Coming Soon",
+    },
+  },
 ];
