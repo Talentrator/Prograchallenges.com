@@ -22,7 +22,7 @@
               <b-button variant="primary" class="mt-2 align-self-end" @click="handleSubmit">Post</b-button>
           </b-form>
           <div class="mb-5">
-              <div v-for="item in comments" :key="item.index" :class="{'mt-3': true, 'my-2': true, 'border-bottom': (comments.indexOf(item) + 1 !== comments.length), 'border-secondary': true}">
+              <div v-for="item in comments" :key="item.index" class="mt-3 my-2 border-secondary" :class="{'border-bottom': (comments.indexOf(item) + 1 !== comments.length)}">
                 <p class="text-muted m-0">{{ item.email }}</p>
                 <p class="text-white">{{ item.text }}</p>
               </div>
@@ -58,11 +58,7 @@ export default {
         }
     },
     methods: {
-        handleSubmit: function () {
-            console.log('email >>>', this.form.email)
-            console.log('nickname >>>', this.form.nickname)
-            console.log('text >>>', this.form.text)
-        },
+        handleSubmit: function () {},
     }
 }
 </script>

@@ -5,7 +5,6 @@
         <p class="text-muted text-center mb-3">Create a challenge for others to face!</p>
         <b-form class="px-0 px-md-5">
           <b-form-group id="input-group-1" class="px-1 px-md-5">
-            <!-- <div class="d-md-flex p-2"> -->
               <b-row>
                 <b-col lg='6' md='12'>
                   <b-form-input name='email' v-model="form.email" type='email' class="mb-2" placeholder='codemonkey@gmail.com' />
@@ -14,7 +13,6 @@
                   <b-form-input name='name' v-model="form.nickname" type='text' class="mb-2" placeholder='greatcoder12' />
                 </b-col>
               </b-row>
-            <!-- </div> -->
             <b-form-textarea v-model="form.text" rows="10" name="text" placeholder="Your awesome challenge here" />
 
             <div class="d-md-flex my-2 justify-content-end text-primary">
@@ -43,11 +41,7 @@ export default {
     }
   },
   methods: {
-    handleSubmit: function () {
-      console.log('email >>>', this.form.email)
-      console.log('nickname >>>', this.form.nickname)
-      console.log('text >>>', this.form.text)
-    }
+    handleSubmit: function () {}
   }
 }
 </script>
