@@ -3,8 +3,8 @@
     <h1 class="display-4 pb-4">Features</h1>
 
     <b-row class="justify-content-center">
-      <b-col>
-        <div class="border border-primary py-2 mt-md-0 mt-3">
+      <b-col class="border border-primary py-2 mt-md-0 mt-3 mx-1">
+        <div>
           <h3 class="pt-2">Code And Learn</h3>
           <p class="pt-2">
             We have thousands of challenges which you can attempt and enhance
@@ -12,16 +12,16 @@
           </p>
         </div>
       </b-col>
-      <b-col>
-        <div class="border border-primary py-2 mt-md-0 mt-3">
+      <b-col class="border border-primary py-2 mt-md-0 mt-3 mx-1" >
+        <div> 
           <h3 class="pt-2">Make Friends!</h3>
           <p class="pt-2">
              Join our vast community on Telegram and make new Coder Friends ! 
           </p>
         </div>
       </b-col>
-      <b-col>
-        <div class="border border-primary py-2 mt-md-0 mt-3">
+      <b-col class="border border-primary py-2 mt-md-0 mt-3 mx-1" >
+        <div>
           <h3 class="pt-2">Create</h3>
           <p class="pt-2">
              Challenge others by creating custom challenges on our platform 
