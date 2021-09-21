@@ -6,11 +6,11 @@
         <b-form class="px-0 px-md-5">
           <b-form-group id="input-group-1" class="px-1 px-md-5">
               <b-row>
-                <b-col lg='6' md='12'>
-                  <b-form-input name='email' v-model="form.email" type='email' class="mb-2" placeholder='codemonkey@gmail.com' />
+                <b-col lg="6" md="12">
+                  <b-form-input name="email" v-model="form.email" type="email" class="mb-2" placeholder="codemonkey@gmail.com" />
                 </b-col>
-                <b-col lg='6' md='12'>
-                  <b-form-input name='name' v-model="form.nickname" type='text' class="mb-2" placeholder='greatcoder12' />
+                <b-col lg="6" md="12">
+                  <b-form-input name="name" v-model="form.nickname" type="text" class="mb-2" placeholder="greatcoder12" />
                 </b-col>
               </b-row>
             <b-form-textarea v-model="form.text" rows="10" name="text" placeholder="Your awesome challenge here" />
@@ -30,13 +30,13 @@
 
 <script>
 export default {
-  name: 'CreateChallenge',
+  name: "CreateChallenge",
   data(){
     return {
       form: {
-        email: '',
-        nickname: '',
-        text: ''
+        email: "",
+        nickname: "",
+        text: ""
       }
     }
   },
