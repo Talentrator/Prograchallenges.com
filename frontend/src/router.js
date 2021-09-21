@@ -3,9 +3,9 @@ import VueRouter from "vue-router";
 const routes = [
     ...require("./pages/toplevel/routes.js").default,
     ...require("./pages/user/routes.js").default,
-    ...require('./pages/create-challenge/routes.js').default,
-    ...require('./pages/single-challenge/routes.js').default,
-    ...require('./pages/core-team/routes.js').default
+    ...require("./pages/challenges/create-challenge/routes.js").default,
+    ...require("./pages/challenges/single-challenge/routes.js").default,
+    ...require("./pages/core-team/routes.js").default
 ];
 
 const router = new VueRouter({
