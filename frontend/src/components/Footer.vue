@@ -7,23 +7,23 @@
           <b-link class="d-block text-light" :to="{ name: 'tld-home' }">
             Home
           </b-link>
-          <b-link class="d-block text-light">How It Works</b-link>
-          <b-link class="d-block text-light">Challenges</b-link>
-          <b-link class="d-block text-light">Support</b-link>
+          <b-link class="d-block text-light" :to="{name:'usr-coming-soon'}">How It Works</b-link>
+          <b-link class="d-block text-light" :to="{name:'usr-coming-soon'}">Challenges</b-link>
+          <b-link class="d-block text-light" :to="{name:'usr-coming-soon'}">Support</b-link>
         </div>
         <div class="my-2 my-md-0 mb-4">
           <h2>Contact Us</h2>
           <div class="d-flex align-items-center">
             <b-icon-envelope />&nbsp;
-            <b-link class="d-block text-light">prograchallenges@gmail.com</b-link>
+            <a href="mailto:prograchallenges@gmail.com" target="_blank" class="d-block text-light">prograchallenges@gmail.com</a>
           </div>
           <div class="d-flex align-items-center">
             <img src='@/assets/telegram-logo.svg' alt='Prograchallenges | Telegram' />&nbsp;
-            <b-link class="d-block text-light">Programming Challenges</b-link>
+            <a href="https://t.me/prograchallenges" target="_blank" class="d-block text-light">Programming Challenges</a>
           </div>
           <div class="d-flex align-items-center">
             <img src='@/assets/reddit-logo.svg' alt='Prograchallenges | Reddit' />&nbsp;
-            <b-link class="d-block text-light">r/prograchallenges</b-link>
+            <a href="https://www.reddit.com/r/prograchallenges/" target="_blank" class="d-block text-light">r/prograchallenges</a>
           </div>
         </div>
         <div>

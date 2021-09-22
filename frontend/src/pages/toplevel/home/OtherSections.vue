@@ -38,7 +38,7 @@
             We are programmers just like you ! Helping and inspiring each other
             to improve themselves
           </h5>
-          <a href="#" class="btn btn-secondary mt-3">View Collaborators</a>
+          <b-link :to="{name:'core-team'}" class="btn btn-secondary mt-3">View Collaborators</b-link>
         </b-col>
         <b-col>
           <h2 class="mt-md-0 mt-3">The Project</h2>
@@ -46,7 +46,7 @@
             We are all about Programming Challenges, This platform helps
             programmers enhance their skills, challenge others, make friends
           </h5>
-          <a href="#" class="btn btn-secondary mt-2">Explore Challenges</a>
+          <b-link :to="{name:'/user/comingsoon'}" class="btn btn-secondary mt-2">Explore Challenges</b-link>
         </b-col>
       </b-row>
     </div>
