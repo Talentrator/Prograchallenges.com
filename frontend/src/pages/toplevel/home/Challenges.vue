@@ -34,12 +34,12 @@
             </b-dropdown>
           </b-col>
         </b-row>
-      
-
-      
+        
         <div class="text-center">
-          <b-table  :items="items" class="text-light mt-4"></b-table>
+          <b-table :current-page="currentPage" :items="challenges" :per-page="perpage" class="text-light mt-4"></b-table>
+          <b-pagination :total-rows="challenges.length" :per-page="perpage" v-model="currentPage" v-if="pagination"></b-pagination>
         </div>
+
       
     </b-container>
   </div>
@@ -48,16 +48,16 @@
 <script>
 export default {
   name: "Challenges",
-
+  props:{
+    challenges:{
+      type:Array
+    },
+    pagination:{type:Boolean}
+  },
   data() {
     return {
-      items: [
-        { ID:1 , Problem: "Example", Languages: "Example" ,Difficulty:"Medium"},
-        { ID:2 , Problem: "Example", Languages: "Example" ,Difficulty:"Medium"},
-        { ID:3 , Problem: "Example", Languages: "Example" ,Difficulty:"Medium"},
-        { ID:4 , Problem: "Example", Languages: "Example" ,Difficulty:"Medium"},
-        { ID:5 , Problem: "Example", Languages: "Example" ,Difficulty:"Medium"},
-      ],
+      perpage:20,
+      currentPage: 1,
     };
   },
 };

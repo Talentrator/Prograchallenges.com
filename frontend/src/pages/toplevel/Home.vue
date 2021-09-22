@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <Banner />
-    <Challenges />
+    <Challenges :pagination="pagination" :challenges="challenges" />
     <OtherSections />
   </div>
 </template>
@@ -18,6 +18,18 @@ export default {
     Banner,
     Challenges,
     OtherSections,
+  },
+  data() {
+    return {
+      challenges: [
+        { ID:1 , Problem: "Example", Languages: "Example" ,Difficulty:"Medium"},
+        { ID:2 , Problem: "Example", Languages: "Example" ,Difficulty:"Medium"},
+        { ID:3 , Problem: "Example", Languages: "Example" ,Difficulty:"Medium"},
+        { ID:4 , Problem: "Example", Languages: "Example" ,Difficulty:"Medium"},
+        { ID:5 , Problem: "Example", Languages: "Example" ,Difficulty:"Medium"},
+      ],
+      pagination:false
+    }
   },
 };
 </script>
