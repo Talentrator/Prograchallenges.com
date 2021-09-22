@@ -1,8 +1,8 @@
 <template>
-  <div class="pt-3 pb-3">
+  <div class="pt-3 pb-3 mt-md-2 pb-md-5">
     <b-container>
-      <h1 class="text-center text-white">Meet The Team</h1>
-      <p class="text-muted text-center mb-3">Check out our lead developers</p>
+      <h1 class="text-center text-white ">Meet The Team</h1>
+      <p class="text-muted text-center mb-2 mb-md-5">Check out our lead developers</p>
 
       <b-row class="justify-content-md-between flex-md-row align-items-center flex-column">
         <MemberCard
