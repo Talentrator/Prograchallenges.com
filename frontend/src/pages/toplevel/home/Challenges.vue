@@ -61,6 +61,18 @@ export default {
       ],
     };
   },
+
+  methods: {
+    fetchData: async function(){
+      const response = await fetch('https://us-central1-progra-challenges.cloudfunctions.net/getAllChallenges')
+      const challenges = await response.json()
+      console.log(challenges);
+    }
+  },
+
+  mounted(){
+    this.fetchData()
+  }
 };
 </script>
 

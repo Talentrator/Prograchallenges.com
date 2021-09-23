@@ -9,7 +9,7 @@ const getAllChallenges = (functions, admin) => functions.https.onRequest(async (
       })
     })
 
-    response.json(data)  
+    response.set('Access-Control-Allow-Origin', '*').json(data)  
   })
 })
 
