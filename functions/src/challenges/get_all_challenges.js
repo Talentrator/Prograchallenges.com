@@ -1,4 +1,4 @@
-const getAllChallenges = (functions, admin) => functions.https.onRequest(async (request, response) => {
+const getAllChallenges = (functions, admin) => functions.https.onCall(async () => {
   let data = []
 
   await admin.firestore().collection('challenges').get().then((querySnapshot) => {
@@ -9,7 +9,7 @@ const getAllChallenges = (functions, admin) => functions.https.onRequest(async (
       })
     })
 
-    response.set('Access-Control-Allow-Origin', '*').json(data)  
+    return data
   })
 })
 
