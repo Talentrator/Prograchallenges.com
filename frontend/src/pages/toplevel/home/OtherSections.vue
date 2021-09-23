@@ -1,6 +1,6 @@
 <template>
-  <b-container class="bg-dark text-light text-center my-5 pt-3">
-    <h1 class="display-4 pb-4">Features</h1>
+  <b-container class="bg-dark text-light text-center my-3 pt-3">
+    <h1 class="display-4 pb-4 border-primary border-top pt-4 border-2">Features</h1>
 
     <b-row class="justify-content-center">
       <b-col class="border border-primary py-2 mt-md-0 mt-3 mx-1">
@@ -22,15 +22,15 @@
       </b-col>
       <b-col class="border border-primary py-2 mt-md-0 mt-3 mx-1" >
         <div>
-          <h3 class="pt-2">Create</h3>
+          <h3 class="pt-2">Contibute</h3>
           <p class="pt-2">
              Challenge others by creating custom challenges on our platform 
           </p>
         </div>
       </b-col>
     </b-row>
-    <div class="border-primary border-top mt-5 border-2">
-      <h1 class="display-4 pb-4 pt-5">ABOUT US</h1>
+    <div class="border-primary border-top mt-4 border-2">
+      <h1 class="display-4 pb-4 pt-3">ABOUT US</h1>
       <b-row>
         <b-col class="divider">
           <h2>The Team</h2>
@@ -38,7 +38,7 @@
             We are programmers just like you ! Helping and inspiring each other
             to improve themselves
           </h5>
-          <a href="#" class="btn btn-secondary mt-3">View Collaborators</a>
+          <b-link :to="{name:'core-team'}" class="btn btn-secondary mt-3">View Collaborators</b-link>
         </b-col>
         <b-col>
           <h2 class="mt-md-0 mt-3">The Project</h2>
@@ -46,7 +46,7 @@
             We are all about Programming Challenges, This platform helps
             programmers enhance their skills, challenge others, make friends
           </h5>
-          <a href="#" class="btn btn-secondary mt-2">Explore Challenges</a>
+          <b-link :to="{name:'challenges'}" class="btn btn-secondary mt-2">Explore Challenges</b-link>
         </b-col>
       </b-row>
     </div>
