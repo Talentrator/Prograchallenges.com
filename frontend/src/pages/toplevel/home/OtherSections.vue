@@ -22,7 +22,7 @@
       </b-col>
       <b-col class="border border-primary py-2 mt-md-0 mt-3 mx-1" >
         <div>
-          <h3 class="pt-2">Contibute</h3>
+          <h3 class="pt-2">Contribute</h3>
           <p class="pt-2">
              Challenge others by creating custom challenges on our platform 
           </p>
