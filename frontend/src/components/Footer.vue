@@ -26,10 +26,8 @@
             <a href="https://www.reddit.com/r/prograchallenges/" target="_blank" class="d-block text-light">r/prograchallenges</a>
           </div>
         </div>
-        <div>
           <!-- something about our webpack config seems broken? -->
-          <b-img :src="require('../assets/temporary-logo.svg')"></b-img>
-        </div>
+          <img class="logo" :src="require('../assets/logo.svg')" />
       </div>
     </b-container>
   </div>
@@ -45,5 +43,8 @@ export default {
 <style scoped>
 .custom-border{
   border-top: 2px solid #c07095;
+}
+.logo{
+  height: clamp(7rem,15vw,15rem);
 }
 </style>

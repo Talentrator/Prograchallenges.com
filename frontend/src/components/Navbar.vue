@@ -2,10 +2,9 @@
   <b-navbar toggleable="md" variant="dark" class="text-white px-2 px-md-4">
     <b-navbar-brand :to="{ name: 'tld-home' }">
       <img
-        src="@/assets/temporary-logo.svg"
+        src="@/assets/logo.svg"
         alt="Prograchallenges | Logo"
-        class="w-50"
-        height="w-50"
+        class="logo"
       />
     </b-navbar-brand>
 
@@ -41,4 +40,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.logo{
+  height: clamp(3rem,7vw,6rem);
+}
+</style>
