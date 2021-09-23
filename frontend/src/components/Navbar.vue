@@ -19,7 +19,7 @@
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav style="margin-left: auto">
         <b-nav-item :to="{ name: 'tld-home' }" class="align-self-center"><span class="text-white">Home</span></b-nav-item>
-        <b-nav-item :to="{ name: 'usr-coming-soon' }" class="align-self-center"><span class="text-white">Challenges</span></b-nav-item>
+        <b-nav-item :to="{ name:'challenges' }" class="align-self-center"><span class="text-white">Challenges</span></b-nav-item>
         <b-nav-item :to="{ name: 'usr-coming-soon' }" class="align-self-center"><span class="text-white">Support</span></b-nav-item>
         <b-nav-item :to="{ name: 'usr-coming-soon' }" class="align-self-center nav-btn text-center">
           <div class="border px-2 py-1"><span class="text-white">LOG IN</span></div>

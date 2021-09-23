@@ -17,7 +17,7 @@
           height="40px"
         />
         <h4>
-          <a href="#" class="text-light">Programming Challenges</a>
+          <a href="https://t.me/prograchallenges" target="_blank" class="text-light">Programming Challenges</a>
         </h4>
       
     </b-container>
