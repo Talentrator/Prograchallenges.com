@@ -1,6 +1,6 @@
 <template>
   <div class="bg-dark text-light">
-    <b-container class="pc-medium-container text-center py-5">
+    <b-container class="pc-medium-container text-center pt-5 pb-md-5 pb-0">
       <img
         height="200px"
         class="b-img b-img-fluid"
