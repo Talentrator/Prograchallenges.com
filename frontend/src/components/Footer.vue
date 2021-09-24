@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-dark text-light p-4 custom-border">
+  <div class="bg-dark text-light p-4 border-top border-primary border-1">
     <b-container fluid>
       <div class="d-flex w-100 justify-content-around flex-md-row flex-column">
         <div class="my-2 my-md-0">
@@ -7,7 +7,6 @@
           <b-link class="d-block text-light" :to="{ name: 'tld-home' }">
             Home
           </b-link>
-          <b-link class="d-block text-light" :to="{name:'usr-coming-soon'}">How It Works</b-link>
           <b-link class="d-block text-light" :to="{name:'challenges'}">Challenges</b-link>
           <b-link class="d-block text-light" :to="{name:'usr-coming-soon'}">Support</b-link>
         </div>
@@ -27,7 +26,7 @@
           </div>
         </div>
           <!-- something about our webpack config seems broken? -->
-          <img class="logo" :src="require('../assets/logo.svg')" />
+          <b-img :src="require('../assets/logo.svg')" fluid style="max-height:7.5rem;"></b-img>
       </div>
     </b-container>
   </div>
@@ -39,12 +38,3 @@ export default {
   name: "Footer",
 };
 </script>
-
-<style scoped>
-.custom-border{
-  border-top: 2px solid #c07095;
-}
-.logo{
-  height: clamp(7rem,15vw,15rem);
-}
-</style>
