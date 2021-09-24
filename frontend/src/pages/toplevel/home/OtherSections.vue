@@ -1,5 +1,5 @@
 <template>
-  <b-container class="bg-dark text-light text-center my-3 pt-3">
+  <b-container class="bg-dark text-light text-center my-md-5 my-3 pt-3">
     <h1 class="display-4 pb-4 border-primary border-top pt-4 border-2">Features</h1>
 
     <b-row class="justify-content-center">
@@ -30,7 +30,7 @@
       </b-col>
     </b-row>
     <div class="border-primary border-top mt-4 border-2">
-      <h1 class="display-4 pb-4 pt-3">ABOUT US</h1>
+      <h1 class="display-4 pb-3 pb-md-5 mt-3 mt-md-5">ABOUT US</h1>
       <b-row>
         <b-col class="divider">
           <h2>The Team</h2>
