@@ -1,5 +1,5 @@
 <template>
-  <b-container class="bg-dark text-light text-center my-md-5 my-3 pt-3">
+  <b-container class="bg-dark text-light text-center mb-md-5 mb-3 pt-3 mt-4">
     <h1 class="display-4 pb-4 border-primary border-top pt-4 border-2">Features</h1>
 
     <b-row class="justify-content-center">
