@@ -2,7 +2,7 @@
   <div class="card p-0 bg-transparent border text-white">
     <img
       class="card-img-top"
-      :src="member.image"
+      :src="require(`@/assets/${member.image}`)"
       :alt="`${member.name} Picture`"
     />
     <div class="card-body p-2">
