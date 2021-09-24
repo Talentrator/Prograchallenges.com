@@ -10,5 +10,13 @@ export default [{
         meta: {
             title: "Team - Prograchallenges",
         },
+    },
+    {
+        path: "/challenges",
+        name: "challenges",
+        component: () => import("./Challenges.vue"),
+        meta: {
+            title: "Challenges - Prograchallenges",
+        },
     }
 ];

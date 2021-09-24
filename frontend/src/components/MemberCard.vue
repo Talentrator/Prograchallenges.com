@@ -10,12 +10,12 @@
       <h6 class="text-muted">{{ member.role }}</h6>
       <p>{{ member.bio }}</p>
       <p>
-        <a :href="`mailto:${member.contact.email}`">{{
+        <a target="_blank" :href="`mailto:${member.contact.email}`">{{
           member.contact.email
         }}</a>
       </p>
       <p>
-        <a :href="`https://t.me/${member.contact.telegram}`">
+        <a target="_blank" :href="`https://t.me/${member.contact.telegram}`">
         @{{
           member.contact.telegram
         }}</a>
