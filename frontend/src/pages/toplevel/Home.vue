@@ -34,33 +34,23 @@ export default {
       challenges: [
         {
           ID: 1,
-          Problem: "Example",
-          Languages: "Example",
-          Difficulty: "Medium",
+          Problem: "Example"
         },
         {
           ID: 2,
-          Problem: "Example",
-          Languages: "Example",
-          Difficulty: "Medium",
+          Problem: "Example"
         },
         {
           ID: 3,
-          Problem: "Example",
-          Languages: "Example",
-          Difficulty: "Medium",
+          Problem: "Example"
         },
         {
           ID: 4,
-          Problem: "Example",
-          Languages: "Example",
-          Difficulty: "Medium",
+          Problem: "Example"
         },
         {
           ID: 5,
-          Problem: "Example",
-          Languages: "Example",
-          Difficulty: "Medium",
+          Problem: "Example"
         },
       ],
       pagination: false,
