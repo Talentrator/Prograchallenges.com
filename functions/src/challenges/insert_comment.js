@@ -1,3 +1,6 @@
+const functions = require('firebase-functions')
+const admin = require('firebase-admin')
+
 const insertComment = (functions, admin) => functions.https.onCall(async (data) => {
     const challengeId = data.id
     const userEmail = data.email;

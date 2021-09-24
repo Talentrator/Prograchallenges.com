@@ -9,10 +9,10 @@ const getSingleChallenge = require('./src/challenges/get_single_challenge')
 const insertChallenge = require('./src/challenges/insert_challenge')
 const insertComment = require('./src/challenges/insert_comment')
 
-exports.getAllChallenges = getAllChallenges(functions, admin)
-exports.getSingleChallenge = getSingleChallenge(functions, admin)
-exports.insertChallenge = insertChallenge(functions, admin)
-exports.insertComment = insertComment(functions, admin)
+exports.getAllChallenges = getAllChallenges()
+exports.getSingleChallenge = getSingleChallenge()
+exports.insertChallenge = insertChallenge()
+exports.insertComment = insertComment()
 
 
 exports.seedData = functions.https.onRequest((request, response) => {

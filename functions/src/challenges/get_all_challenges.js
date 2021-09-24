@@ -1,16 +1,19 @@
-const getAllChallenges = (functions, admin) => functions.https.onCall(async () => {
-  let data = []
+const functions = require('firebase-functions')
+const admin = require('firebase-admin')
 
-  await admin.firestore().collection('challenges').get().then((querySnapshot) => {
-    querySnapshot.forEach(doc => {
-      data.push({
-        id: doc.id,
-        ...doc.data(),
-      })
+const getAllChallenges = () => functions.https.onCall(async () => {
+  let data = [];
+
+  const result = await admin.firestore().collection('challenges').get();
+
+  result.forEach(doc => {
+    data.push({
+      id: doc.id,
+      ...doc.data(),
     })
+  });
 
-    return data
-  })
+  return data;
 })
 
 module.exports = getAllChallenges
