@@ -2,7 +2,7 @@
   <b-container class="bg-dark text-light text-center mb-md-5 mb-3 pt-3 mt-4">
     <h1 class="display-4 border-primary border-top py-4 border-2">Features</h1>
 
-    <b-row class="flex-column flex-sm-row px-4" style="gap: .7rem;">
+    <b-row class="max-width flex-column flex-sm-row px-4 mx-auto" style="gap: .7rem;">
       <b-col class="py-2 border border-primary d-flex flex-column justify-content-center">
         <div>
           <h3 class="mt-2">Code And Learn</h3>
@@ -31,8 +31,8 @@
     </b-row>
     <div class="border-primary border-top mt-4 border-2 pb-3 pb-sm-0">
       <h1 class="display-4 py-4">ABOUT US</h1>
-      <b-row class="flexbox d-flex flex-column flex-sm-row mx-auto w-100">
-        <b-col class="px-3 py-3 d-flex flex-column justify-content-between" style="background: #151515;">
+      <b-row class="max-width flexbox d-flex flex-column flex-sm-row mx-auto w-100">
+        <b-col class="px-3 py-3 d-flex flex-column justify-content-between bg-dark">
           <h2>The Team</h2>
           <h5 class="mx-auto subtitle">
             We are programmers just like you ! Helping and inspiring each other
@@ -40,7 +40,7 @@
           </h5>
           <b-link :to="{name:'core-team'}" class="btn btn-secondary mt-3">View Collaborators</b-link>
         </b-col>
-        <b-col class="px-3 py-3 d-flex flex-column justify-content-between" style="background: #151515;">
+        <b-col class="px-3 py-3 d-flex flex-column justify-content-between bg-dark">
           <h2>The Project</h2>
           <h5 class="mx-auto subtitle">
             We are all about Programming Challenges, This platform helps
@@ -69,3 +69,8 @@ export default {
   gap: 2px;
 }
 </style>
+ <style>
+ .max-width{
+   max-width: 65rem;
+ }
+ </style>

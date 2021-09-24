@@ -1,7 +1,7 @@
 <template>
   <div class="bg-dark my-2">
     <b-container class="text-light">
-      <div class="text-center">
+      <div class="text-center max-width mx-auto">
         <b-table
           :current-page="currentPage"
           :items="challenges"
