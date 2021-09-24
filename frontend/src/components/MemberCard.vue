@@ -15,7 +15,7 @@
         }}</a>
       </p>
       <p>
-        <a target="_blank" :href="`https://t.me/${member.contact.telegram}`">
+        <a target="_blank" :href="`https://telegram.me/${member.contact.telegram}`">
         @{{
           member.contact.telegram
         }}</a>
