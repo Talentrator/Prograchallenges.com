@@ -18,6 +18,7 @@
 </template>
 
 <script>
+import firebase from 'firebase'
 import Banner from "./home/Banner.vue";
 import Challenges from "../../components/ChallengesTable.vue";
 import OtherSections from "./home/OtherSections.vue";
@@ -66,5 +67,17 @@ export default {
       pagination: false,
     };
   },
+
+  methods: {
+    fetchData: () => {
+      const getAllChallenges = firebase.functions().httpsCallable('getAllChallenges')
+      const result = await getAllChallenges()
+      console.log(result);
+    }
+  },
+
+  mounted() {
+    this.fetchData
+  }
 };
 </script>
