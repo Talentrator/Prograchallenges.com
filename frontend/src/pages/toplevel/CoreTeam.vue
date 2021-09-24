@@ -27,7 +27,7 @@ export default {
         {
           name: "Shantanu Lamba",
           image:
-            "shantanu.jpg",
+            "shantanu.jpeg",
           role: "EXECUTIVE, COMMUNITY LEADER",
           bio:
             "Hello, I am a programmer working on this project. I live in New Delhi, India",
@@ -45,7 +45,7 @@ export default {
             "Hi I am a developer working on this project lorem ipsum dolor sit amet.",
           contact: {
             email: "abc123@gmail.com",
-            telegram: "calle978",
+            telegram: "",
           },
         },
         {
@@ -57,7 +57,7 @@ export default {
             "Hi I am a developer working on this project lorem ipsum dolor sit amet.",
           contact: {
             email: "abc123@gmail.com",
-            telegram: "@SarK283",
+            telegram: "SarK283",
           },
         },
         {
@@ -69,7 +69,7 @@ export default {
             "Hi I am a developer working on this project lorem ipsum dolor sit amet.",
           contact: {
             email: "abc123@gmail.com",
-            telegram: "tg-username",
+            telegram: "BinaryByter",
           },
         },
         {
@@ -81,7 +81,7 @@ export default {
             "Hi I am a developer working on this project lorem ipsum dolor sit amet.",
           contact: {
             email: "abc123@gmail.com",
-            telegram: "tg-username",
+            telegram: "calle978",
           },
         },
         {
