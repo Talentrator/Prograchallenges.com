@@ -4,11 +4,12 @@
       <h1 class="text-center text-white ">Meet The Team</h1>
       <p class="text-muted text-center mb-2 mb-md-4">Check out our lead developers</p>
 
-      <b-row class="justify-content-md-between flex-md-row align-items-center flex-column">
+      <b-row>
         <MemberCard
           v-for="(member, idx) in members"
           :key="idx"
           :member="member"
+          class="col-6 col-md-4"
         />
       </b-row>
     </b-container>
@@ -56,7 +57,7 @@ export default {
           bio:
             "Hi I am a developer working on this project lorem ipsum dolor sit amet.",
           contact: {
-            email: "abc123@gmail.com",
+            email: "saranshmm@gmail.com",
             telegram: "SarK283",
           },
         },
