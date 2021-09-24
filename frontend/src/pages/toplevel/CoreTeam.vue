@@ -37,15 +37,15 @@ export default {
           },
         },
         {
-          name: "Aman",
+          name: "Md Aman Khan",
           image:
-            "logo.svg",
+            "aman.jpg",
           role: "HEAD OF PRODUCT",
           bio:
             "Hi I am a developer working on this project lorem ipsum dolor sit amet.",
           contact: {
-            email: "abc123@gmail.com",
-            telegram: "",
+            email: "khanamankhan1973@gmail.com",
+            telegram: "Aman_coder",
           },
         },
         {
@@ -68,7 +68,7 @@ export default {
           bio:
             "Hi I am a developer working on this project lorem ipsum dolor sit amet.",
           contact: {
-            email: "abc123@gmail.com",
+            email: "maximilian@talentrator.com",
             telegram: "BinaryByter",
           },
         },
@@ -82,18 +82,6 @@ export default {
           contact: {
             email: "abc123@gmail.com",
             telegram: "calle978",
-          },
-        },
-        {
-          name: "Chris",
-          image:
-            "logo.svg",
-          role: "Chief Of Conduct",
-          bio:
-            "Hi I am a developer working on this project lorem ipsum dolor sit amet.",
-          contact: {
-            email: "abc123@gmail.com",
-            telegram: "tg-username",
           },
         },
       ],
