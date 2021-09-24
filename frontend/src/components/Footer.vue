@@ -9,6 +9,7 @@
           </b-link>
           <b-link class="d-block text-light" :to="{name:'challenges'}">Challenges</b-link>
           <b-link class="d-block text-light" :to="{name:'usr-coming-soon'}">Support</b-link>
+          <b-link class="d-block text-light" :to="{name:'core-team'}">Contributors</b-link>
         </div>
         <div class="my-2 my-md-0 mb-4">
           <h2>Contact Us</h2>
