@@ -69,15 +69,15 @@ export default {
   },
 
   methods: {
-    fetchData: () => {
-      const getAllChallenges = firebase.functions().httpsCallable('getAllChallenges')
-      const result = await getAllChallenges()
+    fetchData: async () => {
+      const getAllChallenges = firebase.functions().httpsCallable('getAllChallenges');
+      const result = await getAllChallenges();
       console.log(result);
     }
   },
 
-  mounted() {
-    this.fetchData
+  async created() {
+    await this.fetchData();
   }
 };
 </script>
