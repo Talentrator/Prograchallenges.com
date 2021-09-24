@@ -7,11 +7,13 @@ specifiers:
   firebase-admin: ^9.2.0
   firebase-functions: ^3.11.0
   firebase-functions-test: ^0.2.0
+  zod: ^3.8.2
 
 dependencies:
   cors: 2.8.5
   firebase-admin: 9.11.1
   firebase-functions: 3.15.5_firebase-admin@9.11.1
+  zod: 3.8.2
 
 devDependencies:
   eslint: 5.16.0
@@ -2276,3 +2278,7 @@ packages:
     engines: {node: '>=10'}
     dev: false
     optional: true
+
+  /zod/3.8.2:
+    resolution: {integrity: sha512-kpwVRACazsOhELVt5h4R2pC2OndrqaBK4+z134TWOsnzn7n2uOYnSyvx0QAn410pl28CgVtkSi5ew7e/AgO0oA==}
+    dev: false
