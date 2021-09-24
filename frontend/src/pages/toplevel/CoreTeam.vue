@@ -25,10 +25,46 @@ export default {
     return {
       members: [
         {
-          name: "Member Name 1",
+          name: "Shantanu Lamba",
           image:
-            "https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
-          role: "Role",
+            "shantanu.jpg",
+          role: "EXECUTIVE, COMMUNITY LEADER",
+          bio:
+            "Hello, I am a programmer working on this project. I live in New Delhi, India",
+          contact: {
+            email: "sl.group958@gmail.com",
+            telegram: "santy_coderx",
+          },
+        },
+        {
+          name: "Aman",
+          image:
+            "logo.svg",
+          role: "HEAD OF PRODUCT",
+          bio:
+            "Hi I am a developer working on this project lorem ipsum dolor sit amet.",
+          contact: {
+            email: "abc123@gmail.com",
+            telegram: "calle978",
+          },
+        },
+        {
+          name: "Saransh Kawadkar",
+          image:
+            "logo.svg",
+          role: "HEAD OF DESIGN",
+          bio:
+            "Hi I am a developer working on this project lorem ipsum dolor sit amet.",
+          contact: {
+            email: "abc123@gmail.com",
+            telegram: "@SarK283",
+          },
+        },
+        {
+          name: "Maximilian Wittmer",
+          image:
+            "maximillian.jpg",
+          role: "PROJECT OWNER/SPONSOR",
           bio:
             "Hi I am a developer working on this project lorem ipsum dolor sit amet.",
           contact: {
@@ -37,10 +73,10 @@ export default {
           },
         },
         {
-          name: "Member Name 2",
+          name: "Calle Unnérus",
           image:
-            "https://images.pexels.com/photos/1382731/pexels-photo-1382731.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-          role: "Role",
+            "calle.jpg",
+          role: "PROJECT OWNER/SPONSOR",
           bio:
             "Hi I am a developer working on this project lorem ipsum dolor sit amet.",
           contact: {
@@ -49,46 +85,10 @@ export default {
           },
         },
         {
-          name: "Member Name 3",
+          name: "Chris",
           image:
-            "https://images.pexels.com/photos/937481/pexels-photo-937481.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-          role: "Role",
-          bio:
-            "Hi I am a developer working on this project lorem ipsum dolor sit amet.",
-          contact: {
-            email: "abc123@gmail.com",
-            telegram: "tg-username",
-          },
-        },
-        {
-          name: "Member Name 4",
-          image:
-            "https://images.pexels.com/photos/2811087/pexels-photo-2811087.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-          role: "Role",
-          bio:
-            "Hi I am a developer working on this project lorem ipsum dolor sit amet.",
-          contact: {
-            email: "abc123@gmail.com",
-            telegram: "tg-username",
-          },
-        },
-        {
-          name: "Member Name 5",
-          image:
-            "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-          role: "Role",
-          bio:
-            "Hi I am a developer working on this project lorem ipsum dolor sit amet.",
-          contact: {
-            email: "abc123@gmail.com",
-            telegram: "tg-username",
-          },
-        },
-        {
-          name: "Member Name 6",
-          image:
-            "https://images.pexels.com/photos/1898555/pexels-photo-1898555.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-          role: "Role",
+            "logo.svg",
+          role: "Chief Of Conduct",
           bio:
             "Hi I am a developer working on this project lorem ipsum dolor sit amet.",
           contact: {
