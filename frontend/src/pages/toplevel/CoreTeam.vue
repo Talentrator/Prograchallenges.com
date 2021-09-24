@@ -25,75 +25,63 @@ export default {
     return {
       members: [
         {
-          name: "Member Name 1",
+          name: "Shantanu Lamba",
           image:
-            "https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
-          role: "Role",
+            "shantanu.jpeg",
+          role: "EXECUTIVE, COMMUNITY LEADER",
           bio:
-            "Hi I am a developer working on this project lorem ipsum dolor sit amet.",
+            "Hello, I am a programmer working on this project. I live in New Delhi, India",
           contact: {
-            email: "abc123@gmail.com",
-            telegram: "tg-username",
+            email: "sl.group958@gmail.com",
+            telegram: "santy_coderx",
           },
         },
         {
-          name: "Member Name 2",
+          name: "Md Aman Khan",
           image:
-            "https://images.pexels.com/photos/1382731/pexels-photo-1382731.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-          role: "Role",
+            "aman.jpg",
+          role: "HEAD OF PRODUCT",
           bio:
             "Hi I am a developer working on this project lorem ipsum dolor sit amet.",
           contact: {
-            email: "abc123@gmail.com",
-            telegram: "tg-username",
+            email: "khanamankhan1973@gmail.com",
+            telegram: "Aman_coder",
           },
         },
         {
-          name: "Member Name 3",
+          name: "Saransh Kawadkar",
           image:
-            "https://images.pexels.com/photos/937481/pexels-photo-937481.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-          role: "Role",
+            "logo.svg",
+          role: "HEAD OF DESIGN",
           bio:
             "Hi I am a developer working on this project lorem ipsum dolor sit amet.",
           contact: {
             email: "abc123@gmail.com",
-            telegram: "tg-username",
+            telegram: "SarK283",
           },
         },
         {
-          name: "Member Name 4",
+          name: "Maximilian Wittmer",
           image:
-            "https://images.pexels.com/photos/2811087/pexels-photo-2811087.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-          role: "Role",
+            "maximillian.jpg",
+          role: "PROJECT OWNER/SPONSOR",
           bio:
             "Hi I am a developer working on this project lorem ipsum dolor sit amet.",
           contact: {
-            email: "abc123@gmail.com",
-            telegram: "tg-username",
+            email: "maximilian@talentrator.com",
+            telegram: "BinaryByter",
           },
         },
         {
-          name: "Member Name 5",
+          name: "Calle Unnérus",
           image:
-            "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-          role: "Role",
+            "calle.jpg",
+          role: "PROJECT OWNER/SPONSOR",
           bio:
             "Hi I am a developer working on this project lorem ipsum dolor sit amet.",
           contact: {
             email: "abc123@gmail.com",
-            telegram: "tg-username",
-          },
-        },
-        {
-          name: "Member Name 6",
-          image:
-            "https://images.pexels.com/photos/1898555/pexels-photo-1898555.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-          role: "Role",
-          bio:
-            "Hi I am a developer working on this project lorem ipsum dolor sit amet.",
-          contact: {
-            email: "abc123@gmail.com",
-            telegram: "tg-username",
+            telegram: "calle978",
           },
         },
       ],

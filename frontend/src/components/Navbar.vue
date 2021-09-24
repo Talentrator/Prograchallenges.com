@@ -1,7 +1,7 @@
 <template>
   <b-navbar toggleable="md" variant="dark" class="text-white px-2 px-md-4">
     <b-navbar-brand :to="{ name: 'tld-home' }">
-      <b-img :src="require('../assets/logo.svg')" style="max-height:4.5rem"></b-img>
+      <b-img :src="require('../assets/logo.svg')" style="max-height:4rem"></b-img>
     </b-navbar-brand>
 
     <b-navbar-toggle target="nav-collapse" class="border-0 shadow-none">

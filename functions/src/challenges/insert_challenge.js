@@ -1,26 +1,23 @@
-const functions = require('firebase-functions')
-const admin = require('firebase-admin')
+const functions = require('firebase-functions');
+const admin = require('firebase-admin');
 
-const insertChallenge = (functions, admin) => functions.https.onCall(async (data) => {
-    const challengeTitle = data.title;
-    const challengeUserEmail = data.email;
-    const challengeUserNickName = data.nickname;
-    const challengeText = data.text;
-    const challengeLanguage = data.language
+const insertChallenge = functions.https.onCall(async (data) => {
+    const { text, title, email, nickname, language } = data;
+    // use ZOD for this
+    if(text === '' || email === '' || nickname === '' || title === '' || language === '')
+        throw new Error('invalid-argument', 'All fields are required');
 
-    if(challengeText === '' || challengeUserEmail === '' || challengeUserNickName === '' || challengeTitle === '' || challengeLanguage === ''){
-        throw new functions.https.HttpsError('invalid-argument', 'All fields are required')
-    }
-
+    // please make the id of the challenge-document be similiar to the title
+    // so that we can have urls that look like
+    // pc.com/challenge/implement-for-loop
+    // A solution for this was already implemented in create_new_user.js, please, heavily reuse the code
     await admin.firestore().collection('challenges').add({
-        title: challengeTitle,
-        email: challengeUserEmail,
-        nickname: challengeUserNickName,
-        text: challengeText,
-        language: challengeLanguage
-    })
+        title,
+        email,
+        nickname,
+        text,
+        language,
+    });
+});
 
-    return 'Challenge added succesfully'
-})
-
-module.exports = insertChallenge
+module.exports = insertChallenge;

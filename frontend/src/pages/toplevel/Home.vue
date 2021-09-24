@@ -2,7 +2,7 @@
   <div class="home">
     <Banner />
     <div class="text-center text-light">
-      <h1 class="pb-2 display-4 mt-4">C h a l l e n g e s</h1>
+      <h1 class="letter-spacing pb-2 display-4 mt-4">Challenges</h1>
       <p>
         Choose a challenge, read the problem, write code, submit , that's it!
       </p>
@@ -81,3 +81,10 @@ export default {
   }
 };
 </script>
+
+
+<style>
+.letter-spacing{
+  letter-spacing: 5px !important;
+}
+</style>
