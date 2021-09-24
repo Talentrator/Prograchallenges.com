@@ -12,3 +12,11 @@ const firebaseConfig = {
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
+
+if (process.env.NODE_ENV === 'development') {
+  firebase.functions().useEmulator('localhost', 5001);
+  firebase.firestore().settings({
+    host: 'localhost:9090',
+    ssl: false,
+  });
+}
