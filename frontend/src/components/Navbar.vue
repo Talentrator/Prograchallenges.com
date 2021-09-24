@@ -2,10 +2,9 @@
   <b-navbar toggleable="md" variant="dark" class="text-white px-2 px-md-4">
     <b-navbar-brand :to="{ name: 'tld-home' }">
       <img
-        src="@/assets/temporary-logo.svg"
+        src="@/assets/logo.svg"
         alt="Prograchallenges | Logo"
-        class="w-50"
-        height="w-50"
+        class="logo"
       />
     </b-navbar-brand>
 
@@ -19,7 +18,7 @@
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav style="margin-left: auto">
         <b-nav-item :to="{ name: 'tld-home' }" class="align-self-center"><span class="text-white">Home</span></b-nav-item>
-        <b-nav-item :to="{ name: 'usr-coming-soon' }" class="align-self-center"><span class="text-white">Challenges</span></b-nav-item>
+        <b-nav-item :to="{ name: 'challenges' }" class="align-self-center"><span class="text-white">Challenges</span></b-nav-item>
         <b-nav-item :to="{ name: 'usr-coming-soon' }" class="align-self-center"><span class="text-white">Support</span></b-nav-item>
         <b-nav-item :to="{ name: 'usr-coming-soon' }" class="align-self-center nav-btn text-center">
           <div class="border px-2 py-1"><span class="text-white">LOG IN</span></div>
@@ -41,4 +40,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.logo{
+  height: clamp(3rem,7vw,6rem);
+}
+</style>

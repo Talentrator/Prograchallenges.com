@@ -4,7 +4,7 @@
       <img
         height="200px"
         class="b-img b-img-fluid"
-        src="@/assets/temporary-logo.svg"
+        src="@/assets/logo.svg"
         alt="Responsive image"
       />
       <h1 class="mt-5">I challenge you to challenge your friends!</h1>

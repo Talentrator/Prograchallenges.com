@@ -1,6 +1,12 @@
 <template>
   <div class="home">
     <Banner />
+    <div class="text-center text-light">
+        <h1 class="pb-2 display-4">C h a l l e n g e s</h1>
+      <p>
+        Choose a challenge, read the problem, write code, submit , that's it!
+      </p>
+    </div>
     <Challenges :pagination="pagination" :challenges="challenges" />
     <OtherSections />
   </div>
@@ -8,7 +14,7 @@
 
 <script>
 import Banner from "./home/Banner.vue";
-import Challenges from './home/Challenges.vue';
+import Challenges from '../../components/ChallengesTable.vue';
 import OtherSections from './home/OtherSections.vue';
 
 
