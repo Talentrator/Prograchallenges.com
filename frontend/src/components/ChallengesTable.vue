@@ -50,7 +50,4 @@ export default {
 .table {
   border-color: rgba(255, 255, 255, 0.3) !important;
 }
-.page-link{
-  background-color: transparent !important;
-}
 </style>

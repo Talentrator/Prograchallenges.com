@@ -1,7 +1,7 @@
 <template>
   <b-navbar toggleable="md" variant="dark" class="text-white px-2 px-md-4">
     <b-navbar-brand :to="{ name: 'tld-home' }">
-      <b-img :src="require('../assets/logo.svg')" style="max-height:4rem"></b-img>
+      <b-img :src="require('../assets/logo.svg')" style="max-height:3rem"></b-img>
     </b-navbar-brand>
 
     <b-navbar-toggle target="nav-collapse" class="border-0 shadow-none">
@@ -16,7 +16,6 @@
         <b-nav-item :to="{ name: 'tld-home' }" class="align-self-center"><span class="text-white">Home</span></b-nav-item>
         <b-nav-item :to="{ name: 'challenges' }" class="align-self-center"><span class="text-white">Challenges</span></b-nav-item>
         <b-nav-item :to="{ name: 'usr-coming-soon' }" class="align-self-center"><span class="text-white">Support</span></b-nav-item>
-        <b-nav-item :to="{ name: 'core-team' }" class="align-self-center"><span class="text-white">Contributors</span></b-nav-item>
         <b-nav-item :to="{ name: 'usr-coming-soon' }" class="align-self-center nav-btn text-center">
           <div class="border px-2 py-1"><span class="text-white">LOG IN</span></div>
         </b-nav-item>

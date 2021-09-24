@@ -2,9 +2,9 @@
   <b-container>
       <div class="px-3 py-2">
         <h1 class="text-center mt-2 text-white">Create a challenge</h1>
-        <p class="text-muted text-center mb-3">Create a challenge for others to face!</p>
-        <b-form class="px-0 px-md-5">
-          <b-form-group id="input-group-1" class="px-1 px-md-5">
+        <p class="text-muted text-center mb-3">Write your own challenge for others to attempt! (Will be added after verification by the team)</p>
+        <b-form class="px-0">
+          <b-form-group id="input-group-1" class="px-1 px-md-5 w-100 mx-auto" style="max-width:50rem">
               <b-row>
                 <b-col lg="6" md="12">
                   <b-form-input name="email" v-model="form.email" type="email" class="mb-2" placeholder="codemonkey@gmail.com" />
