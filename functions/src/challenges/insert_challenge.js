@@ -1,6 +1,7 @@
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 const { z } = require('zod');
+const generateUniqueId = require("../tools/generate_unique_id").default;
 
 const insertChallenge = functions.https.onCall(async (data) => {    
     const mySchema = z.object({
@@ -12,11 +13,9 @@ const insertChallenge = functions.https.onCall(async (data) => {
 
     const InputData = mySchema.parse(data);
 
-    // please make the id of the challenge-document be similiar to the title
-    // so that we can have urls that look like
-    // pc.com/challenge/implement-for-loop
-    // A solution for this was already implemented in create_new_user.js, please, heavily reuse the code
-    await admin.firestore().collection('challenges').add(InputData);
+    const uid = generateUniqueId('challenges', data.title);
+
+    await admin.firestore().collection('challenges').doc(uid).set(InputData);
 });
 
 module.exports = insertChallenge;
