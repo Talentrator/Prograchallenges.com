@@ -1,7 +1,7 @@
 <template>
   <div class="bg-dark text-light p-4 border-top border-primary border-1">
     <b-container fluid>
-      <div class="d-flex w-100 justify-content-around flex-md-row flex-column">
+      <div class="d-flex w-100 justify-content-between flex-md-row flex-column">
         <div class="my-2 my-md-0">
           <h2>Navigation</h2>
           <b-link class="d-block text-light" :to="{ name: 'tld-home' }">
@@ -27,7 +27,7 @@
           </div>
         </div>
           <!-- something about our webpack config seems broken? -->
-          <b-img :src="require('../assets/logo.svg')" fluid style="max-height:7.5rem;"></b-img>
+          <b-img :src="require('../assets/logo.svg')" fluid style="max-height:7rem;"></b-img>
       </div>
     </b-container>
   </div>
