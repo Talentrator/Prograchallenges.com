@@ -3,9 +3,7 @@
       <b-container class="my-3 px-2">
           <h1 class="m-0 text-white">{{challengeData.title}}</h1>
           <p class="text-muted m-0">{{challengeData.nickname}}</p>
-          <p class="my-3 text-white">
-              {{challengeData.text}}
-          </p>
+          <p class="my-3 text-white" v-html="challengeData.text"></p>
           <h3 class="mt-4 text-white">Your Answers</h3>
           <b-form class="d-flex flex-column">
               <b-form-group>
@@ -51,11 +49,14 @@ export default {
             console.log({...this.form, challengeId: this.$route.params.id});
             await insertChallenge({...this.form, challengeId: this.$route.params.id});
             this.fetchData()
+            this.form = {email: '', nickname: '', commentText: ''}
         },
         async fetchData() {
             const getSingleChallenge = firebase.functions().httpsCallable('getSingleChallenge')
             const result = await getSingleChallenge({id: this.$route.params.id});
             this.challengeData = result.data;
+            this.challengeData.text = this.challengeData.text.replaceAll('\n', '<br>')
+            this.challengeData.text = this.challengeData.text.replaceAll(' ', '&nbsp;')
         }
     },
     mounted(){

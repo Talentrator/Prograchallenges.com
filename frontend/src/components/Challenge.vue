@@ -1,5 +1,5 @@
 <template>
-  <div class="mx-1 mx-md-5 p-1 p-md-2 text-white border border-primary d-flex justify-content-between align-items-center">
+  <div class="mx-1 mx-md-5 p-1 p-md-2 text-white border border-primary d-flex justify-content-between align-items-center singleChallenge" @click="redirectToSingleChallenge(item.id)">
     <div>
       <h5>{{item.title}}</h5>
       <p class="m-0">by {{item.nickname}}</p>
@@ -18,8 +18,16 @@ export default {
       type: Object
     }
   },
+  methods: {
+      redirectToSingleChallenge: function(id){
+        this.$router.push({ path: `/challenge/${id}` })
+      }
+    }
 };
 </script>
 
 <style scoped>
+.singleChallenge{
+  cursor: pointer;
+}
 </style>
