@@ -1,7 +1,7 @@
 <template>
   <div class="card p-0 bg-transparent border text-white">
     <img
-      class="card-img-top"
+      class="card-img-top img-fluid"
       :src="require(`@/assets/${member.image}`)"
       :alt="`${member.name} Picture`"
     />
@@ -15,15 +15,16 @@
         }}</a>
       </p>
       <p>
-        <a target="_blank" :href="`https://telegram.me/${member.contact.telegram}`">
-        @{{
-          member.contact.telegram
-        }}</a>
+        <a
+          target="_blank"
+          :href="`https://telegram.me/${member.contact.telegram}`"
+        >
+          @{{ member.contact.telegram }}</a
+        >
       </p>
     </div>
   </div>
 </template>
-
 
 <script>
 export default {
@@ -37,23 +38,23 @@ export default {
 </script>
 
 <style scoped>
-    .card {
-        width: min-content;
-    }
+  .card {
+    width: min-content;
+  }
 
+  .card-img-top {
+    width: 43vw;
+    max-width: 24rem;
+    height: 43vw;
+    max-height: 24rem;
+  }
+
+  @media (max-width: 768px) {
     .card-img-top {
-        width: 43vw;
-        max-width: 24rem;
-        height: 55vw;
-        max-height: 30rem;
+      width: 80vw;
+      max-width: 24rem;
+      height: 80vw;
+      max-height: 24rem;
     }
-
-    @media (max-width: 768px) {
-        .card-img-top {
-            width: 80vw;
-            max-width: 30rem;
-            height: 50vw;
-            max-height: 40rem;
-        }
-    }
+  }
 </style>
