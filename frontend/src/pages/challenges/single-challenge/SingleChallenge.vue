@@ -57,7 +57,7 @@ export default {
             this.challengeData = result.data;
             this.challengeData.text = this.challengeData.text.replaceAll('\n', '<br>')
             this.challengeData.text = this.challengeData.text.replaceAll(' ', '&nbsp;')
-        }
+        },
     },
     mounted(){
         this.fetchData();

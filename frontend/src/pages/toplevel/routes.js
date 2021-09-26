@@ -2,6 +2,9 @@ export default [{
         path: "/",
         name: "tld-home",
         component: () => import("./Home.vue"),
+        meta: {
+            title: "Home - Prograchallenges"
+        }
     },
     {
         path: "/team",
