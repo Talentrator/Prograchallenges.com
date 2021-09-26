@@ -7,7 +7,12 @@
         Choose a challenge, read the problem, write code, submit , that's it!
       </p>
     </div>
-    <Challenges :pagination="pagination" :challenges="challenges" />
+
+    <!-- Challenges component for homepage -->
+    <div v-for="item in challenges" :key="item.id" class="my-3">
+      <HomeChallenge :item="item" />
+    </div>
+
     <div class="text-center">
       <b-link class="btn btn-primary mt-3" style="border: none" :to="{name:'challenges'}">
         View More Challenges
@@ -20,54 +25,33 @@
 <script>
 import firebase from 'firebase'
 import Banner from "./home/Banner.vue";
-import Challenges from "../../components/ChallengesTable.vue";
+import HomeChallenge from "../../components/HomeChallenge.vue";
 import OtherSections from "./home/OtherSections.vue";
 
 export default {
   name: "Home",
   components: {
     Banner,
-    Challenges,
+    HomeChallenge,
     OtherSections,
   },
   data() {
     return {
-      challenges: [
-        {
-          ID: 1,
-          Problem: "Example"
-        },
-        {
-          ID: 2,
-          Problem: "Example"
-        },
-        {
-          ID: 3,
-          Problem: "Example"
-        },
-        {
-          ID: 4,
-          Problem: "Example"
-        },
-        {
-          ID: 5,
-          Problem: "Example"
-        },
-      ],
+      challenges: [],
       pagination: false,
     };
   },
 
   methods: {
-    fetchData: async () => {
+    async fetchData() {
       const getAllChallenges = firebase.functions().httpsCallable('getAllChallenges');
       const result = await getAllChallenges();
-      console.log(result);
+      this.challenges = result.data.slice(0, 10)
     }
   },
 
-  async created() {
-    await this.fetchData();
+  mounted() {
+    this.fetchData();
   }
 };
 </script>

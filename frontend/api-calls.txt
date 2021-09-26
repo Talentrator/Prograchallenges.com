@@ -1,0 +1,4 @@
+Callable function name = getAllChallanges; returns = all challenges; data provided = none;
+Callable function name = getSingleChallenge; returns = one single challenge; data provided = id of challenge;
+Callable function name = insertChallenge; returns = none; data provided = text, title, email, nickname
+Callable function name = insertComment; returns = none; data provided = challengeId, email, nickname, commentText

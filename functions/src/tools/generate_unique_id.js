@@ -1,3 +1,5 @@
+const admin = require('firebase-admin')
+
 async function idExistsInDb(db, slug) {
   const ref = admin.firestore().collection(db);
   const res = await ref.doc(slug).get();
@@ -26,8 +28,10 @@ function sanitizeSlug(text) {
  * @param {string} slugName the expected id of the new object
  * @async
  */
-exports.generateUniqueId = async function generateUniqueId(db, slugName) {
+async function generateUniqueId(db, slugName) {
   const slug = sanitizeSlug(slugName);
   if (!(await idExistsInDb(db, slug))) return slug;
   return newId(db, slug, 1);
 };
+
+module.exports = generateUniqueId

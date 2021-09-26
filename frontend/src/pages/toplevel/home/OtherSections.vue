@@ -13,7 +13,7 @@
         </div>
       </b-col>
       <b-col class="py-2 border border-primary d-flex flex-column justify-content-center">
-        <div> 
+        <div>
           <h3 class="mt-2">Make Friends!</h3>
           <p class="">
              Join our vast community on Telegram and make new Coder Friends ! 
@@ -38,7 +38,7 @@
             We are programmers just like you ! Helping and inspiring each other
             to improve themselves
           </h5>
-          <b-link :to="{name:'core-team'}" class="btn btn-secondary mt-3">View Collaborators</b-link>
+          <b-link :to="{name:'core-team'}" class="btn btn-primary mt-3">View Collaborators</b-link>
         </b-col>
         <b-col class="px-3 py-3 d-flex flex-column justify-content-between bg-dark">
           <h2>The Project</h2>
@@ -46,7 +46,7 @@
             We are all about Programming Challenges, This platform helps
             programmers enhance their skills, challenge others, make friends
           </h5>
-          <b-link :to="{name:'challenges'}" class="btn btn-secondary mt-2">Explore Challenges</b-link>
+          <b-link :to="{name:'challenges'}" class="btn btn-primary mt-2">Explore Challenges</b-link>
         </b-col>
       </b-row>
     </div>
