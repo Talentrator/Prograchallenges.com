@@ -2,20 +2,20 @@
   <div class="pt-3 pb-3 mt-md-2 pb-md-5">
     <b-container>
       <h1 class="text-center text-white ">Meet The Team</h1>
-      <p class="text-muted text-center mb-2 mb-md-4">Check out our lead developers</p>
-
-      <b-row>
-        <MemberCard
-          v-for="(member, idx) in members"
-          :key="idx"
-          :member="member"
-          class="col-6 col-md-4"
-        />
+      <p class="text-muted text-center mb-2 mb-md-4">
+        Check out our lead developers
+      </p>
+      <b-row class="w-100 mx-auto">
+          <MemberCard
+            v-for="(member, idx) in members"
+            :key="idx"
+            :member="member"
+            class="col-6 col-md-4 mx-auto mx-md-0"
+          />
       </b-row>
     </b-container>
   </div>
 </template>
-
 
 <script>
 import MemberCard from "@/components/MemberCard.vue";
@@ -27,8 +27,7 @@ export default {
       members: [
         {
           name: "Shantanu Lamba",
-          image:
-            "shantanu.jpeg",
+          image: "shantanu.jpeg",
           role: "EXECUTIVE, COMMUNITY LEADER",
           bio:
             "Hello, I am a programmer working on this project. I live in New Delhi, India",
@@ -39,8 +38,7 @@ export default {
         },
         {
           name: "Md Aman Khan",
-          image:
-            "aman.jpg",
+          image: "aman.jpg",
           role: "HEAD OF PRODUCT",
           bio:
             "Hi I am a developer working on this project lorem ipsum dolor sit amet.",
@@ -51,8 +49,7 @@ export default {
         },
         {
           name: "Saransh Kawadkar",
-          image:
-            "logo.svg",
+          image: "logo.svg",
           role: "HEAD OF DESIGN",
           bio:
             "Hi I am a developer working on this project lorem ipsum dolor sit amet.",
@@ -63,8 +60,7 @@ export default {
         },
         {
           name: "Maximilian Wittmer",
-          image:
-            "maximillian.jpg",
+          image: "maximillian.jpg",
           role: "PROJECT OWNER/SPONSOR",
           bio:
             "Hi I am a developer working on this project lorem ipsum dolor sit amet.",
@@ -75,8 +71,7 @@ export default {
         },
         {
           name: "Calle Unnérus",
-          image:
-            "calle.jpg",
+          image: "calle.jpg",
           role: "PROJECT OWNER/SPONSOR",
           bio:
             "Hi I am a developer working on this project lorem ipsum dolor sit amet.",
@@ -92,8 +87,8 @@ export default {
 </script>
 
 <style scoped>
-    .row {
-        row-gap: 2rem;
-        column-gap: 1rem;
-    }
+.row {
+  row-gap: 2rem;
+  column-gap: 1rem;
+}
 </style>
