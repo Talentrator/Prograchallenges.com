@@ -6,13 +6,27 @@
         Choose a challenge, read the problem, write code, submit , that's it!
       </p>
     </div>
-    <ChallengesTable :pagination="pagination" :challenges="challenges" />
+
+    <!-- Single challenge component -->
+    <div v-for="item in paginatedChallenges" :key="item.id" class="my-3">
+      <Challenge :item="item" />
+    </div>
+
+    <b-pagination
+        @change="onPageChanged"
+        :total-rows="challenges.length"
+        :per-page="perPage"
+        v-model="currentPage"
+        class="my-0 customPagination"
+        align="center"
+    />
+
     <div class="text-center text-light my-4 border-primary border-2 border-top pt-4">
       <h1 class="letter-spacing pb-2 display-4">Create</h1>
       <p>
         Write your own challenge for others to attempt!
       </p>
-    <b-link class="btn btn-primary mt-3" style="border: none" :to="{name:'clg-create'}">
+      <b-link class="btn btn-primary mt-3" style="border: none" :to="{name:'clg-create'}">
         Create
       </b-link>
     </div>
@@ -20,116 +34,58 @@
 </template>
 
 <script>
-import ChallengesTable from "@/components/ChallengesTable.vue";
+import firebase from 'firebase'
+import Challenge from "../../components/Challenge.vue";
 export default {
   name: "Challenges",
-  components: { ChallengesTable },
-  data() {
+  components: { Challenge },
+  data: function() {
     return {
-      challenges: [
-        {
-          ID: 1,
-          Problem: "Example",
-        },
-        {
-          ID: 2,
-          Problem: "Example",
-        },
-        {
-          ID: 3,
-          Problem: "Example",
-        },
-        {
-          ID: 4,
-          Problem: "Example",
-        },
-        {
-          ID: 5,
-          Problem: "Example",
-        },
-        {
-          ID: 6,
-          Problem: "Example",
-        },
-        {
-          ID: 7,
-          Problem: "Example",
-        },
-        {
-          ID: 8,
-          Problem: "Example",
-        },
-        {
-          ID: 9,
-          Problem: "Example",
-        },
-        {
-          ID: 10,
-          Problem: "Example",
-        },
-        {
-          ID: 11,
-          Problem: "Example",
-        },
-        {
-          ID: 12,
-          Problem: "Example",
-        },
-        {
-          ID: 13,
-          Problem: "Example",
-        },
-        {
-          ID: 14,
-          Problem: "Example",
-        },
-        {
-          ID: 15,
-          Problem: "Example",
-        },
-        {
-          ID: 16,
-          Problem: "Example",
-        },
-        {
-          ID: 17,
-          Problem: "Example",
-        },
-        {
-          ID: 18,
-          Problem: "Example",
-        },
-        {
-          ID: 19,
-          Problem: "Example",
-        },
-        {
-          ID: 20,
-          Problem: "Example",
-        },
-        {
-          ID: 21,
-          Problem: "Example",
-        },
-        {
-          ID: 22,
-          Problem: "Example",
-        },
-        {
-          ID: 23,
-          Problem: "Example",
-        },
-        {
-          ID: 24,
-          Problem: "Example",
-        },
-        {
-          ID: 25,
-          Problem: "Example",
-        },
-      ],
-      pagination: true,
+      challenges: [],
+      paginatedChallenges: this.challenges,
+      currentPage: 1,
+      perPage: 10,
+      totalRows: this.lengthOfChallenges
     };
   },
+  computed: {
+    lengthOfChallenges(){
+      return this.challenges.length
+    }
+  },
+  methods: {
+    paginate(page_size, page_number) {
+      let challengesToParse = this.challenges;
+      this.paginatedChallenges = challengesToParse.slice(
+        page_number * page_size,
+        (page_number + 1) * page_size
+      );
+    },
+    onPageChanged(page) {
+      this.paginate(this.perPage, page - 1);
+    },
+    async fetchData() {
+      const getAllChallenges = firebase.functions().httpsCallable('getAllChallenges');
+      const result = await getAllChallenges();
+      this.challenges = result.data.slice(0, 10)
+      this.paginate(this.perPage, 0);
+    }
+  },
+  mounted() {
+    this.fetchData();
+  }
 };
 </script>
+
+<style>
+.customPagination > li > button,
+.customPagination > li > span {
+  color: #fff !important;
+  border: none !important;
+  background-color: #151515 !important;
+}
+
+.customPagination > li.active > button{
+  background-color: #000 !important;
+}
+</style>

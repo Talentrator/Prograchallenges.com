@@ -16,6 +16,8 @@ const insertChallenge = functions.https.onCall(async (data) => {
     const uid = await generateUniqueId('challenges', data.title);
 
     await admin.firestore().collection('challenges').doc(uid).set(InputData);
+
+    return uid
 });
 
 module.exports = insertChallenge;

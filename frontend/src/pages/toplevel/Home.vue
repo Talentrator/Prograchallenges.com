@@ -7,7 +7,12 @@
         Choose a challenge, read the problem, write code, submit , that's it!
       </p>
     </div>
-    <Challenges :pagination="pagination" :challenges="challenges" />
+
+    <!-- Challenges component for homepage -->
+    <div v-for="item in challenges" :key="item.id" class="my-3">
+      <HomeChallenge :item="item" />
+    </div>
+
     <div class="text-center">
       <b-link class="btn btn-primary mt-3" style="border: none" :to="{name:'challenges'}">
         View More Challenges
@@ -20,14 +25,14 @@
 <script>
 import firebase from 'firebase'
 import Banner from "./home/Banner.vue";
-import Challenges from "../../components/ChallengesTable.vue";
+import HomeChallenge from "../../components/HomeChallenge.vue";
 import OtherSections from "./home/OtherSections.vue";
 
 export default {
   name: "Home",
   components: {
     Banner,
-    Challenges,
+    HomeChallenge,
     OtherSections,
   },
   data() {
@@ -41,7 +46,7 @@ export default {
     async fetchData() {
       const getAllChallenges = firebase.functions().httpsCallable('getAllChallenges');
       const result = await getAllChallenges();
-      this.challenges = result.data
+      this.challenges = result.data.slice(0, 10)
     }
   },
 

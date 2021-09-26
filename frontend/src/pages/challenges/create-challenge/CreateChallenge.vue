@@ -2,7 +2,7 @@
   <b-container>
       <div class="px-3 py-2">
         <h1 class="text-center mt-2 text-white">Create a challenge</h1>
-        <p class="text-muted text-center mb-3">Write your own challenge for others to attempt! (Will be added after verification by the team)</p>
+        <p class="text-muted text-center mb-3">Write your own challenge for others to attempt!</p>
         <b-form class="px-0">
           <b-form-group id="input-group-1" class="px-1 px-md-5 w-100 mx-auto max-width">
             <b-form-input name="title" v-model="form.title" type="text" class="mb-2" placeholder="Challenge Title" />
@@ -46,7 +46,8 @@ export default {
   methods: {
     handleSubmit: async function () {
       const insertChallenge = firebase.functions().httpsCallable('insertChallenge')
-      await insertChallenge(this.form)
+      const result = await insertChallenge(this.form)
+      this.$router.push(`/challenge/${result.data}`)
     }
   }
 }
