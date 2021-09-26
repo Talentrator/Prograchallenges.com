@@ -32,42 +32,21 @@ export default {
   },
   data() {
     return {
-      challenges: [
-        {
-          ID: 1,
-          Problem: "Example"
-        },
-        {
-          ID: 2,
-          Problem: "Example"
-        },
-        {
-          ID: 3,
-          Problem: "Example"
-        },
-        {
-          ID: 4,
-          Problem: "Example"
-        },
-        {
-          ID: 5,
-          Problem: "Example"
-        },
-      ],
+      challenges: [],
       pagination: false,
     };
   },
 
   methods: {
-    fetchData: async () => {
+    async fetchData() {
       const getAllChallenges = firebase.functions().httpsCallable('getAllChallenges');
       const result = await getAllChallenges();
-      console.log(result);
+      this.challenges = result.data
     }
   },
 
-  async created() {
-    await this.fetchData();
+  mounted() {
+    this.fetchData();
   }
 };
 </script>

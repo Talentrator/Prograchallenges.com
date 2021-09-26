@@ -5,7 +5,7 @@ const admin = require("firebase-admin");
 //   ZODScreateNewUser,
 //   ZODSsocialLoginNewUser,
 // } = require("../../tools/schemes");
-const generateUniqueId = require("../../tools/generate_unique_id").default;
+const generateUniqueId = require("../../tools/generate_unique_id");
 
 async function signupNewUser(uid, user) {
   return admin.auth().createUser({

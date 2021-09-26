@@ -1,7 +1,7 @@
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 const { z } = require('zod');
-const generateUniqueId = require("../tools/generate_unique_id").default;
+const generateUniqueId = require("../tools/generate_unique_id");
 
 const insertChallenge = functions.https.onCall(async (data) => {    
     const mySchema = z.object({
@@ -13,7 +13,7 @@ const insertChallenge = functions.https.onCall(async (data) => {
 
     const InputData = mySchema.parse(data);
 
-    const uid = generateUniqueId('challenges', data.title);
+    const uid = await generateUniqueId('challenges', data.title);
 
     await admin.firestore().collection('challenges').doc(uid).set(InputData);
 });

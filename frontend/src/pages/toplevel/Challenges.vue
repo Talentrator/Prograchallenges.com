@@ -10,7 +10,7 @@
     <div class="text-center text-light my-4 border-primary border-2 border-top pt-4">
       <h1 class="letter-spacing pb-2 display-4">Create</h1>
       <p>
-        Write your own challenge for others to attempt! (Will be added after verification by the team)
+        Write your own challenge for others to attempt!
       </p>
     <b-link class="btn btn-primary mt-3" style="border: none" :to="{name:'clg-create'}">
         Create
