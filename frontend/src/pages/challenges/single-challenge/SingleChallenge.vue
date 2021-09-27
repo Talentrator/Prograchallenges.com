@@ -1,5 +1,5 @@
 <template>
-  <b-container class="my-3 px-2 mx-auto max-width">
+  <b-container class="my-3 px-2 d-block customTextWrap">
     <div class="text-center" v-if="!loaded">
       <b-spinner variant="primary" />
     </div>
@@ -56,7 +56,7 @@
           }"
         >
           <p class="text-muted m-0">{{ item.nickname }}</p>
-          <p class="text-white">{{ item.commentText }}</p>
+          <p class="text-white" v-html="item.commentText"></p>
         </div>
       </div>
     </div>
@@ -105,6 +105,10 @@ export default {
         " ",
         "&nbsp;"
       );
+      this.challengeData.comments.map((comment) => {
+        comment.commentText = comment.commentText.replaceAll("\n", "<br>");
+        comment.commentText = comment.commentText.replaceAll(" ", "&nbsp;");
+      });
       this.loaded = true;
     },
   },
@@ -115,7 +119,7 @@ export default {
 </script>
 
 <style scoped>
-.customTextWrap{
-    overflow-wrap: break-word;
+.customTextWrap {
+  overflow-wrap: break-word;
 }
 </style>
