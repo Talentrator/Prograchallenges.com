@@ -18,6 +18,7 @@
 
             <div class="d-md-flex my-2 justify-content-end text-primary">
               <div class="border border-primary d-flex align-items-center p-2 justify-content-center justify-content-md-start" style="cursor: pointer;" @click="handleSubmit">
+                <b-spinner variant="primary" v-if="submitting" />&nbsp;
                 <h4 class="m-0">SUBMIT</h4>&nbsp;
                 <b-icon-arrow-right-circle-fill class="text-primary" />
               </div>
@@ -40,11 +41,13 @@ export default {
         email: "",
         nickname: "",
         text: ""
-      }
+      },
+      submitting:false
     }
   },
   methods: {
     handleSubmit: async function () {
+      this.submitting=true
       const insertChallenge = firebase.functions().httpsCallable('insertChallenge')
       const result = await insertChallenge(this.form)
       this.$router.push(`/challenge/${result.data}`)

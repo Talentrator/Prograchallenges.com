@@ -41,8 +41,9 @@
           variant="primary"
           class="mt-2 align-self-end"
           @click="handleSubmit"
-          >Post</b-button
         >
+          <b-spinner variant="primary" v-if="submitting" /> Post
+        </b-button>
       </b-form>
       <div class="mb-5">
         <div
@@ -76,10 +77,12 @@ export default {
       },
       challengeData: {},
       loaded: false,
+      submitting: false,
     };
   },
   methods: {
     handleSubmit: async function () {
+      this.submitting = true;
       const insertChallenge = firebase
         .functions()
         .httpsCallable("insertComment");
@@ -110,6 +113,7 @@ export default {
         comment.commentText = comment.commentText.replaceAll(" ", "&nbsp;");
       });
       this.loaded = true;
+      this.submitting = false;
     },
   },
   mounted() {
