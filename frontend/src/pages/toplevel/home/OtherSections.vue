@@ -3,7 +3,7 @@
     <h1 class="display-4 border-primary border-top py-4 border-2">Features</h1>
 
     <b-row class="max-width flex-column flex-sm-row px-4 mx-auto" style="gap: .7rem;">
-      <b-col class="py-2 border border-primary d-flex flex-column justify-content-center">
+      <b-col class="py-2 border border-primary d-flex flex-column justify-content-between">
         <div>
           <h3 class="mt-2">Code And Learn</h3>
           <p class="">
@@ -12,7 +12,7 @@
           </p>
         </div>
       </b-col>
-      <b-col class="py-2 border border-primary d-flex flex-column justify-content-center">
+      <b-col class="py-2 border border-primary d-flex flex-column justify-content-between">
         <div>
           <h3 class="mt-2">Make Friends!</h3>
           <p class="">
@@ -20,7 +20,7 @@
           </p>
         </div>
       </b-col>
-      <b-col class="py-2 border border-primary d-flex flex-column justify-content-center">
+      <b-col class="py-2 border border-primary d-flex flex-column justify-content-between">
         <div>
           <h3 class="mt-2">Contribute</h3>
           <p class="">
