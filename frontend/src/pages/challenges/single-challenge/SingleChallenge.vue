@@ -1,6 +1,6 @@
 <template>
   <div>
-      <b-container class="my-3 px-2">
+      <b-container class="my-3 px-2 customTextWrap">
           <h1 class="m-0 text-white">{{challengeData.title}}</h1>
           <p class="text-muted m-0">{{challengeData.nickname}}</p>
           <p class="my-3 text-white" v-html="challengeData.text"></p>
@@ -22,7 +22,7 @@
           <div class="mb-5">
               <div v-for="item in challengeData.comments" :key="item.id" class="mt-3 my-2 border-secondary" :class="{'border-bottom': (challengeData.comments.indexOf(item) + 1 !== challengeData.comments.length)}">
                 <p class="text-muted m-0">{{ item.nickname }}</p>
-                <p class="text-white">{{ item.commentText }}</p>
+                <p class="text-white" v-html="item.commentText"></p>
               </div>
           </div>
       </b-container>
@@ -57,6 +57,10 @@ export default {
             this.challengeData = result.data;
             this.challengeData.text = this.challengeData.text.replaceAll('\n', '<br>')
             this.challengeData.text = this.challengeData.text.replaceAll(' ', '&nbsp;')
+            this.challengeData.comments.map(comment => {
+                comment.commentText = comment.commentText.replaceAll('\n', '<br>')
+                comment.commentText = comment.commentText.replaceAll(' ', '&nbsp;')
+            })
         },
     },
     mounted(){
@@ -66,5 +70,7 @@ export default {
 </script>
 
 <style scoped>
-
+.customTextWrap{
+    overflow-wrap: break-word;
+}
 </style>
