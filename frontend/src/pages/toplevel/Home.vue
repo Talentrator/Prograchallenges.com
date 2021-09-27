@@ -9,12 +9,25 @@
     </div>
 
     <!-- Challenges component for homepage -->
-    <div v-for="item in challenges" :key="item.id" class="my-3">
-      <HomeChallenge :item="item" />
+    <div class="text-center" v-if="!loaded">
+      <b-spinner variant="primary" />
+    </div>
+    <div v-else>
+      <div
+        v-for="item in challenges"
+        :key="item.id"
+        class="my-3 mx-auto max-width"
+      >
+        <HomeChallenge :item="item" />
+      </div>
     </div>
 
     <div class="text-center">
-      <b-link class="btn btn-primary mt-3" style="border: none" :to="{name:'challenges'}">
+      <b-link
+        class="btn btn-primary mt-3"
+        style="border: none"
+        :to="{ name: 'challenges' }"
+      >
         View More Challenges
       </b-link>
     </div>
@@ -23,7 +36,7 @@
 </template>
 
 <script>
-import firebase from 'firebase'
+import firebase from "firebase";
 import Banner from "./home/Banner.vue";
 import HomeChallenge from "../../components/HomeChallenge.vue";
 import OtherSections from "./home/OtherSections.vue";
@@ -39,26 +52,29 @@ export default {
     return {
       challenges: [],
       pagination: false,
+      loaded: false,
     };
   },
 
   methods: {
     async fetchData() {
-      const getAllChallenges = firebase.functions().httpsCallable('getAllChallenges');
+      const getAllChallenges = firebase
+        .functions()
+        .httpsCallable("getAllChallenges");
       const result = await getAllChallenges();
-      this.challenges = result.data.slice(0, 10)
-    }
+      this.challenges = result.data.slice(0, 10);
+      this.loaded = true;
+    },
   },
 
   mounted() {
     this.fetchData();
-  }
+  },
 };
 </script>
 
-
 <style>
-.letter-spacing{
+.letter-spacing {
   letter-spacing: 5px !important;
 }
 </style>

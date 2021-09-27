@@ -1,6 +1,6 @@
 <template>
   <b-container>
-      <div class="px-3 py-2">
+      <div class="px-3 py-2 mx-auto max-width">
         <h1 class="text-center mt-2 text-white">Create a challenge</h1>
         <p class="text-muted text-center mb-3">Write your own challenge for others to attempt!</p>
         <b-form class="px-0">

@@ -5,53 +5,73 @@
       <p>
         Choose a challenge, read the problem, write code, submit , that's it!
       </p>
-    </div>
 
-    <!-- Single challenge component -->
-    <div v-for="item in paginatedChallenges" :key="item.id" class="my-3">
-      <Challenge :item="item" />
-    </div>
+      <div class="text-center" v-if="!loaded">
+        <b-spinner variant="primary" />
+      </div>
 
-    <b-pagination
-        @change="onPageChanged"
-        :total-rows="challenges.length"
-        :per-page="perPage"
-        v-model="currentPage"
-        class="my-0 customPagination"
-        align="center"
-    />
+      <!-- Single challenge component -->
+      <div v-else>
+        <div
+          v-for="item in paginatedChallenges"
+          :key="item.id"
+          class="my-3 mx-auto max-width"
+        >
+          <Challenge :item="item" />
+        </div>
 
-    <div class="text-center text-light my-4 border-primary border-2 border-top pt-4">
-      <h1 class="letter-spacing pb-2 display-4">Create</h1>
-      <p>
-        Write your own challenge for others to attempt!
-      </p>
-      <b-link class="btn btn-primary mt-3" style="border: none" :to="{name:'clg-create'}">
-        Create
-      </b-link>
+        <b-pagination
+          @change="onPageChanged"
+          :total-rows="challenges.length"
+          :per-page="perPage"
+          v-model="currentPage"
+          class="my-0 customPagination"
+          align="center"
+        />
+      </div>
+
+      <div
+        class="
+          text-center text-light
+          my-4
+          border-primary border-2 border-top
+          pt-4
+        "
+      >
+        <h1 class="letter-spacing pb-2 display-4">Create</h1>
+        <p>Write your own challenge for others to attempt!</p>
+        <b-link
+          class="btn btn-primary mt-3"
+          style="border: none"
+          :to="{ name: 'clg-create' }"
+        >
+          Create
+        </b-link>
+      </div>
     </div>
   </b-container>
 </template>
 
 <script>
-import firebase from 'firebase'
+import firebase from "firebase";
 import Challenge from "../../components/Challenge.vue";
 export default {
   name: "Challenges",
   components: { Challenge },
-  data: function() {
+  data: function () {
     return {
       challenges: [],
       paginatedChallenges: this.challenges,
       currentPage: 1,
       perPage: 10,
-      totalRows: this.lengthOfChallenges
+      totalRows: this.lengthOfChallenges,
+      loaded: false,
     };
   },
   computed: {
-    lengthOfChallenges(){
-      return this.challenges.length
-    }
+    lengthOfChallenges() {
+      return this.challenges.length;
+    },
   },
   methods: {
     paginate(page_size, page_number) {
@@ -65,15 +85,18 @@ export default {
       this.paginate(this.perPage, page - 1);
     },
     async fetchData() {
-      const getAllChallenges = firebase.functions().httpsCallable('getAllChallenges');
+      const getAllChallenges = firebase
+        .functions()
+        .httpsCallable("getAllChallenges");
       const result = await getAllChallenges();
-      this.challenges = result.data.slice(0, 10)
+      this.challenges = result.data.slice(0, 10);
       this.paginate(this.perPage, 0);
-    }
+      this.loaded = true;
+    },
   },
   mounted() {
     this.fetchData();
-  }
+  },
 };
 </script>
 
@@ -85,7 +108,7 @@ export default {
   background-color: #151515 !important;
 }
 
-.customPagination > li.active > button{
+.customPagination > li.active > button {
   background-color: #000 !important;
 }
 </style>
