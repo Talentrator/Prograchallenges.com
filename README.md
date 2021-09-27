@@ -7,12 +7,10 @@
 # _Our Goal_
 ### Our Goal is to make a world-class free for all platform for people to learn coding and existing coders to enhance their skills, The v0 of prograchallenges has programming challenges which people can attempt. But our mission is much bigger, we plan to add these features in our upcoming releases: 
 
-<ol>
-<li>Online Code Editor For Solving Problems</li>
-<li>Point System With Leaderboard</li>
-<li>User Dashboard</li>
-<li>Free coding courses</li>
-</ol> 
+1. Online Code Editor For Solving Problems
+2. Point System With Leaderboard
+3. User Dashboard
+4. Free coding courses
 
 ### Prograchallenges will never stop, More features will come on the way
 <br>
