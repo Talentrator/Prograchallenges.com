@@ -71,6 +71,6 @@ export default {
 </style>
  <style>
  .max-width{
-   max-width: 65rem;
+   max-width: 80rem !important;
  }
  </style>

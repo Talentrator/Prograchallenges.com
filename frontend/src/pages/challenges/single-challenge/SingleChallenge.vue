@@ -1,5 +1,5 @@
 <template>
-  <b-container class="my-3 px-2 d-block customTextWrap">
+  <b-container class="my-3 px-2 max-width d-block customTextWrap">
     <div class="text-center" v-if="!loaded">
       <b-spinner variant="primary" />
     </div>
@@ -37,13 +37,6 @@
             placeholder="Leave your answer here.."
           />
         </b-form-group>
-        <!-- <b-button
-          variant="primary"
-          class="mt-2 align-self-end"
-          @click="handleSubmit"
-        >
-          <b-spinner variant="primary" v-if="submitting" /> Post
-        </b-button> -->
         <div class="d-md-flex my-2 justify-content-end text-primary">
           <div
             class="
