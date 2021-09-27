@@ -1,8 +1,8 @@
 <template>
   <b-container class="text-light">
-    <div class="text-center text-light">
-      <h1 class="letter-spacing pb-2 display-4 mt-4">Challenges</h1>
-      <p>
+    <div class="text-light">
+      <h1 class="text-center letter-spacing pb-2 display-4 mt-4">Challenges</h1>
+      <p class="text-center">
         Choose a challenge, read the problem, write code, submit , that's it!
       </p>
 
