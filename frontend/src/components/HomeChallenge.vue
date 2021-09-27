@@ -20,6 +20,11 @@ export default {
       redirectToSingleChallenge: function(id){
         this.$router.push({ path: `/challenge/${id}` })
       }
+    },
+    mounted() {
+      if(this.item.title.length>23){
+        this.item.title=this.item.title.slice(0,20)+'...'
+      }
     }
 }
 </script>

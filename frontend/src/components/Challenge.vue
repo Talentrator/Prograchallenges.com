@@ -27,7 +27,7 @@ export default {
       if(this.item.title.length>23){
         this.item.title=this.item.title.slice(0,20)+'...'
       }
-    },
+    }
 };
 </script>
 
