@@ -21,6 +21,12 @@
 
 # _Contribute_
 ### You can join the [telegram group](https://https://t.me/joinchat/2nmp7Kiyrq4yNjJi) for Contribution, there you will find very friendly people who can help you out 
+### The technologies which we are using are as follows - 
+1. Vue.Js cli
+2. Vuex
+3. Vue router 
+4. Firebase
+### You can check our code repo to get an idea of the structure
 <br>
 
 # _Our Sponsor_
