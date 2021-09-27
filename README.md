@@ -1,26 +1,27 @@
 ![imagee](frontend/src/assets/logo.svg)
 # _[Programming Challenges Website](https://prograchallenges.com) Official Code Repository_
 
-### [Prograchallenges.com](https://prograchallenges.com) is an open source project made for the Telegram group of [Programming Challenges](https://telegram.me/prograchallenges) , This website will always stay free for life-time. It is supposed to help Programmers enhance their skills and non-programmers become one !
+### [Prograchallenges.com](https://prograchallenges.com) is an open source project made for the Telegram group of [Programming Challenges](https://telegram.me/prograchallenges) , This website will always stay free for life-time. It is supposed to help programmers enhance their skills and non-programmers become one!
 <br>
 
 # _Our Goal_
-### Our Goal is to make a world-class free for all platform for people to learn coding and existing coders to enhance their skills, The v0 of progra challenges has programming challenges which people can attempt. But our mission is much bigger , we plan to add these features in our upcoming releases- 
+### Our Goal is to make a world-class free for all platform for people to learn coding and existing coders to enhance their skills, The v0 of prograchallenges has programming challenges which people can attempt. But our mission is much bigger, we plan to add these features in our upcoming releases: 
 
 <ol>
 <li>Online Code Editor For Solving Problems</li>
 <li>Point System With Leaderboard</li>
 <li>User Dashboard</li>
 <li>Support Forum</li>
-<li>Monthly coding challenges with prizes from our Sponsors</li>
+<li>Monthly coding challenges with prizes from our sponsors</li>
 <li>Free coding courses</li>
 </ol> 
 
-### Progra Challenges will never stop, More features will come on the way
+### Prograchallenges will never stop, More features will come on the way
 <br>
 
 # _Contribute_
-### You can join the [telegram group](https://https://t.me/joinchat/2nmp7Kiyrq4yNjJi) for Contribution, there you will find very friendly people who can help you out 
+### You can join the [telegram group](https://https://t.me/joinchat/2nmp7Kiyrq4yNjJi) for contribution, there you will find very friendly people who can help you out 
+
 ### The technologies which we are using are as follows - 
 1. Vue.Js cli
 2. Vuex
