@@ -1,9 +1,9 @@
 ![imagee](frontend/src/assets/logo.svg)
-# _[Programming Challenges Website](https://prograchallenges.com) Official Code Repository_
+# [Programming Challenges Website](https://prograchallenges.com) Official Code Repository
 [Prograchallenges.com](https://prograchallenges.com) is an open source project made for the Telegram group of [Programming Challenges](https://telegram.me/prograchallenges) , This website will always stay free. It is supposed to help programmers enhance their skills and non-programmers become one!
 <br>
 
-# _Our Goal_
+# Our Goal
 Our Goal is to make a world-class free for all platform for people to learn coding and existing coders to enhance their skills, The v0 of prograchallenges has programming challenges which people can attempt. But our mission is much bigger, we plan to add these features in our upcoming releases: 
 
 1. Online Code Editor For Solving Problems
