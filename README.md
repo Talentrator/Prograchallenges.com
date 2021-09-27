@@ -11,8 +11,6 @@
 <li>Online Code Editor For Solving Problems</li>
 <li>Point System With Leaderboard</li>
 <li>User Dashboard</li>
-<li>Support Forum</li>
-<li>Monthly coding challenges with prizes from our sponsors</li>
 <li>Free coding courses</li>
 </ol> 
 
