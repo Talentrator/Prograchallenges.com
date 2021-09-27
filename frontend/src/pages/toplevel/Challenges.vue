@@ -11,22 +11,24 @@
       </div>
 
       <!-- Single challenge component -->
-      <div
-        v-for="item in paginatedChallenges"
-        :key="item.id"
-        class="my-3 mx-auto max-width"
-      >
-        <Challenge :item="item" />
-      </div>
+      <div v-else>
+        <div
+          v-for="item in paginatedChallenges"
+          :key="item.id"
+          class="my-3 mx-auto max-width"
+        >
+          <Challenge :item="item" />
+        </div>
 
-      <b-pagination
-        @change="onPageChanged"
-        :total-rows="challenges.length"
-        :per-page="perPage"
-        v-model="currentPage"
-        class="my-0 customPagination"
-        align="center"
-      />
+        <b-pagination
+          @change="onPageChanged"
+          :total-rows="challenges.length"
+          :per-page="perPage"
+          v-model="currentPage"
+          class="my-0 customPagination"
+          align="center"
+        />
+      </div>
 
       <div
         class="
