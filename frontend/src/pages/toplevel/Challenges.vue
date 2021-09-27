@@ -8,7 +8,7 @@
     </div>
 
     <!-- Single challenge component -->
-    <div v-for="item in paginatedChallenges" :key="item.id" class="my-3">
+    <div v-for="item in paginatedChallenges" :key="item.id" class="my-3 mx-auto max-width">
       <Challenge :item="item" />
     </div>
 

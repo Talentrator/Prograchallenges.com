@@ -9,7 +9,7 @@
     </div>
 
     <!-- Challenges component for homepage -->
-    <div v-for="item in challenges" :key="item.id" class="my-3">
+    <div v-for="item in challenges" :key="item.id" class="my-3 mx-auto max-width">
       <HomeChallenge :item="item" />
     </div>
 

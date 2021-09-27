@@ -1,6 +1,6 @@
 <template>
   <div>
-      <b-container class="my-3 px-2">
+      <b-container class="my-3 px-2 mx-auto max-width">
           <h1 class="m-0 text-white">{{challengeData.title}}</h1>
           <p class="text-muted m-0">{{challengeData.nickname}}</p>
           <p class="my-3 text-white" v-html="challengeData.text"></p>
