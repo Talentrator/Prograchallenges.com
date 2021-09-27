@@ -37,13 +37,31 @@
             placeholder="Leave your answer here.."
           />
         </b-form-group>
-        <b-button
+        <!-- <b-button
           variant="primary"
           class="mt-2 align-self-end"
           @click="handleSubmit"
         >
           <b-spinner variant="primary" v-if="submitting" /> Post
-        </b-button>
+        </b-button> -->
+        <div class="d-md-flex my-2 justify-content-end text-primary">
+          <div
+            class="
+              border border-primary
+              d-flex
+              align-items-center
+              p-2
+              justify-content-center justify-content-md-start
+            "
+            style="cursor: pointer"
+            @click="handleSubmit"
+          >
+            <b-spinner variant="primary" v-if="submitting" />
+            <h4 class="m-0">POST</h4>
+            &nbsp;
+            <b-icon-arrow-right-circle-fill class="text-primary" />
+          </div>
+        </div>
       </b-form>
       <div class="mb-5">
         <div
