@@ -135,6 +135,6 @@ export default {
 
 <style scoped>
 .customTextWrap {
-  overflow-wrap: break-word;
+  overflow-wrap: anywhere;
 }
 </style>

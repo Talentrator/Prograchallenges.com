@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="bg-dark d-flex flex-column">
     <Navbar class="mt-0" />
-    <router-view style="flex-grow:1; display:grid; place-items: center" />
+    <router-view style="flex-grow:1; display:grid !important; place-items: center" />
     <Footer class="mb-0" />
   </div>
 </template>
@@ -27,3 +27,8 @@ export default {
 };
 </script>
 
+<style scoped>
+  #app{
+    min-height: 100vh;
+  }
+</style>
