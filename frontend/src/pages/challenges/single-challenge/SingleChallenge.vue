@@ -1,5 +1,5 @@
 <template>
-  <b-container class="my-3 px-2 d-block customTextWrap">
+  <b-container class="my-3 px-2 max-width d-block customTextWrap">
     <div class="text-center" v-if="!loaded">
       <b-spinner variant="primary" />
     </div>
@@ -37,12 +37,24 @@
             placeholder="Leave your answer here.."
           />
         </b-form-group>
-        <b-button
-          variant="primary"
-          class="mt-2 align-self-end"
-          @click="handleSubmit"
-          >Post</b-button
-        >
+        <div class="d-md-flex my-2 justify-content-end text-primary">
+          <div
+            class="
+              border border-primary
+              d-flex
+              align-items-center
+              p-2
+              justify-content-center justify-content-md-start
+            "
+            style="cursor: pointer"
+            @click="handleSubmit"
+          >
+            <b-spinner variant="primary" v-if="submitting" />
+            <h4 class="m-0">POST</h4>
+            &nbsp;
+            <b-icon-arrow-right-circle-fill class="text-primary" />
+          </div>
+        </div>
       </b-form>
       <div class="mb-5">
         <div
@@ -76,10 +88,12 @@ export default {
       },
       challengeData: {},
       loaded: false,
+      submitting: false,
     };
   },
   methods: {
     handleSubmit: async function () {
+      this.submitting = true;
       const insertChallenge = firebase
         .functions()
         .httpsCallable("insertComment");
@@ -110,6 +124,7 @@ export default {
         comment.commentText = comment.commentText.replaceAll(" ", "&nbsp;");
       });
       this.loaded = true;
+      this.submitting = false;
     },
   },
   mounted() {
@@ -120,6 +135,6 @@ export default {
 
 <style scoped>
 .customTextWrap {
-  overflow-wrap: break-word;
+  overflow-wrap: anywhere;
 }
 </style>
