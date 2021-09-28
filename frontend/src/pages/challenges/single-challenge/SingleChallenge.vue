@@ -16,20 +16,26 @@
                 name="email"
                 v-model="form.email"
                 type="email"
-                class="mb-2"
                 :state="validateEmail"
+                :class="{'mb-2':validateEmail==null||validateEmail}"
                 placeholder="codemonkey@gmail.com"
               />
+              <b-form-invalid-feedback class="mb-2" :state="validateEmail">
+                Enter a valid email address.
+              </b-form-invalid-feedback>
             </b-col>
             <b-col lg="6" md="12">
               <b-form-input
                 name="name"
                 v-model="form.nickname"
                 type="text"
-                class="mb-2"
                 :state="validateName"
+                :class="{'mb-2':validateName==null||validateName}"
                 placeholder="greatcoder12"
               />
+              <b-form-invalid-feedback class="mb-2" :state="validateName">
+                Your nickname must be 5-12 characters long.
+              </b-form-invalid-feedback>
             </b-col>
           </b-row>
           <b-form-textarea
@@ -38,7 +44,11 @@
             name="text"
             placeholder="Leave your answer here.."
             :state="validateText"
+            :class="{'mb-2':validateText==null||validateText}"
           />
+          <b-form-invalid-feedback class="mb-2" :state="validateText">
+            Your answer must be atleast 10 characters long.
+          </b-form-invalid-feedback>
         </b-form-group>
         <div class="d-md-flex my-2 justify-content-end text-primary">
           <div
@@ -136,19 +146,26 @@ export default {
   computed: {
     validateEmail() {
       try {
-        const re =
-          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        return re.test(this.form.email.toLowerCase());
-      } catch (e) {return false}
+        if(!this.form.email.length) return null
+        else{
+          const re =
+            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+          return re.test(this.form.email.toLowerCase());
+        }
+      } catch (e) {return null}
     },
     validateName() {
       try{
-        return this.form.nickname.length > 5 && this.form.nickname.length < 12;
-      }catch(e){return false}
+        if(!this.form.nickname.length) return null
+        else return this.form.nickname.length>=5&&this.form.nickname.length<=12
+      }catch(e){return null}
     },
     validateText() {
-      try{return this.form.commentText.length!=0}
-      catch(e){return false}
+      try{
+        if(!this.form.commentText.length) return null
+        else return this.form.commentText.length>10
+      }
+      catch(e){return null}
     }
   }
 };

@@ -15,9 +15,12 @@
             v-model="form.title"
             type="text"
             :state="validateTitle"
-            class='mb-2'
+            :class="{'mb-2':validateTitle==null||validateTitle}"
             placeholder="Challenge Title"
           />
+          <b-form-invalid-feedback class="mb-2" :state="validateTitle">
+            The title must be 6-40 characters long.
+          </b-form-invalid-feedback>
           <b-row>
             <b-col lg="6" md="12">
               <b-form-input
@@ -25,9 +28,12 @@
                 v-model="form.email"
                 type="email"
                 :state="validateEmail"
-                class='mb-2'
+                :class="{'mb-2':validateEmail==null||validateEmail}"
                 placeholder="codemonkey@gmail.com"
               />
+              <b-form-invalid-feedback class="mb-2" :state="validateEmail">
+                Enter a valid email address.
+              </b-form-invalid-feedback>
             </b-col>
             <b-col lg="6" md="12">
               <b-form-input
@@ -35,19 +41,25 @@
                 v-model="form.nickname"
                 type="text"
                 :state="validateName"
-                class='mb-2'
+                :class="{'mb-2':validateName==null||validateName}"
                 placeholder="greatcoder12"
               />
+              <b-form-invalid-feedback class="mb-2" :state="validateName">
+                Your nickname must be 5-12 characters long.
+              </b-form-invalid-feedback>
             </b-col>
           </b-row>
           <b-form-textarea
             v-model="form.text"
             rows="10"
             name="text"
-            class='mb-2'
             placeholder="Your awesome challenge here"
             :state="validateText"
+            :class="{'mb-2':validateText==null||validateText}"
           />
+          <b-form-invalid-feedback class="mb-2" :state="validateText">
+            The challenge must contain more than 60 characters.
+          </b-form-invalid-feedback>
 
           <div class="d-md-flex my-2 justify-content-end text-primary">
             <div
@@ -100,20 +112,26 @@ export default {
   },
   computed: {
     validateTitle() {
-      return this.form.title.length > 6 && this.form.title.length < 40;
+      if(!this.form.title.length) return null
+      else return this.form.title.length > 6 && this.form.title.length < 40;
     },
     validateEmail() {
+      if(!this.form.email.length) return null
+      else {
       const re =
         /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return re.test(this.form.email.toLowerCase());
+      }
     },
     validateName() {
-      return this.form.nickname.length > 5 && this.form.nickname.length < 12;
+      if(!this.form.nickname.length) return null
+      else return this.form.nickname.length > 5 && this.form.nickname.length < 12;
     },
     validateText() {
-      return this.form.text.length > 60;
-    }
-  }
+      if(!this.form.text.length) return null
+      else return this.form.text.length > 60;
+    },
+  },
 };
 </script>
 
