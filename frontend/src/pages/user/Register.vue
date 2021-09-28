@@ -122,11 +122,7 @@ export default {
 </script>
 <style scoped>
 .input-width {
-  width: 40rem;
-}
-@media (max-width: 768px) {
-  .input-width {
-    width: 18rem;
-  }
+  width: 60vw;
+  max-width: 40rem;
 }
 </style>
