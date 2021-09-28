@@ -126,7 +126,7 @@ export default {
 }
 @media (max-width: 768px) {
   .input-width {
-    width: 21rem;
+    width: 18rem;
   }
 }
 </style>
