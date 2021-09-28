@@ -17,21 +17,6 @@
         ></b-form-input>
       </b-form-group>
 
-      <b-form-group
-        id="input-group-1"
-        class="mt-3"
-        description="We'll never share your email with anyone else."
-      >
-        <b-form-input
-          id="input-1"
-          type="email"
-          placeholder="Email"
-          required
-          class="input-width bg-light"
-          style="border: none"
-        ></b-form-input>
-      </b-form-group>
-
       <b-form-group id="input-group-3" class="mt-3">
         <b-form-input
           id="input-3"
@@ -42,18 +27,7 @@
           style="border: none"
         ></b-form-input>
       </b-form-group>
-
-      <b-form-group id="input-group-4" class="mt-3">
-        <b-form-input
-          id="input-4"
-          type="password"
-          placeholder="Confirm Password"
-          required
-          class="input-width bg-light"
-          style="border: none"
-        ></b-form-input>
-      </b-form-group>
-      <center>
+      
         <div
           class="text-center mt-3 d-flex justify-content-center btn btn-primary"
           style="width:10rem;"
