@@ -1,3 +1,4 @@
+
 <template>
   <div class="text-light px-3 pt-2 mx-auto mb-md-5 mb-3 border border-primary pb-3 ">
     <h1
@@ -27,7 +28,7 @@
           style="border: none"
         ></b-form-input>
       </b-form-group>
-      
+      <center>
         <div
           class="text-center mt-3 d-flex justify-content-center btn btn-primary"
           style="width:10rem;"
@@ -61,7 +62,7 @@
 }
 @media (max-width: 768px) {
   .input-width {
-    width: 21rem;
+    width: 18rem;
   }
 }
 </style>
