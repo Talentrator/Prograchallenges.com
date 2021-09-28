@@ -17,6 +17,7 @@
                 v-model="form.email"
                 type="email"
                 class="mb-2"
+                :state="validateEmail"
                 placeholder="codemonkey@gmail.com"
               />
             </b-col>
@@ -26,6 +27,7 @@
                 v-model="form.nickname"
                 type="text"
                 class="mb-2"
+                :state="validateName"
                 placeholder="greatcoder12"
               />
             </b-col>
@@ -35,6 +37,7 @@
             v-model="form.commentText"
             name="text"
             placeholder="Leave your answer here.."
+            :state="validateText"
           />
         </b-form-group>
         <div class="d-md-flex my-2 justify-content-end text-primary">
@@ -130,6 +133,24 @@ export default {
   mounted() {
     this.fetchData();
   },
+  computed: {
+    validateEmail() {
+      try {
+        const re =
+          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(this.form.email.toLowerCase());
+      } catch (e) {return false}
+    },
+    validateName() {
+      try{
+        return this.form.nickname.length > 5 && this.form.nickname.length < 12;
+      }catch(e){return false}
+    },
+    validateText() {
+      try{return this.form.commentText.length!=0}
+      catch(e){return false}
+    }
+  }
 };
 </script>
 
