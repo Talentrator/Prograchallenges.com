@@ -61,7 +61,7 @@
 }
 @media (max-width: 768px) {
   .input-width {
-    width: inherit;
+    width: 21rem;
   }
 }
 </style>
