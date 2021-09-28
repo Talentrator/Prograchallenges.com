@@ -21,7 +21,6 @@
       <b-form-group
         id="input-group-1"
         class="mt-3"
-        description="We'll never share your email with anyone else."
       >
         <b-form-input
           id="input-1"
