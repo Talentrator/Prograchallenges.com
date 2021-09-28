@@ -17,7 +17,7 @@
                 v-model="form.email"
                 type="email"
                 :state="validateEmail"
-                :class="{'mb-2':validateEmail==null||validateEmail}"
+                :class="{ 'mb-2': validateEmail == null || validateEmail }"
                 placeholder="codemonkey@gmail.com"
               />
               <b-form-invalid-feedback class="mb-2" :state="validateEmail">
@@ -30,11 +30,11 @@
                 v-model="form.nickname"
                 type="text"
                 :state="validateName"
-                :class="{'mb-2':validateName==null||validateName}"
+                :class="{ 'mb-2': validateName == null || validateName }"
                 placeholder="greatcoder12"
               />
               <b-form-invalid-feedback class="mb-2" :state="validateName">
-                Your nickname must be 5-12 characters long.
+                Your nickname must be 5-20 characters long.
               </b-form-invalid-feedback>
             </b-col>
           </b-row>
@@ -44,7 +44,7 @@
             name="text"
             placeholder="Leave your answer here.."
             :state="validateText"
-            :class="{'mb-2':validateText==null||validateText}"
+            :class="{ 'mb-2': validateText == null || validateText }"
           />
           <b-form-invalid-feedback class="mb-2" :state="validateText">
             Your answer must be atleast 10 characters long.
@@ -106,17 +106,27 @@ export default {
   },
   methods: {
     handleSubmit: async function () {
-      this.submitting = true;
-      const insertChallenge = firebase
-        .functions()
-        .httpsCallable("insertComment");
-      console.log({ ...this.form, challengeId: this.$route.params.id });
-      await insertChallenge({
-        ...this.form,
-        challengeId: this.$route.params.id,
-      });
-      this.fetchData();
-      this.form = { email: "", nickname: "", commentText: "" };
+      if (!this.form.email || !this.form.nickname || !this.form.commentText) {
+        alert("Please input the required fields"); // TODO: Replace this with a better way
+      } else if (
+        !this.validateEmail ||
+        !this.validateName ||
+        !this.validateText
+      ) {
+        alert("Please enter valid information"); // TODO: Replace this with a better way
+      } else {
+        this.submitting = true;
+        const insertChallenge = firebase
+          .functions()
+          .httpsCallable("insertComment");
+        console.log({ ...this.form, challengeId: this.$route.params.id });
+        await insertChallenge({
+          ...this.form,
+          challengeId: this.$route.params.id,
+        });
+        this.fetchData();
+        this.form = { email: "", nickname: "", commentText: "" };
+      }
     },
     async fetchData() {
       const getSingleChallenge = firebase
@@ -146,28 +156,36 @@ export default {
   computed: {
     validateEmail() {
       try {
-        if(!this.form.email.length) return null
-        else{
+        if (!this.form.email.length) return null;
+        else {
           const re =
             /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
           return re.test(this.form.email.toLowerCase());
         }
-      } catch (e) {return null}
+      } catch (e) {
+        return null;
+      }
     },
     validateName() {
-      try{
-        if(!this.form.nickname.length) return null
-        else return this.form.nickname.length>=5&&this.form.nickname.length<=12
-      }catch(e){return null}
+      try {
+        if (!this.form.nickname.length) return null;
+        else
+          return (
+            this.form.nickname.length >= 5 && this.form.nickname.length <= 20
+          );
+      } catch (e) {
+        return null;
+      }
     },
     validateText() {
-      try{
-        if(!this.form.commentText.length) return null
-        else return this.form.commentText.length>10
+      try {
+        if (!this.form.commentText.length) return null;
+        else return this.form.commentText.length > 10;
+      } catch (e) {
+        return null;
       }
-      catch(e){return null}
-    }
-  }
+    },
+  },
 };
 </script>
 
