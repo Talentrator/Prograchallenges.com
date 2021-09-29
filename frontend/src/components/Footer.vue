@@ -27,7 +27,7 @@
               href="mailto:prograchallenges@gmail.com"
               target="_blank"
               class="d-block text-light"
-              >prograchallenges@gmail.com</a
+              >support@talentrator.com</a
             >
           </div>
           <div class="d-flex align-items-center">
