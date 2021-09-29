@@ -40,6 +40,7 @@ export default {
 <style scoped>
   .card {
     width: min-content;
+    border-radius: 0;
   }
 
   .card-img-top {
@@ -47,6 +48,8 @@ export default {
     max-width: 24rem;
     height: 43vw;
     max-height: 24rem;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
   }
 
   @media (max-width: 768px) {
