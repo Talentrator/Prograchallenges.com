@@ -22,7 +22,7 @@
       </b-col>
       <b-col class="py-2 border border-primary d-flex flex-column justify-content-between">
         <div>
-          <h3 class="mt-2">Contribute</h3>
+          <h3 class="mt-2">Create</h3>
           <p class="">
              Challenge others by creating custom challenges on our platform 
           </p>
