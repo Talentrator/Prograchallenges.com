@@ -50,7 +50,7 @@
       <center>
         <div
           class="text-center mt-3 d-flex justify-content-center btn btn-primary"
-          style="width: 19.5rem"
+          style="width: 19rem"
         >
           <a href="#" class="text-dark mx-1">SIGN UP</a>
           <b-icon-arrow-right-square-fill
@@ -61,14 +61,14 @@
     </b-form>
     <div
       class="text-center mt-3 d-flex justify-content-center btn btn-secondary"
-      style="width: 19.5rem"
+      style="width: 19rem"
     >
       <b-icon-github class="my-auto"></b-icon-github>
       <a href="#" class="text-dark mx-1">sign up with github</a>
     </div>
     <div
       class="text-center mt-3 d-flex justify-content-center btn btn-secondary"
-      style="width: 19.5rem"
+      style="width: 19rem"
     >
       <b-icon-google class="my-auto"></b-icon-google>
       <a href="#" class="text-dark mx-1">sign up with google</a>
