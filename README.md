@@ -22,7 +22,9 @@ The technologies we usw are as follows -
 2. Vuex
 3. Vue router 
 4. Firebase
-You can check our code repo to get an idea of the structure
+
+You can check our code repo to get an idea of the structure,
+Also see [CONTRIBUTING.md](https://github.com/Talentrator/Prograchallenges.com/blob/master/CONTRIBUTING.md)
 <br>
 
 # Our Sponsor
