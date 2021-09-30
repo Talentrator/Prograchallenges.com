@@ -1,1 +1,1 @@
-# CONTRIBUTE TO [PROGRACHALLENGES.COM](prograchallenges.com)
+# CONTRIBUTE TO [PROGRACHALLENGES.COM](https://prograchallenges.com)
