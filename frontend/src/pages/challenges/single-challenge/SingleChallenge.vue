@@ -12,43 +12,92 @@
         <b-form-group>
           <b-row>
             <b-col lg="6" md="12">
+              <div
+                :class="{
+                  'form-group--error': $v.form.email.$error,
+                  'form-group--ok':
+                    !$v.form.email.$error && $v.form.email.$dirty,
+                }"
+              >
               <b-form-input
                 name="email"
                 v-model="form.email"
                 type="email"
-                :state="validateEmail"
-                :class="{ 'mb-2': validateEmail == null || validateEmail }"
                 placeholder="codemonkey@gmail.com"
+                class="form__input"
+                  v-model.trim="$v.form.email.$model"
+                  :class="{
+                    'mb-2': !$v.form.email.$error,
+                  }"
               />
-              <b-form-invalid-feedback class="mb-2" :state="validateEmail">
-                Enter a valid email address.
-              </b-form-invalid-feedback>
+              <div v-if="$v.form.email.$dirty">
+                  <div class="error mb-2" v-if="!$v.form.email.required">
+                    Please input email
+                  </div>
+                  <div class="error mb-2" v-if="!$v.form.email.email">
+                    Please enter a valid email
+                  </div>
+                </div>
+              </div>
             </b-col>
             <b-col lg="6" md="12">
+              <div
+                :class="{
+                  'form-group--error': $v.form.nickname.$error,
+                  'form-group--ok':
+                    !$v.form.nickname.$error && $v.form.nickname.$dirty,
+                }"
+              >
               <b-form-input
                 name="name"
                 v-model="form.nickname"
                 type="text"
-                :state="validateName"
-                :class="{ 'mb-2': validateName == null || validateName }"
                 placeholder="greatcoder12"
+                  v-model.trim="$v.form.nickname.$model"
+                  class="form__input"
+                  :class="{
+                    'mb-2': !$v.form.nickname.$error,
+                  }"
               />
-              <b-form-invalid-feedback class="mb-2" :state="validateName">
-                Your nickname must be 5-20 characters long.
-              </b-form-invalid-feedback>
+              <div v-if="$v.form.nickname.$dirty">
+                  <div class="error mb-2" v-if="!$v.form.nickname.required">
+                    Please input a nickname
+                  </div>
+                  <div
+                    class="error mb-2"
+                    v-if="
+                      !$v.form.nickname.minLength || !$v.form.nickname.maxLength
+                    "
+                  >
+                    Your nickname must be 4-20 characters long
+                  </div>
+                </div>
+              </div>
             </b-col>
           </b-row>
+          <div
+            :class="{
+              'form-group--error': $v.form.commentText.$error,
+              'form-group--ok': !$v.form.commentText.$error && $v.form.commentText.$dirty,
+            }"
+          >
           <b-form-textarea
             rows="3"
             v-model="form.commentText"
             name="text"
-            placeholder="Leave your answer here.."
-            :state="validateText"
-            :class="{ 'mb-2': validateText == null || validateText }"
+            placeholder="Leave your answer here..."
+              v-model.trim="$v.form.commentText.$model"
+              class="form__input"
+              :class="{
+                'mb-2': !$v.form.commentText.$error,
+              }"
           />
-          <b-form-invalid-feedback class="mb-2" :state="validateText">
-            Your answer must be atleast 10 characters long.
-          </b-form-invalid-feedback>
+          <div v-if="$v.form.commentText.$dirty">
+              <div class="error mb-2" v-if="!$v.form.commentText.required">
+                Please input your answer
+              </div>
+            </div>
+          </div>
         </b-form-group>
         <div class="d-md-flex my-2 justify-content-end text-primary">
           <div
@@ -90,6 +139,13 @@
 
 <script>
 import firebase from "firebase";
+import {
+  required,
+  minLength,
+  email,
+  maxLength,
+} from "vuelidate/lib/validators";
+
 export default {
   name: "SingleChallenge",
   data() {
@@ -108,12 +164,6 @@ export default {
     handleSubmit: async function () {
       if (!this.form.email || !this.form.nickname || !this.form.commentText) {
         alert("Please input the required fields"); // TODO: Replace this with a better way
-      } else if (
-        !this.validateEmail ||
-        !this.validateName ||
-        !this.validateText
-      ) {
-        alert("Please enter valid information"); // TODO: Replace this with a better way
       } else {
         this.submitting = true;
         const insertChallenge = firebase
@@ -153,39 +203,22 @@ export default {
   mounted() {
     this.fetchData();
   },
-  computed: {
-    validateEmail() {
-      try {
-        if (!this.form.email.length) return null;
-        else {
-          const re =
-            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-          return re.test(this.form.email.toLowerCase());
-        }
-      } catch (e) {
-        return null;
-      }
-    },
-    validateName() {
-      try {
-        if (!this.form.nickname.length) return null;
-        else
-          return (
-            this.form.nickname.length >= 5 && this.form.nickname.length <= 20
-          );
-      } catch (e) {
-        return null;
-      }
-    },
-    validateText() {
-      try {
-        if (!this.form.commentText.length) return null;
-        else return this.form.commentText.length > 10;
-      } catch (e) {
-        return null;
-      }
-    },
-  },
+  validations:{
+    form:{
+      email: {
+        required,
+        email,
+      },
+      nickname: {
+        required,
+        minLength: minLength(4),
+        maxLength: maxLength(20),
+      },
+      commentText: {
+        required,
+      },
+    }
+  }
 };
 </script>
 
