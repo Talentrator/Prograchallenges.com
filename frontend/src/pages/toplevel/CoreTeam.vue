@@ -76,7 +76,7 @@ export default {
           bio:
             "Hi I am a developer working on this project lorem ipsum dolor sit amet.",
           contact: {
-            email: "abc123@gmail.com",
+            email: "calle@talentrator.com",
             telegram: "calle978",
           },
         },

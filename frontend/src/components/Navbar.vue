@@ -21,7 +21,7 @@
         </b-nav-item>
         <b-nav-item :to="{name:'usr-register'}">
           <div class="text-dark text-center bg-primary px-3 py-1 align-center">
-            REGISTER
+            SIGN UP
             <b-icon-arrow-right-circle-fill />
           </div>
         </b-nav-item>
