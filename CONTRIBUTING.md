@@ -53,4 +53,4 @@ Example - [REF:Home.vue] added links
 3. don't use b-card
 
 ## What To Contribute and How Can I Start? 
-Join the [telegram group](https://t.me/joinchat/XlOuxscpm71jMzEy) for this project, talk to the admins and they will guide you p
+Join the [telegram group](https://t.me/joinchat/XlOuxscpm71jMzEy) for this project, talk to the admins and they will guide you forwards
