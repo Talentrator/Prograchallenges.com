@@ -11,7 +11,7 @@
       <b-form class="d-flex flex-column">
         <b-form-group>
           <b-row>
-            <b-col>
+            <b-col lg="6" md="12" sm="15">
               <b-form-input
                 name="email"
                 v-model="form.email"
@@ -19,7 +19,7 @@
                 class="mb-2"
                 placeholder="codemonkey@gmail.com"
               />
-            </b-col>
+            </b-col lg="6" md="12" sm="15">
             <b-col>
               <b-form-input
                 name="name"
