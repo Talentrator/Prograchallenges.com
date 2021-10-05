@@ -89,7 +89,7 @@ export default {
         .functions()
         .httpsCallable("getAllChallenges");
       const result = await getAllChallenges();
-      this.challenges = result.data.slice(0, 10);
+      this.challenges = result.data;
       this.paginate(this.perPage, 0);
       this.loaded = true;
     },

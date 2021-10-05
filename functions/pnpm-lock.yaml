@@ -1,7 +1,6 @@
 lockfileVersion: 5.3
 
 specifiers:
-  cors: ^2.8.5
   eslint: ^5.12.0
   eslint-plugin-promise: ^4.0.1
   firebase-admin: ^9.2.0
@@ -10,7 +9,6 @@ specifiers:
   zod: ^3.8.2
 
 dependencies:
-  cors: 2.8.5
   firebase-admin: 9.11.1
   firebase-functions: 3.15.5_firebase-admin@9.11.1
   zod: 3.8.2
