@@ -41,7 +41,7 @@ export default {
           image: "aman.jpg",
           role: "HEAD OF PRODUCT",
           bio:
-            "Hi I am a developer working on this project lorem ipsum dolor sit amet.",
+            "Hi I am a developer working on this project",
           contact: {
             email: "khanamankhan1973@gmail.com",
             telegram: "Aman_coder",
@@ -52,7 +52,7 @@ export default {
           image: "logo.svg",
           role: "HEAD OF DESIGN",
           bio:
-            "Hi I am a developer working on this project lorem ipsum dolor sit amet.",
+            "Hi I am a developer working on this project",
           contact: {
             email: "saranshmm@gmail.com",
             telegram: "SarK283",
@@ -63,7 +63,7 @@ export default {
           image: "maximillian.jpg",
           role: "PROJECT OWNER/SPONSOR",
           bio:
-            "Hi I am a developer working on this project lorem ipsum dolor sit amet.",
+            "Maximilian is CTO at Talentrator. He loves working out solutions to all kinds of problems regarding code",
           contact: {
             email: "maximilian@talentrator.com",
             telegram: "BinaryByter",
@@ -74,7 +74,7 @@ export default {
           image: "calle.jpg",
           role: "PROJECT OWNER/SPONSOR",
           bio:
-            "Hi I am a developer working on this project lorem ipsum dolor sit amet.",
+            "Hi I am the sponsor of the project",
           contact: {
             email: "calle@talentrator.com",
             telegram: "calle978",

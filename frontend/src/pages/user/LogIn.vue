@@ -10,8 +10,8 @@
       <b-form-group id="input-group-2" class="mt-3">
         <b-form-input
           id="input-2"
-          type="text"
-          placeholder="Username"
+          type="email"
+          placeholder="Email"
           required
           class="input-width bg-light"
           style="border: none"
