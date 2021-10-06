@@ -162,7 +162,7 @@ export default {
   },
   methods: {
     handleSubmit: async function () {
-      this.$v.$touch()
+      this.$v.$touch();
       if (!this.$v.$invalid) {
         this.submitting = true;
         const insertChallenge = firebase
@@ -175,6 +175,7 @@ export default {
         });
         this.fetchData();
         this.form = { email: "", nickname: "", commentText: "" };
+        this.$v.$reset();
       }
     },
     async fetchData() {

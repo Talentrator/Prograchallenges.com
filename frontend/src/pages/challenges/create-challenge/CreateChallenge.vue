@@ -177,7 +177,7 @@ export default {
   },
   methods: {
     handleSubmit: async function () {
-      this.$v.$touch()
+      this.$v.$touch();
       if(!this.$v.$invalid){
         this.submitting = true;
         const insertChallenge = firebase
@@ -185,6 +185,7 @@ export default {
           .httpsCallable("insertChallenge");
         const result = await insertChallenge(this.form);
         this.$router.push(`/challenge/${result.data}`);
+        this.$v.$reset();
       }
     },
   },
