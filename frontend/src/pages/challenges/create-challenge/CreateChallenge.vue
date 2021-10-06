@@ -141,10 +141,10 @@
               style="cursor: pointer"
               @click="handleSubmit"
             >
-              <b-spinner variant="primary" v-if="submitting" />&nbsp;
               <h4 class="m-0">SUBMIT</h4>
               &nbsp;
-              <b-icon-arrow-right-circle-fill class="text-primary" />
+              <b-spinner variant="primary" small v-if="submitting" />&nbsp;
+              <b-icon-arrow-right-circle-fill class="text-primary" v-if="!submitting" />
             </div>
           </div>
         </b-form-group>
