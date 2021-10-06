@@ -162,9 +162,8 @@ export default {
   },
   methods: {
     handleSubmit: async function () {
-      if (!this.form.email || !this.form.nickname || !this.form.commentText) {
-        alert("Please input the required fields"); // TODO: Replace this with a better way
-      } else {
+      this.$v.$touch()
+      if (!this.$v.$invalid) {
         this.submitting = true;
         const insertChallenge = firebase
           .functions()
