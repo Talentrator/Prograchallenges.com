@@ -19,6 +19,7 @@ specifiers:
   vue: ^2.6.11
   vue-router: ^3.2.0
   vue-template-compiler: ^2.6.11
+  vuelidate: ^0.7.6
   vuex: ^3.4.0
 
 dependencies:
@@ -29,6 +30,7 @@ dependencies:
   regenerator-runtime: 0.13.9
   vue: 2.6.14
   vue-router: 3.5.2
+  vuelidate: 0.7.6
   vuex: 3.6.2_vue@2.6.14
 
 devDependencies:
@@ -8875,6 +8877,11 @@ packages:
 
   /vue/2.6.14:
     resolution: {integrity: sha512-x2284lgYvjOMj3Za7kqzRcUSxBboHqtgRE2zlos1qWaOye5yUmHn42LB1250NJBLRwEcdrB0JRwyPTEPhfQjiQ==}
+    dev: false
+
+  /vuelidate/0.7.6:
+    resolution: {integrity: sha512-suzIuet1jGcyZ4oUSW8J27R2tNrJ9cIfklAh63EbAkFjE380iv97BAiIeolRYoB9bF9usBXCu4BxftWN1Dkn3g==}
+    engines: {node: '>= 4.0.0', npm: '>= 3.0.0'}
     dev: false
 
   /vuex/3.6.2_vue@2.6.14:

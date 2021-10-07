@@ -62,7 +62,7 @@ export default {
         .functions()
         .httpsCallable("getAllChallenges");
       const result = await getAllChallenges();
-      this.challenges = result.data.slice(0, 10);
+      this.challenges = result.data.slice(0, 3);
       this.loaded = true;
     },
   },
