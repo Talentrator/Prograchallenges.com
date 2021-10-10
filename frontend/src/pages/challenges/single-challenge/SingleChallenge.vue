@@ -188,10 +188,6 @@ export default {
         "\n",
         "<br>"
       );
-      this.challengeData.text = this.challengeData.text.replaceAll(
-        " ",
-        "&nbsp;"
-      );
       this.challengeData.comments.map((comment) => {
         comment.commentText = comment.commentText.replaceAll("\n", "<br>");
         comment.commentText = comment.commentText.replaceAll(" ", "&nbsp;");
