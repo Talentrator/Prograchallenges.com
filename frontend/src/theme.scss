@@ -403,6 +403,11 @@ h6,
     }
 }
 
+.form-control,
+.form-control:focus {
+    border: 2px solid map-get($theme-colors, dark);
+}
+
 .form-control::-webkit-input-placeholder {
     color: #bbb;
 }
