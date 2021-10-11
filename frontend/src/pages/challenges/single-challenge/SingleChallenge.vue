@@ -100,7 +100,7 @@
             </div>
           </div>
         </b-form-group>
-        <div class="d-md-flex my-2 justify-content-end text-primary">
+        <div class="d-flex my-2 justify-content-end text-primary">
           <div
             class="
               border border-primary
@@ -109,10 +109,10 @@
               p-2
               justify-content-center justify-content-md-start
             "
-            style="cursor: pointer"
+            style="cursor: pointer; width: max-width;"
             @click="handleSubmit"
           >
-            <h4 class="m-0">POST</h4>
+            <h4 class="m-0">SUBMIT</h4>
             &nbsp;
             <b-spinner variant="primary" small v-if="submitting" />
             <b-icon-arrow-right-circle-fill class="text-primary" v-if="!submitting" />
