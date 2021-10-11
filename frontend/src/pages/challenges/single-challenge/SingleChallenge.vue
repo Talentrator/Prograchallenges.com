@@ -3,9 +3,9 @@
     <div class="text-center" v-if="!loaded">
       <b-spinner variant="primary" />
     </div>
-    <div v-else>
+    <div class="max-width" v-else>
       <h1 class="m-0 text-white">{{ challengeData.title }}</h1>
-      <p class="text-muted m-0">{{ challengeData.nickname }}</p>
+      <p class="text-muted mb-4">{{ challengeData.nickname }}</p>
       <p class="my-3 text-white" v-html="challengeData.text"></p>
       <h3 class="mt-4 text-white">Your Answers</h3>
       <b-form class="d-flex flex-column">

@@ -282,6 +282,10 @@ $spacer: 2rem;
     z-index: 3;
 }
 
+.max-width {
+    max-width: clamp(40rem, 60vw, 60rem);
+}
+
 @import "bootstrap";
 
 .pc-text-gotham-black,

@@ -69,8 +69,3 @@ export default {
   gap: 2px;
 }
 </style>
- <style>
- .max-width{
-   max-width: 80rem !important;
- }
- </style>
