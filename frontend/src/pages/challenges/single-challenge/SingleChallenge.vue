@@ -9,7 +9,8 @@
       <p class="my-3 text-white" v-html="challengeData.text"></p>
       <h3 class="mt-4 text-white">Your Answers</h3>
       <b-form class="d-flex flex-column">
-        <b-form-group>
+        <b-form-group id="input-group-1"
+          class="w-85 mr-3 max-width">
           <b-row>
             <b-col lg="6" md="12">
               <div
