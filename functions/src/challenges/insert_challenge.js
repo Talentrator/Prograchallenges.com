@@ -15,7 +15,6 @@ const insertChallenge = functions.https.onCall(async (data) => {
         exampleSolution: z.string(),
     });
     
-    
     const inputData = mySchema.parse(data);
     const uid = await generateUniqueId('challenges', data.title);
     await admin.firestore().collection('challenges').doc(uid).set(inputData);
