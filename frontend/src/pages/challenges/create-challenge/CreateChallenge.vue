@@ -76,7 +76,8 @@
         </DropDown>
         <DropDown>
           <template v-slot:preview=""> About the challenge</template>
-          <div
+
+          <form
             :class="{
               'form-group--error': $v.form.title.$error,
               'form-group--ok': !$v.form.title.$error && $v.form.title.$dirty,
@@ -102,9 +103,9 @@
                 {{ $v.form.title.$params.minLength.min }} letters.
               </div>
             </div>
-          </div>
+          </form>
 
-          <div
+          <form
             :class="{
               'form-group--error': $v.form.text.$error,
               'form-group--ok': !$v.form.text.$error && $v.form.text.$dirty,
@@ -129,27 +130,52 @@
                 Your challenge description must be at least 20 characters long
               </div>
             </div>
-          </div>
+            <b-form-group
+              class="pt-2"
+              label="Test Programming language"
+              label-class="font-weight-bold"
+            >
+              <b-form-select
+                v-model="form.programmingLanguage"
+                :options="languages"
+              />
+            </b-form-group>
+          </form>
         </DropDown>
         <DropDown>
           <template v-slot:preview=""> About the code </template>
+          Boilerplate Code
           <CodeEditor
             v-model="form.boilerplate"
-            lang="javascript"
+            :lang="langToEditor[form.programmingLanguage]"
+            :key="form.programmingLanguage + '1'"
             editorHeight="200px"
           />
+          Unit-Test for the code.
           <CodeEditor
             v-model="form.unitTest"
-            lang="javascript"
+            :lang="langToEditor[form.programmingLanguage]"
+            :key="form.programmingLanguage + '2'"
             editorHeight="200px"
           />
+          Example solution to check that your unit tests are correct.
           <CodeEditor
             v-model="form.exampleSolution"
-            lang="javascript"
+            :lang="langToEditor[form.programmingLanguage]"
+            :key="form.programmingLanguage + '3'"
             editorHeight="200px"
           />
+          <div class="text-center">
+            <b-button block @click="runTest()" class="mt-2 p-1">
+              <b-icon-caret-right v-if="!runningCode" />
+              <b-spinner small v-else />
+            </b-button>
+          </div>
+          <div v-if="codeOutput" class="bg-light text-dark mt-2 px-2">
+            {{ codeOutput }}
+          </div>
         </DropDown>
-
+        {{ form.programmingLanguage }}
         <div class="d-md-flex my-2 justify-content-end text-primary">
           <div
             class="
@@ -200,7 +226,35 @@ export default {
         unitTest: "",
         exampleSolution: "",
       },
+      languages: [
+        { text: "Please select a programming language", value: null },
+        { text: "Javascript", value: "javascript-node" },
+        { text: "Python 3", value: "python3" },
+        { text: "C", value: "c-gcc" },
+        { text: "C++", value: "cpp-gcc" },
+        { text: "Java 8", value: "java-jdk" },
+        { text: "C#", value: "cs-mono" },
+        { text: "Ruby", value: "ruby" },
+        { text: "Kotlin", value: "kotlin" },
+        { text: "Swift", value: "swift4" },
+        { text: "Go", value: "go" },
+      ],
+      langToEditor: {
+        // language names to editor mappings because ACE uses other names
+        "javascript-node": "javascript",
+        python3: "python",
+        "c-gcc": "c_cpp",
+        "cpp-gcc": "c_cpp",
+        "java-jdk": "java",
+        cs_mono: "csharp",
+        ruby: "ruby",
+        kotlin: "kotlin",
+        swift4: "swift",
+        go: "golang",
+      },
+      codeOutput: "",
       submitting: false,
+      runningCode: false,
     };
   },
   methods: {
@@ -215,6 +269,17 @@ export default {
         this.$router.push(`/challenge/${result.data}`);
         this.$v.$reset();
       }
+    },
+    async runTest() {
+      this.runningCode = true;
+      this.codeOutput = (
+        await firebase.functions().httpsCallable("RunCode")({
+          code: `${this.form.exampleSolution}
+${this.form.unitTest}`,
+          lang: this.form.programmingLanguage,
+        })
+      ).data;
+      this.runningCode = false;
     },
   },
   validations: {
