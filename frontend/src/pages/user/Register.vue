@@ -124,10 +124,8 @@ export default {
     },
     bundleLoginData() {
       return {
-        password: this.pw,
-        userType: this.userType,
-        firstName: this.first_name,
-        lastName: this.last_name,
+        password: this.password,
+        username: this.username,
         email: this.email,
       };
     },
