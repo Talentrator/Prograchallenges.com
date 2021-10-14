@@ -1,7 +1,7 @@
 <template>
   <div>
     <div
-      class="gig-cursor-pointer border p-2"
+      class="pc-cursor-pointer border p-2"
       @click="toggle()"
       :style="
         bordered ? 'border-right: 10px solid var(--primary) !important' : ''

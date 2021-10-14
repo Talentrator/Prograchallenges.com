@@ -5,10 +5,10 @@
       <p class="text-muted text-center mb-3">
         Write your own challenge for others to attempt!
       </p>
-      <b-form class="px-0">
+      <b-form class="px-0 gig-small-container">
         <DropDown>
           <template v-slot:preview=""> About yourself </template>
-          <b-row>
+          <b-row class="p-0 m-0">
             <b-col lg="6" md="12">
               <div
                 :class="{
@@ -131,22 +131,24 @@
             </div>
           </div>
         </DropDown>
-
-        <CodeEditor
-          v-model="form.boilerplate"
-          lang="javascript"
-          editorHeight="200px"
-        />
-        <CodeEditor
-          v-model="form.unitTest"
-          lang="javascript"
-          editorHeight="200px"
-        />
-        <CodeEditor
-          v-model="form.exampleSolution"
-          lang="javascript"
-          editorHeight="200px"
-        />
+        <DropDown>
+          <template v-slot:preview=""> About the code </template>
+          <CodeEditor
+            v-model="form.boilerplate"
+            lang="javascript"
+            editorHeight="200px"
+          />
+          <CodeEditor
+            v-model="form.unitTest"
+            lang="javascript"
+            editorHeight="200px"
+          />
+          <CodeEditor
+            v-model="form.exampleSolution"
+            lang="javascript"
+            editorHeight="200px"
+          />
+        </DropDown>
 
         <div class="d-md-flex my-2 justify-content-end text-primary">
           <div
