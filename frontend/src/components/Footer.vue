@@ -32,7 +32,7 @@
           </div>
           <div class="d-flex align-items-center">
             <img
-              src="@/assets/telegram-logo.svg"
+              src="@/assets/logos/telegram-logo.svg"
               alt="Prograchallenges | Telegram"
             />&nbsp;
             <a
@@ -44,7 +44,7 @@
           </div>
           <div class="d-flex align-items-center">
             <img
-              src="@/assets/reddit-logo.svg"
+              src="@/assets/logos/reddit-logo.svg"
               alt="Prograchallenges | Reddit"
             />&nbsp;
             <a
@@ -59,7 +59,7 @@
         <div>
           <!-- something about our webpack config seems broken? -->
           <b-img
-            :src="require('../assets/logo.svg')"
+            :src="require('../assets/logos/logo.svg')"
             style="max-width: 10.5em"
           ></b-img>
         </div>

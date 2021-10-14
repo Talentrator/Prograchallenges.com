@@ -11,7 +11,7 @@
           Join our Telegeram group for updates
       </h4>
         <img
-          src="@/assets/telegram-logo.svg"
+          src="@/assets/logos/telegram-logo.svg"
           alt="Prograchallenges | Telegram"
           class="mt-4 mb-2"
           height="40px"
