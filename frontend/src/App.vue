@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="bg-dark d-flex flex-column">
+  <div id="app" class="bg-dark text-light d-flex flex-column">
     <Navbar class="mt-0" />
     <router-view style="flex-grow:1; display:grid !important; place-items: center" />
     <Footer class="mb-0" />

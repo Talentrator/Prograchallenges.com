@@ -1,42 +1,13 @@
 <template>
   <b-container>
     <div class="px-3 py-2 mx-auto max-width">
-      <h1 class="text-center mt-2 text-white">Create a challenge</h1>
+      <h1 class="text-center mt-2">Create a challenge</h1>
       <p class="text-muted text-center mb-3">
         Write your own challenge for others to attempt!
       </p>
       <b-form class="px-0">
-        <b-form-group
-          id="input-group-1"
-          class="px-1 px-md-5 w-100 mx-auto max-width"
-        >
-          <div
-            :class="{
-              'form-group--error': $v.form.title.$error,
-              'form-group--ok': !$v.form.title.$error && $v.form.title.$dirty,
-            }"
-          >
-            <b-form-input
-              name="title"
-              v-model="form.title"
-              type="text"
-              class="form__input"
-              placeholder="Challenge Title"
-              v-model.trim="$v.form.title.$model"
-              :class="{
-                'mb-2': !$v.form.title.$error,
-              }"
-            />
-            <div v-if="$v.form.title.$dirty">
-              <div class="error mb-2" v-if="!$v.form.title.required">
-                Please input title
-              </div>
-              <div class="error mb-2" v-if="!$v.form.title.minLength">
-                Title must have at least
-                {{ $v.form.title.$params.minLength.min }} letters.
-              </div>
-            </div>
-          </div>
+        <DropDown>
+          <template v-slot:preview=""> About yourself </template>
           <b-row>
             <b-col lg="6" md="12">
               <div
@@ -102,6 +73,37 @@
               </div>
             </b-col>
           </b-row>
+        </DropDown>
+        <DropDown>
+          <template v-slot:preview=""> About the challenge</template>
+          <div
+            :class="{
+              'form-group--error': $v.form.title.$error,
+              'form-group--ok': !$v.form.title.$error && $v.form.title.$dirty,
+            }"
+          >
+            <b-form-input
+              name="title"
+              v-model="form.title"
+              type="text"
+              class="form__input"
+              placeholder="Challenge Title"
+              v-model.trim="$v.form.title.$model"
+              :class="{
+                'mb-2': !$v.form.title.$error,
+              }"
+            />
+            <div v-if="$v.form.title.$dirty">
+              <div class="error mb-2" v-if="!$v.form.title.required">
+                Please input title
+              </div>
+              <div class="error mb-2" v-if="!$v.form.title.minLength">
+                Title must have at least
+                {{ $v.form.title.$params.minLength.min }} letters.
+              </div>
+            </div>
+          </div>
+
           <div
             :class="{
               'form-group--error': $v.form.text.$error,
@@ -124,30 +126,48 @@
                 Please input some challenge text
               </div>
               <div class="error mb-2" v-if="!$v.form.text.minLength">
-                Your challenge must be at least 50 characters long
+                Your challenge description must be at least 20 characters long
               </div>
             </div>
           </div>
+        </DropDown>
 
-          <div class="d-md-flex my-2 justify-content-end text-primary">
-            <div
-              class="
+        <CodeEditor
+          v-model="form.boilerplate"
+          lang="javascript"
+          editorHeight="200px"
+        />
+        <CodeEditor
+          v-model="form.unitTest"
+          lang="javascript"
+          editorHeight="200px"
+        />
+        <CodeEditor
+          v-model="form.exampleSolution"
+          lang="javascript"
+          editorHeight="200px"
+        />
+
+        <div class="d-md-flex my-2 justify-content-end text-primary">
+          <div
+            class="
                 border border-primary
                 d-flex
                 align-items-center
                 p-2
                 justify-content-center justify-content-md-start
               "
-              style="cursor: pointer"
-              @click="handleSubmit"
-            >
-              <h4 class="m-0">SUBMIT</h4>
-              &nbsp;
-              <b-spinner variant="primary" small v-if="submitting" />&nbsp;
-              <b-icon-arrow-right-circle-fill class="text-primary" v-if="!submitting" />
-            </div>
+            style="cursor: pointer"
+            @click="handleSubmit"
+          >
+            SUBMIT
+            <b-spinner variant="primary" small v-if="submitting" />&nbsp;
+            <b-icon-arrow-right-circle-fill
+              class="text-primary"
+              v-if="!submitting"
+            />
           </div>
-        </b-form-group>
+        </div>
       </b-form>
     </div>
   </b-container>
@@ -161,6 +181,8 @@ import {
   email,
   maxLength,
 } from "vuelidate/lib/validators";
+import CodeEditor from "@/components/code-editor/CodeEditor.vue";
+import DropDown from "@/components/DropDown.vue";
 
 export default {
   name: "CreateChallenge",
@@ -171,14 +193,18 @@ export default {
         email: "",
         nickname: "",
         text: "",
+        programmingLanguage: "",
+        boilerplate: "",
+        unitTest: "",
+        exampleSolution: "",
       },
       submitting: false,
     };
   },
   methods: {
-    handleSubmit: async function () {
+    handleSubmit: async function() {
       this.$v.$touch();
-      if(!this.$v.$invalid){
+      if (!this.$v.$invalid) {
         this.submitting = true;
         const insertChallenge = firebase
           .functions()
@@ -207,9 +233,13 @@ export default {
       },
       text: {
         required,
-        minLength: minLength(50),
+        minLength: minLength(20),
       },
     },
+  },
+  components: {
+    CodeEditor,
+    DropDown,
   },
 };
 </script>
