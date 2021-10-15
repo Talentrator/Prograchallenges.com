@@ -4,7 +4,7 @@
       <b-spinner variant="primary" />
     </div>
     <div v-else>
-      <Info :challengeData="challengeData" />
+      <ChallengeModule v-model="code" :challenge="challengeData" />
       <FormulateComment @refetch="fetchData()"/>
       <Comments :comments="challengeData.comments" />
     </div>
@@ -13,7 +13,7 @@
 
 <script>
 import firebase from "firebase";
-import Info from "./single-challenge/Info.vue";
+import ChallengeModule from "@/components/code-editor/ChallengeModule.vue";
 import Comments from "./single-challenge/Comments.vue";
 import FormulateComment from "./single-challenge/FormulateComment.vue";
 
@@ -22,6 +22,7 @@ import textToHTMLDisplayable from "./helpers/text_to_html_displayble";
 export default {
   name: "SingleChallenge",
   data: () => ({
+    code: "",
     challengeData: {},
     loaded: false,
   }),
@@ -41,7 +42,7 @@ export default {
   },
 
   components: {
-    Info,
+    ChallengeModule,
     Comments,
     FormulateComment,
   },

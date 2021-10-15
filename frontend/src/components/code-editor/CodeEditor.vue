@@ -3,7 +3,7 @@
     <AceEditor
       v-model="code"
       @init="editorInit"
-      :lang="languageId"
+      :lang="langToEditor[languageId]"
       theme="github"
       width="100%"
       :height="editorHeight"
@@ -14,15 +14,15 @@
 
 <script>
 /* eslint-disable global-require */
-import AceEditor from 'vuejs-ace-editor';
+import AceEditor from "vuejs-ace-editor";
 
 export default {
-  name: 'CodeEditor',
+  name: "CodeEditor",
   components: {
     AceEditor,
   },
   data: () => ({
-    code: '',
+    code: "",
     options: {
       fontSize: 14,
       highlightActiveLine: true,
@@ -31,51 +31,64 @@ export default {
       showPrintMargin: false,
       showGutter: true,
     },
+    langToEditor: {
+      // language names to editor mappings because ACE uses other names
+      "javascript-node": "javascript",
+      python3: "python",
+      "c-gcc": "c_cpp",
+      "cpp-gcc": "c_cpp",
+      "java-jdk": "java",
+      cs_mono: "csharp",
+      ruby: "ruby",
+      kotlin: "kotlin",
+      swift4: "swift",
+      go: "golang",
+    },
   }),
   props: {
     editorHeight: {
       type: String,
-      default: '480px',
+      default: "480px",
     },
     value: {
       type: String,
       required: true,
     },
-    languageId: {
-        type: String, 
-        default: 'javascript',
-    }, 
+    languageId: { // use TIO-language-id's. Automatically converts to ACE-language-id's
+      type: String,
+      default: "javascript",
+    },
     canEdit: {
-        type: Boolean, 
-        default: true,
-    }
+      type: Boolean,
+      default: true,
+    },
   },
   created() {
     this.code = this.value;
     this.options = {
-        ...this.options,
-        readOnly: !this.canEdit,
-    }
+      ...this.options,
+      readOnly: !this.canEdit,
+    };
   },
   watch: {
     code(oldCode, newCode) {
-      if (oldCode !== newCode) this.$emit('input', this.code);
+      if (oldCode !== newCode) this.$emit("input", this.code);
     },
   },
   methods: {
     editorInit() {
-      require('brace/ext/language_tools');
-      require('brace/mode/python');
-      require('brace/mode/javascript');
-      require('brace/mode/ruby');
-      require('brace/mode/c_cpp');
-      require('brace/mode/java');
-      require('brace/mode/csharp');
-      require('brace/mode/ruby');
-      require('brace/mode/kotlin');
-      require('brace/mode/swift');
-      require('brace/mode/golang');
-      require('brace/theme/github');
+      require("brace/ext/language_tools");
+      require("brace/mode/python");
+      require("brace/mode/javascript");
+      require("brace/mode/ruby");
+      require("brace/mode/c_cpp");
+      require("brace/mode/java");
+      require("brace/mode/csharp");
+      require("brace/mode/ruby");
+      require("brace/mode/kotlin");
+      require("brace/mode/swift");
+      require("brace/mode/golang");
+      require("brace/theme/github");
     },
   },
 };

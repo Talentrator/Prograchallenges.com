@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3 class="mt-4 text-white">Your Answers</h3>
+    <h6 class="mt-4 text-white">Your comments</h6>
     <b-form class="d-flex flex-column">
       <b-form-group>
         <b-row>

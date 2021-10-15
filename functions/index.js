@@ -12,3 +12,4 @@ exports.getSingleChallenge = getSingleChallenge;
 exports.insertChallenge = insertChallenge;
 exports.insertComment = insertComment;
 exports.RunCode = require('./src/code/run_code').default;
+exports.EvaluateChallenge = require('./src/code/evaluate_challenge').default;

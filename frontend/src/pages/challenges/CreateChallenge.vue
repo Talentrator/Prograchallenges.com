@@ -147,21 +147,21 @@
           Boilerplate Code
           <CodeEditor
             v-model="form.boilerplate"
-            :lang="langToEditor[form.programmingLanguage]"
+            :lang="form.programmingLanguage"
             :key="form.programmingLanguage + '1'"
             editorHeight="200px"
           />
           Unit-Test for the code.
           <CodeEditor
             v-model="form.unitTest"
-            :lang="langToEditor[form.programmingLanguage]"
+            :lang="form.programmingLanguage"
             :key="form.programmingLanguage + '2'"
             editorHeight="200px"
           />
           Example solution to check that your unit tests are correct.
           <CodeEditor
             v-model="form.exampleSolution"
-            :lang="langToEditor[form.programmingLanguage]"
+            :lang="form.programmingLanguage"
             :key="form.programmingLanguage + '3'"
             editorHeight="200px"
           />
@@ -239,19 +239,6 @@ export default {
         { text: "Swift", value: "swift4" },
         { text: "Go", value: "go" },
       ],
-      langToEditor: {
-        // language names to editor mappings because ACE uses other names
-        "javascript-node": "javascript",
-        python3: "python",
-        "c-gcc": "c_cpp",
-        "cpp-gcc": "c_cpp",
-        "java-jdk": "java",
-        cs_mono: "csharp",
-        ruby: "ruby",
-        kotlin: "kotlin",
-        swift4: "swift",
-        go: "golang",
-      },
       codeOutput: "",
       submitting: false,
       runningCode: false,
