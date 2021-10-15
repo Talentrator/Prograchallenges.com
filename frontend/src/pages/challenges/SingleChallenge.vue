@@ -5,7 +5,7 @@
     </div>
     <div v-else>
       <Info :challengeData="challengeData" />
-      <FormulateComment />
+      <FormulateComment @refetch="fetchData()"/>
       <Comments :comments="challengeData.comments" />
     </div>
   </b-container>
@@ -33,9 +33,6 @@ export default {
         })
       ).data;
       this.challengeData.text = textToHTMLDisplayable(this.challengeData.text);
-      this.challengeData.comments.map((comment) => {
-        textToHTMLDisplayable(comment.text);
-      });
       this.loaded = true;
     },
   },

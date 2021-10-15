@@ -69,24 +69,24 @@
         </b-row>
         <div
           :class="{
-            'form-group--error': $v.form.commentText.$error,
+            'form-group--error': $v.form.text.$error,
             'form-group--ok':
-              !$v.form.commentText.$error && $v.form.commentText.$dirty,
+              !$v.form.text.$error && $v.form.text.$dirty,
           }"
         >
           <b-form-textarea
             rows="3"
-            v-model="form.commentText"
+            v-model="form.text"
             name="text"
             placeholder="Leave your answer here..."
-            v-model.trim="$v.form.commentText.$model"
+            v-model.trim="$v.form.text.$model"
             class="form__input"
             :class="{
-              'mb-2': !$v.form.commentText.$error,
+              'mb-2': !$v.form.text.$error,
             }"
           />
-          <div v-if="$v.form.commentText.$dirty">
-            <div class="error mb-2" v-if="!$v.form.commentText.required">
+          <div v-if="$v.form.text.$dirty">
+            <div class="error mb-2" v-if="!$v.form.text.required">
               Please input your answer
             </div>
           </div>
@@ -130,28 +130,28 @@ export default {
     form: {
       email: "",
       nickname: "",
-      commentText: "",
+      text: "",
     },
     submitting: false,
   }),
   methods: {
     async handleSubmit() {
       this.$v.$touch();
-      if (!this.$v.$invalid) {
-        this.submitting = true;
-        const insertChallenge = firebase
-          .functions()
-          .httpsCallable("insertComment");
+      if (this.$v.$invalid) return;
+      this.submitting = true;
+      const insertChallenge = firebase
+        .functions()
+        .httpsCallable("insertComment");
 
-        await insertChallenge({
-          ...this.form,
-          challengeId: this.$route.params.id,
-        });
+      await insertChallenge({
+        ...this.form,
+        challengeId: this.$route.params.id,
+      });
 
-        this.fetchData();
-        this.form = { email: "", nickname: "", commentText: "" };
-        this.$v.$reset();
-      }
+      this.$emit("refetch");
+      this.form = { email: "", nickname: "", text: "" };
+      this.$v.$reset();
+      this.submitting = false;
     },
   },
   validations: {
@@ -165,7 +165,7 @@ export default {
         minLength: minLength(4),
         maxLength: maxLength(20),
       },
-      commentText: {
+      text: {
         required,
       },
     },

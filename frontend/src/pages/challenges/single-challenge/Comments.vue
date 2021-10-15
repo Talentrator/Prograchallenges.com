@@ -9,13 +9,26 @@
       }"
     >
       <p class="text-muted m-0">{{ comment.nickname }}</p>
-      <p class="text-white" v-html="comment.commentText"></p>
+      <p
+        class="text-white"
+        v-html="
+          textToHTMLDisplayable(
+            comment.text ||
+              'Comment text couldn\'t be displayed'
+          )
+        "
+      ></p>
     </div>
   </div>
 </template>
 
 <script>
+import textToHTMLDisplayable from "../helpers/text_to_html_displayble";
+
 export default {
+  methods: {
+    textToHTMLDisplayable,
+  },
   props: {
     comments: {
       type: Array,
