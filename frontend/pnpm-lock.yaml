@@ -9,6 +9,7 @@ specifiers:
   babel-eslint: ^10.1.0
   bootstrap: ^5.1.1
   bootstrap-vue: ^2.21.2
+  brace: ^0.11.1
   core-js: ^3.6.5
   eslint: ^6.7.2
   eslint-plugin-vue: ^6.2.2
@@ -25,6 +26,7 @@ specifiers:
 dependencies:
   bootstrap: 5.1.1
   bootstrap-vue: 2.21.2_vue@2.6.14
+  brace: 0.11.1
   core-js: 3.17.3
   firebase: 8.10.0
   regenerator-runtime: 0.13.9
@@ -2765,6 +2767,10 @@ packages:
       balanced-match: 1.0.2
       concat-map: 0.0.1
     dev: true
+
+  /brace/0.11.1:
+    resolution: {integrity: sha1-SJb8ydVE7vRfS7dmDbMg07N5/lg=}
+    dev: false
 
   /braces/2.3.2:
     resolution: {integrity: sha512-aNdbnj9P8PjdXU4ybaWLK2IF3jc/EoDYbC7AazW6to3TRsfXxscC9UXOB5iDiEQrkyIbWp2SLQda4+QAa7nc3w==}
