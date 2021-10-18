@@ -1,43 +1,14 @@
 <template>
   <b-container>
     <div class="px-3 py-2 mx-auto max-width">
-      <h1 class="text-center mt-2 text-white">Create a challenge</h1>
+      <h1 class="text-center mt-2">Create a challenge</h1>
       <p class="text-muted text-center mb-3">
         Write your own challenge for others to attempt!
       </p>
-      <b-form class="px-0">
-        <b-form-group
-          id="input-group-1"
-          class="px-1 px-md-5 w-100 mx-auto max-width"
-        >
-          <div
-            :class="{
-              'form-group--error': $v.form.title.$error,
-              'form-group--ok': !$v.form.title.$error && $v.form.title.$dirty,
-            }"
-          >
-            <b-form-input
-              name="title"
-              v-model="form.title"
-              type="text"
-              class="form__input"
-              placeholder="Challenge Title"
-              v-model.trim="$v.form.title.$model"
-              :class="{
-                'mb-2': !$v.form.title.$error,
-              }"
-            />
-            <div v-if="$v.form.title.$dirty">
-              <div class="error mb-2" v-if="!$v.form.title.required">
-                Please input title
-              </div>
-              <div class="error mb-2" v-if="!$v.form.title.minLength">
-                Title must have at least
-                {{ $v.form.title.$params.minLength.min }} letters.
-              </div>
-            </div>
-          </div>
-          <b-row>
+      <b-form class="px-0 gig-small-container">
+        <DropDown>
+          <template v-slot:preview=""> About yourself </template>
+          <b-row class="p-0 m-0">
             <b-col lg="6" md="12">
               <div
                 :class="{
@@ -102,7 +73,39 @@
               </div>
             </b-col>
           </b-row>
-          <div
+        </DropDown>
+        <DropDown>
+          <template v-slot:preview=""> About the challenge</template>
+
+          <form
+            :class="{
+              'form-group--error': $v.form.title.$error,
+              'form-group--ok': !$v.form.title.$error && $v.form.title.$dirty,
+            }"
+          >
+            <b-form-input
+              name="title"
+              v-model="form.title"
+              type="text"
+              class="form__input"
+              placeholder="Challenge Title"
+              v-model.trim="$v.form.title.$model"
+              :class="{
+                'mb-2': !$v.form.title.$error,
+              }"
+            />
+            <div v-if="$v.form.title.$dirty">
+              <div class="error mb-2" v-if="!$v.form.title.required">
+                Please input title
+              </div>
+              <div class="error mb-2" v-if="!$v.form.title.minLength">
+                Title must have at least
+                {{ $v.form.title.$params.minLength.min }} letters.
+              </div>
+            </div>
+          </form>
+
+          <form
             :class="{
               'form-group--error': $v.form.text.$error,
               'form-group--ok': !$v.form.text.$error && $v.form.text.$dirty,
@@ -124,30 +127,75 @@
                 Please input some challenge text
               </div>
               <div class="error mb-2" v-if="!$v.form.text.minLength">
-                Your challenge must be at least 50 characters long
+                Your challenge description must be at least 20 characters long
               </div>
             </div>
+            <b-form-group
+              class="pt-2"
+              label="Test Programming language"
+              label-class="font-weight-bold"
+            >
+              <b-form-select
+                v-model="form.programmingLanguage"
+                :options="languages"
+              />
+            </b-form-group>
+          </form>
+        </DropDown>
+        <DropDown>
+          <template v-slot:preview=""> About the code </template>
+          Boilerplate Code
+          <CodeEditor
+            v-model="form.boilerplate"
+            :lang="form.programmingLanguage"
+            :key="form.programmingLanguage + '1'"
+            editorHeight="200px"
+          />
+          Unit-Test for the code.
+          <CodeEditor
+            v-model="form.unitTest"
+            :lang="form.programmingLanguage"
+            :key="form.programmingLanguage + '2'"
+            editorHeight="200px"
+          />
+          Example solution to check that your unit tests are correct.
+          <CodeEditor
+            v-model="form.exampleSolution"
+            :lang="form.programmingLanguage"
+            :key="form.programmingLanguage + '3'"
+            editorHeight="200px"
+          />
+          <div class="text-center">
+            <b-button block @click="runTest()" class="mt-2 p-1">
+              <b-icon-caret-right v-if="!runningCode" />
+              <b-spinner small v-else />
+            </b-button>
           </div>
-
-          <div class="d-md-flex my-2 justify-content-end text-primary">
-            <div
-              class="
+          <div v-if="codeOutput" class="bg-light text-dark mt-2 px-2">
+            {{ codeOutput }}
+          </div>
+        </DropDown>
+        {{ form.programmingLanguage }}
+        <div class="d-md-flex my-2 justify-content-end text-primary">
+          <div
+            class="
                 border border-primary
                 d-flex
                 align-items-center
                 p-2
                 justify-content-center justify-content-md-start
               "
-              style="cursor: pointer"
-              @click="handleSubmit"
-            >
-              <h4 class="m-0">SUBMIT</h4>
-              &nbsp;
-              <b-spinner variant="primary" small v-if="submitting" />&nbsp;
-              <b-icon-arrow-right-circle-fill class="text-primary" v-if="!submitting" />
-            </div>
+            style="cursor: pointer"
+            @click="handleSubmit"
+          >
+            SUBMIT
+            <b-spinner variant="primary" small v-if="submitting" />&nbsp;
+            <b-icon-arrow-right-circle-fill
+              class="text-primary"
+              v-if="!submitting"
+            />
           </div>
-        </b-form-group>
+        </div>
       </b-form>
     </div>
   </b-container>
@@ -161,6 +209,8 @@ import {
   email,
   maxLength,
 } from "vuelidate/lib/validators";
+import CodeEditor from "@/components/code-editor/CodeEditor.vue";
+import DropDown from "@/components/DropDown.vue";
 
 export default {
   name: "CreateChallenge",
@@ -171,14 +221,33 @@ export default {
         email: "",
         nickname: "",
         text: "",
+        programmingLanguage: "",
+        boilerplate: "",
+        unitTest: "",
+        exampleSolution: "",
       },
+      languages: [
+        { text: "Please select a programming language", value: null },
+        { text: "Javascript", value: "javascript-node" },
+        { text: "Python 3", value: "python3" },
+        { text: "C", value: "c-gcc" },
+        { text: "C++", value: "cpp-gcc" },
+        { text: "Java 8", value: "java-jdk" },
+        { text: "C#", value: "cs-mono" },
+        { text: "Ruby", value: "ruby" },
+        { text: "Kotlin", value: "kotlin" },
+        { text: "Swift", value: "swift4" },
+        { text: "Go", value: "go" },
+      ],
+      codeOutput: "",
       submitting: false,
+      runningCode: false,
     };
   },
   methods: {
-    handleSubmit: async function () {
+    handleSubmit: async function() {
       this.$v.$touch();
-      if(!this.$v.$invalid){
+      if (!this.$v.$invalid) {
         this.submitting = true;
         const insertChallenge = firebase
           .functions()
@@ -187,6 +256,17 @@ export default {
         this.$router.push(`/challenge/${result.data}`);
         this.$v.$reset();
       }
+    },
+    async runTest() {
+      this.runningCode = true;
+      this.codeOutput = (
+        await firebase.functions().httpsCallable("RunCode")({
+          code: `${this.form.exampleSolution}
+${this.form.unitTest}`,
+          lang: this.form.programmingLanguage,
+        })
+      ).data;
+      this.runningCode = false;
     },
   },
   validations: {
@@ -207,9 +287,13 @@ export default {
       },
       text: {
         required,
-        minLength: minLength(50),
+        minLength: minLength(20),
       },
     },
+  },
+  components: {
+    CodeEditor,
+    DropDown,
   },
 };
 </script>

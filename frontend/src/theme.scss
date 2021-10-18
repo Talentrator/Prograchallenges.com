@@ -89,7 +89,8 @@ a:hover {
 //
 // Colors
 
-$theme-colors: (primary: #c07095,
+$theme-colors: (
+    primary: #c07095,
     secondary: #dbb880,
     light: #ededed,
     dark: #151515,
@@ -125,6 +126,11 @@ $lead-font-size: 1.4rem;
 
 $spacer: 2rem;
 
+* {
+    --primary: #c07095;
+    --secondary: #dbb880;
+}
+
 //Form Validation Classes
 .form-group--error {
     animation-name: shakeError;
@@ -137,7 +143,7 @@ $spacer: 2rem;
 .form-group--ok input:focus,
 .form-group--ok textarea,
 .form-group--ok textarea:focus {
-    border: 2px solid #dbb880;
+    border: 2px solid var(--primary);
     box-shadow: unset;
 }
 
@@ -149,7 +155,7 @@ $spacer: 2rem;
 .form-group--error input:focus,
 .form-group--error textarea,
 .form-group--error textarea:focus {
-    border: 2px solid #c07095;
+    border: 2px solid var(--secondary);
     box-shadow: unset;
 }
 
@@ -159,7 +165,7 @@ $spacer: 2rem;
 
 .error {
     font-size: .8rem;
-    color: #c07095;
+    color: var(--secondary);
 }
 
 @keyframes shakeError {

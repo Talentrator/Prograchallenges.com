@@ -17,7 +17,9 @@
             >Contributors</b-link
           >
 
-          <a href="https://github.com/Talentrator/Prograchallenges.com#readme">Contribute</a>
+          <a href="https://github.com/Talentrator/Prograchallenges.com#readme"
+            >Contribute</a
+          >
         </div>
         <div class="my-2 my-md-0 mb-4">
           <h2>Contact Us</h2>
@@ -27,20 +29,23 @@
               href="mailto:prograchallenges@gmail.com"
               target="_blank"
               class="d-block text-light"
-              >support@talentrator.com</a
             >
+              support@talentrator.com
+            </a>
           </div>
           <div class="d-flex align-items-center">
             <img
               src="@/assets/logos/telegram-logo.svg"
               alt="Prograchallenges | Telegram"
-            />&nbsp;
+            />
+            &nbsp;
             <a
               href="https://telegram.me/prograchallenges"
               target="_blank"
               class="d-block text-light"
-              >Programming Challenges</a
             >
+              Programming Challenges
+            </a>
           </div>
           <div class="d-flex align-items-center">
             <img

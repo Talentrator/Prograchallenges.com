@@ -1,35 +1,27 @@
 <template>
   <div class="home">
-    <Banner />
-    <div class="text-center text-light">
-      <h1 class="letter-spacing pb-2 display-4 mt-4">Challenges</h1>
-      <p>
-        Choose a challenge, read the problem, write code, submit , that's it!
-      </p>
+    <div class="mb-5 text-center text-light">
+      <div class="display-1"> 🖥️</div>
+      <h1 class="pb-2 mt-4">Practice coding</h1>
+      <h3>And get from 0️⃣ to 🦸‍♀️!</h3>
     </div>
 
     <!-- Challenges component for homepage -->
     <div class="text-center" v-if="!loaded">
       <b-spinner variant="primary" />
     </div>
-    <div v-else>
-      <div
-        v-for="item in challenges"
-        :key="item.id"
-        class="my-3 mx-auto max-width"
-      >
-        <HomeChallenge :item="item" />
-      </div>
-    </div>
+    <b-row v-else class="justify-content-center">
+      <ChallengeCard
+        :challenge="challenge"
+        v-for="challenge in challenges"
+        :key="challenge.id"
+      />
+    </b-row>
 
     <div class="text-center">
-      <b-link
-        class="btn btn-primary mt-3"
-        style="border: none"
-        :to="{ name: 'challenges' }"
-      >
-        View More Challenges
-      </b-link>
+      <b-button variant="primary" class="mt-2" :to="{ name: 'challenges' }">
+        See all 
+      </b-button>
     </div>
     <OtherSections />
   </div>
@@ -37,15 +29,13 @@
 
 <script>
 import firebase from "firebase";
-import Banner from "./home/Banner.vue";
-import HomeChallenge from "../../components/HomeChallenge.vue";
+import ChallengeCard from "@/components/ChallengeCard.vue";
 import OtherSections from "./home/OtherSections.vue";
 
 export default {
   name: "Home",
   components: {
-    Banner,
-    HomeChallenge,
+    ChallengeCard,
     OtherSections,
   },
   data() {
@@ -72,9 +62,3 @@ export default {
   },
 };
 </script>
-
-<style>
-.letter-spacing {
-  letter-spacing: 5px !important;
-}
-</style>

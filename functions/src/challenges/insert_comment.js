@@ -7,7 +7,7 @@ const insertComment = functions.https.onCall(async (data) => {
         challengeId: z.string().min(1),
         email: z.string().min(1),
         nickname: z.string().min(1),
-        commentText: z.string().min(1)
+        text: z.string().min(1)
     })
 
     const InputData = mySchema.parse(data)

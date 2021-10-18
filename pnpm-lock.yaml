@@ -1,13 +1,33 @@
 lockfileVersion: 5.3
 
 specifiers:
+  brace: ^0.11.1
   regenerator-runtime: ^0.13.9
+  tio.js: ^1.1.0
+  vuejs-ace-editor: ^1.0.1
 
 dependencies:
+  brace: 0.11.1
   regenerator-runtime: 0.13.9
+  tio.js: 1.1.0
+  vuejs-ace-editor: 1.0.1
 
 packages:
 
+  /brace/0.11.1:
+    resolution: {integrity: sha1-SJb8ydVE7vRfS7dmDbMg07N5/lg=}
+    dev: false
+
   /regenerator-runtime/0.13.9:
     resolution: {integrity: sha512-p3VT+cOEgxFsRRA9X4lkI1E+k2/CtnKtU4gcxyaCUreilL/vqI6CdZ3wxVUx3UOUg+gnUOQQcRI7BmSI656MYA==}
+    dev: false
+
+  /tio.js/1.1.0:
+    resolution: {integrity: sha512-NqSEXSn/ZVjF1stV8Up0A3uYjCDUIITpiUDFqPQiU70SKHg1qpzhIfpbPTjHHTag/qWofC6abYb0bnYSweBmDg==}
+    dev: false
+
+  /vuejs-ace-editor/1.0.1:
+    resolution: {integrity: sha512-p89IW7pCqfqrvAxnwSTJUz2KkT1n9W+9LSJVQo7AKGbJ2RuLRVXkzqGB/90VCZJVgqPOXeW4SRV1mxXR0O4yBQ==}
+    dependencies:
+      brace: 0.11.1
     dev: false

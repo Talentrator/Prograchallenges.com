@@ -13,11 +13,11 @@
       <!-- Single challenge component -->
       <div v-else>
         <div
-          v-for="item in paginatedChallenges"
-          :key="item.id"
+          v-for="challenge in paginatedChallenges"
+          :key="challenge.id"
           class="my-3 mx-auto max-width"
         >
-          <Challenge :item="item" />
+          <Challenge :challenge="item" />
         </div>
 
         <b-pagination
@@ -54,7 +54,7 @@
 
 <script>
 import firebase from "firebase";
-import Challenge from "../../components/Challenge.vue";
+import Challenge from "../../components/ChallengeCard.vue";
 export default {
   name: "Challenges",
   components: { Challenge },
