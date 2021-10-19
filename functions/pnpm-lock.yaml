@@ -6,11 +6,13 @@ specifiers:
   firebase-admin: ^9.2.0
   firebase-functions: ^3.11.0
   firebase-functions-test: ^0.2.0
+  tio.js: ^1.1.0
   zod: ^3.8.2
 
 dependencies:
   firebase-admin: 9.11.1
   firebase-functions: 3.15.5_firebase-admin@9.11.1
+  tio.js: 1.1.0
   zod: 3.8.2
 
 devDependencies:
@@ -2091,6 +2093,10 @@ packages:
   /through/2.3.8:
     resolution: {integrity: sha1-DdTJ/6q8NXlgsbckEV1+Doai4fU=}
     dev: true
+
+  /tio.js/1.1.0:
+    resolution: {integrity: sha512-NqSEXSn/ZVjF1stV8Up0A3uYjCDUIITpiUDFqPQiU70SKHg1qpzhIfpbPTjHHTag/qWofC6abYb0bnYSweBmDg==}
+    dev: false
 
   /tmp/0.0.33:
     resolution: {integrity: sha512-jRCJlojKnZ3addtTOjdIqoRuPEKBvNXcGYqzO6zWZX8KfKEpnGY5jfggJQ3EjKuu8D4bJRr0y+cYJFmYbImXGw==}
