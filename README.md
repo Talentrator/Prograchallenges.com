@@ -1,4 +1,4 @@
-![imagee](frontend/src/assets/logo.svg)
+![imagee](frontend/src/assets/logos/logo.svg)
 # [Programming Challenges Website](https://prograchallenges.com) Official Code Repository
 [Prograchallenges.com](https://prograchallenges.com) is an open source project made for the Telegram group of [Programming Challenges](https://telegram.me/prograchallenges) , This website will always stay free. It is supposed to help programmers enhance their skills and non-programmers become one!
 <br>
