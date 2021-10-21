@@ -1,11 +1,11 @@
 const functions = require("firebase-functions");
 const admin = require('firebase-admin');
-const tio = require('tio.js');
+const codeExecutor = require('tio.js');
 
 async function evaluateCode (code, lang, unitTest) {
   const testingCode = `${code}
-${unitTest}`;
-  const result = await tio(testingCode, lang);
+  ${unitTest}`;
+  const result = await codeExecutor(testingCode, lang);
   return result.output;
 };
 
@@ -30,4 +30,4 @@ async function runCode(data) {
   return evaluateCode(code, lang, challenge.unitTest);
 }
 
-exports.default = functions.https.onCall(runCode);
+module.exports = functions.https.onCall(runCode);

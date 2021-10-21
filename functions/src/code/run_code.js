@@ -18,4 +18,4 @@ async function runCode(data) {
   return evaluateCode(code, lang);
 }
 
-exports.default = functions.https.onCall(runCode);
+module.exports = functions.https.onCall(runCode);
