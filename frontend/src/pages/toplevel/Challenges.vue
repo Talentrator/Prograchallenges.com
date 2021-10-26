@@ -15,9 +15,9 @@
         <div
           v-for="challenge in paginatedChallenges"
           :key="challenge.id"
-          class="my-3 mx-auto max-width"
+          class="my-3 mx-auto max-width d-flex align-items-center flex-column"
         >
-          <Challenge :challenge="item" />
+          <Challenge :challenge="challenge" />
         </div>
 
         <b-pagination
