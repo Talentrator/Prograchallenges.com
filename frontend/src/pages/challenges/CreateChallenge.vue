@@ -177,24 +177,11 @@
         </DropDown>
         {{ form.programmingLanguage }}
         <div class="d-md-flex my-2 justify-content-end text-primary">
-          <div
-            class="
-                border border-primary
-                d-flex
-                align-items-center
-                p-2
-                justify-content-center justify-content-md-start
-              "
-            style="cursor: pointer"
-            @click="handleSubmit"
-          >
+          <b-button variant="outline-primary" @click="handleSubmit">
             SUBMIT
             <b-spinner variant="primary" small v-if="submitting" />&nbsp;
-            <b-icon-arrow-right-circle-fill
-              class="text-primary"
-              v-if="!submitting"
-            />
-          </div>
+            <b-icon-arrow-right-circle-fill v-if="!submitting" />
+          </b-button>
         </div>
       </b-form>
     </div>
@@ -202,8 +189,8 @@
 </template>
 
 <script>
-import firebase from 'firebase/app';
-import 'firebase/functions';
+import firebase from "firebase/app";
+import "firebase/functions";
 import {
   required,
   minLength,
@@ -246,7 +233,7 @@ export default {
     };
   },
   methods: {
-    handleSubmit: async function() {
+    async handleSubmit() {
       this.$v.$touch();
       if (!this.$v.$invalid) {
         this.submitting = true;

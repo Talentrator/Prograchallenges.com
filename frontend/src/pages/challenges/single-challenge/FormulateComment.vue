@@ -70,8 +70,7 @@
         <div
           :class="{
             'form-group--error': $v.form.text.$error,
-            'form-group--ok':
-              !$v.form.text.$error && $v.form.text.$dirty,
+            'form-group--ok': !$v.form.text.$error && $v.form.text.$dirty,
           }"
         >
           <b-form-textarea
@@ -93,32 +92,19 @@
         </div>
       </b-form-group>
       <div class="d-md-flex my-2 justify-content-end text-primary">
-        <div
-          class="
-              border border-primary
-              d-flex
-              align-items-center
-              p-2
-              justify-content-center justify-content-md-start
-            "
-          style="cursor: pointer"
-          @click="handleSubmit"
-        >
-          <h4 class="m-0">POST</h4>
+        <b-button variant="outline-primary" @click="handleSubmit">
+          POST
           <b-spinner variant="primary" small v-if="submitting" />
-          <b-icon-arrow-right-circle-fill
-            class="text-primary"
-            v-if="!submitting"
-          />
-        </div>
+          <b-icon-arrow-right-circle-fill v-if="!submitting" />
+        </b-button>
       </div>
     </b-form>
   </div>
 </template>
 
 <script>
-import firebase from 'firebase/app';
-import 'firebase/functions';
+import firebase from "firebase/app";
+import "firebase/functions";
 import {
   required,
   minLength,

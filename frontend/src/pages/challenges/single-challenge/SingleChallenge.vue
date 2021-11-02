@@ -9,8 +9,7 @@
       <p class="my-3 text-white" v-html="challengeData.text"></p>
       <h3 class="mt-4 text-white">Your Answers</h3>
       <b-form class="d-flex flex-column">
-        <b-form-group id="input-group-1"
-          class="w-85 mr-3 max-width">
+        <b-form-group id="input-group-1" class="w-85 mr-3 max-width">
           <b-row>
             <b-col lg="6" md="12">
               <div
@@ -20,18 +19,18 @@
                     !$v.form.email.$error && $v.form.email.$dirty,
                 }"
               >
-              <b-form-input
-                name="email"
-                v-model="form.email"
-                type="email"
-                placeholder="codemonkey@gmail.com"
-                class="form__input"
+                <b-form-input
+                  name="email"
+                  v-model="form.email"
+                  type="email"
+                  placeholder="codemonkey@gmail.com"
+                  class="form__input"
                   v-model.trim="$v.form.email.$model"
                   :class="{
                     'mb-2': !$v.form.email.$error,
                   }"
-              />
-              <div v-if="$v.form.email.$dirty">
+                />
+                <div v-if="$v.form.email.$dirty">
                   <div class="error mb-2" v-if="!$v.form.email.required">
                     Please input email
                   </div>
@@ -49,18 +48,18 @@
                     !$v.form.nickname.$error && $v.form.nickname.$dirty,
                 }"
               >
-              <b-form-input
-                name="name"
-                v-model="form.nickname"
-                type="text"
-                placeholder="greatcoder12"
+                <b-form-input
+                  name="name"
+                  v-model="form.nickname"
+                  type="text"
+                  placeholder="greatcoder12"
                   v-model.trim="$v.form.nickname.$model"
                   class="form__input"
                   :class="{
                     'mb-2': !$v.form.nickname.$error,
                   }"
-              />
-              <div v-if="$v.form.nickname.$dirty">
+                />
+                <div v-if="$v.form.nickname.$dirty">
                   <div class="error mb-2" v-if="!$v.form.nickname.required">
                     Please input a nickname
                   </div>
@@ -79,21 +78,22 @@
           <div
             :class="{
               'form-group--error': $v.form.commentText.$error,
-              'form-group--ok': !$v.form.commentText.$error && $v.form.commentText.$dirty,
+              'form-group--ok':
+                !$v.form.commentText.$error && $v.form.commentText.$dirty,
             }"
           >
-          <b-form-textarea
-            rows="3"
-            v-model="form.commentText"
-            name="text"
-            placeholder="Leave your answer here..."
+            <b-form-textarea
+              rows="3"
+              v-model="form.commentText"
+              name="text"
+              placeholder="Leave your answer here..."
               v-model.trim="$v.form.commentText.$model"
               class="form__input"
               :class="{
                 'mb-2': !$v.form.commentText.$error,
               }"
-          />
-          <div v-if="$v.form.commentText.$dirty">
+            />
+            <div v-if="$v.form.commentText.$dirty">
               <div class="error mb-2" v-if="!$v.form.commentText.required">
                 Please input your answer
               </div>
@@ -101,22 +101,11 @@
           </div>
         </b-form-group>
         <div class="d-flex my-2 justify-content-end text-primary">
-          <div
-            class="
-              border border-primary
-              d-flex
-              align-items-center
-              p-2
-              justify-content-center justify-content-md-start
-            "
-            style="cursor: pointer; width: max-width;"
-            @click="handleSubmit"
-          >
-            <h4 class="m-0">SUBMIT</h4>
-            &nbsp;
+          <b-button variant="outline-primary" @click="handleSubmit">
+            SUBMIT
             <b-spinner variant="primary" small v-if="submitting" />
-            <b-icon-arrow-right-circle-fill class="text-primary" v-if="!submitting" />
-          </div>
+            <b-icon-arrow-right-circle-fill v-if="!submitting" />
+          </b-button>
         </div>
       </b-form>
       <div class="mb-5">
@@ -139,8 +128,8 @@
 </template>
 
 <script>
-import firebase from 'firebase/app';
-import 'firebase/functions';
+import firebase from "firebase/app";
+import "firebase/functions";
 import {
   required,
   minLength,
@@ -201,8 +190,8 @@ export default {
   mounted() {
     this.fetchData();
   },
-  validations:{
-    form:{
+  validations: {
+    form: {
       email: {
         required,
         email,
@@ -215,8 +204,8 @@ export default {
       commentText: {
         required,
       },
-    }
-  }
+    },
+  },
 };
 </script>
 
