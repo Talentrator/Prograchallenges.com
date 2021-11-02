@@ -16,7 +16,7 @@
         :key="item.id"
         class="my-3 mx-auto max-width"
       >
-        <Challenge :item="item" />
+        <ChallengeCard :challenge="challenge" />
       </div>
     </div>
 
@@ -32,15 +32,13 @@
 <script>
 import firebase from 'firebase/app';
 import 'firebase/functions';
-import Banner from "./home/Banner.vue";
-import Challenge from "../../components/Challenge.vue";
+import ChallengeCard from "../../components/ChallengeCard.vue";
 import OtherSections from "./home/OtherSections.vue";
 
 export default {
   name: "Home",
   components: {
-    Banner,
-    Challenge,
+    ChallengeCard,
     OtherSections,
   },
   data() {
