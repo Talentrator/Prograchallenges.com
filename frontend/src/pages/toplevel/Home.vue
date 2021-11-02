@@ -30,7 +30,8 @@
 </template>
 
 <script>
-import firebase from "firebase";
+import firebase from 'firebase/app';
+import 'firebase/functions';
 import Banner from "./home/Banner.vue";
 import Challenge from "../../components/Challenge.vue";
 import OtherSections from "./home/OtherSections.vue";

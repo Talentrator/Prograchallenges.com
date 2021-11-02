@@ -12,7 +12,8 @@
 </template>
 
 <script>
-import firebase from "firebase";
+import firebase from 'firebase/app';
+import 'firebase/functions';
 import ChallengeModule from "@/components/code-editor/ChallengeModule.vue";
 import Comments from "./single-challenge/Comments.vue";
 import FormulateComment from "./single-challenge/FormulateComment.vue";
