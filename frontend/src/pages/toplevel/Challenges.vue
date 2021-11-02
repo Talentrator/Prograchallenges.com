@@ -53,8 +53,8 @@
 </template>
 
 <script>
-import firebase from 'firebase/app';
-import 'firebase/functions';
+import firebase from "firebase/app";
+import "firebase/functions";
 import Challenge from "../../components/ChallengeCard.vue";
 export default {
   name: "Challenges",

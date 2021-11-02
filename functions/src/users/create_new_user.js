@@ -1,5 +1,6 @@
 const functions = require("firebase-functions");
 const admin = require("firebase-admin");
+const { getTimeStampOfNow } = require("../tools/get_time_stamp_of_now");
 const {
   ZODScreateNewUser,
   ZODSsocialLoginNewUser,
