@@ -10,17 +10,19 @@
     <div class="text-center" v-if="!loaded">
       <b-spinner variant="primary" />
     </div>
-    <b-row v-else class="justify-content-center">
-      <ChallengeCard
-        :challenge="challenge"
-        v-for="challenge in challenges"
-        :key="challenge.id"
-      />
-    </b-row>
+    <div v-else>
+      <div
+        v-for="item in challenges"
+        :key="item.id"
+        class="my-3 mx-auto max-width"
+      >
+        <Challenge :item="item" />
+      </div>
+    </div>
 
     <div class="text-center">
       <b-button variant="primary" class="mt-2" :to="{ name: 'challenges' }">
-        See all 
+        See all
       </b-button>
     </div>
     <OtherSections />
@@ -29,13 +31,15 @@
 
 <script>
 import firebase from "firebase";
-import ChallengeCard from "@/components/ChallengeCard.vue";
+import Banner from "./home/Banner.vue";
+import Challenge from "../../components/Challenge.vue";
 import OtherSections from "./home/OtherSections.vue";
 
 export default {
   name: "Home",
   components: {
-    ChallengeCard,
+    Banner,
+    Challenge,
     OtherSections,
   },
   data() {
