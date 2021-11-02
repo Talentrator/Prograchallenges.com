@@ -18,8 +18,6 @@ import ChallengeModule from "@/components/code-editor/ChallengeModule.vue";
 import Comments from "./single-challenge/Comments.vue";
 import FormulateComment from "./single-challenge/FormulateComment.vue";
 
-import textToHTMLDisplayable from "./helpers/text_to_html_displayble";
-
 export default {
   name: "SingleChallenge",
   data: () => ({
@@ -34,7 +32,6 @@ export default {
           id: this.$route.params.id,
         })
       ).data;
-      this.challengeData.text = textToHTMLDisplayable(this.challengeData.text);
       this.loaded = true;
     },
   },

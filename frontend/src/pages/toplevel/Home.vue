@@ -12,8 +12,8 @@
     </div>
     <div v-else>
       <div
-        v-for="item in challenges"
-        :key="item.id"
+        v-for="challenge in challenges"
+        :key="challenge.id"
         class="my-3 mx-auto max-width"
       >
         <ChallengeCard :challenge="challenge" />
