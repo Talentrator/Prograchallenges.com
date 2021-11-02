@@ -12,7 +12,7 @@
       <p
         class="text-white"
         v-html="
-          textToHTMLDisplayable(
+          marked(
             comment.text ||
               'Comment text couldn\'t be displayed'
           )
@@ -23,11 +23,11 @@
 </template>
 
 <script>
-import textToHTMLDisplayable from "../helpers/text_to_html_displayble";
+import { marked } from 'marked';
 
 export default {
   methods: {
-    textToHTMLDisplayable,
+    marked,
   },
   props: {
     comments: {
