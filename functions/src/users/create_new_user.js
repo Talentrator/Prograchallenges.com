@@ -1,10 +1,10 @@
 const functions = require("firebase-functions");
 const admin = require("firebase-admin");
-// TODO: Create schemes
-// const {
-//   ZODScreateNewUser,
-//   ZODSsocialLoginNewUser,
-// } = require("../../tools/schemes");
+const { getTimeStampOfNow } = require("../tools/get_time_stamp_of_now");
+const {
+  ZODScreateNewUser,
+  ZODSsocialLoginNewUser,
+} = require("../../tools/schemes");
 const generateUniqueId = require("../../tools/generate_unique_id");
 
 async function signupNewUser(uid, user) {
@@ -56,14 +56,12 @@ function getFullName(user) {
  */
 
 exports.default = functions.https.onCall(async (data, context) => {
-  const user = data;
-  // TODO: Check if given object is tightly correct
-  // data.socialAuth
-  //   ? ZODSsocialLoginNewUser.parse(data)
-  //   : ZODScreateNewUser.parse(data);
+  const user = data.socialAuth
+    ? ZODSsocialLoginNewUser.parse(data)
+    : ZODScreateNewUser.parse(data);
 
   try {
-    if (data.socialAuth) await admin.auth().deleteUser(user.uid);
+    if (user.socialAuth) await admin.auth().deleteUser(user.uid);
 
     const uid = await generateUniqueId("users", getFullName(user));
     await signupNewUser(uid, user);

@@ -79,6 +79,8 @@
 <script>
 import firebase from "firebase/app";
 import "firebase/functions";
+import 'firebase/auth';
+
 export default {
   data: () => ({
     email: "",
@@ -93,7 +95,7 @@ export default {
     async signUp() {
       this.loading = true;
       this.alert_text = "";
-      // TODO: First logout before logging back in
+      await firebase.auth().signOut();
       let loginObject = this.bundleLoginData();
       await firebase.functions().httpsCallable("CreateNewUser")(loginObject); // TODO: take the returned data object which indicates possible errors in signing up!
     },

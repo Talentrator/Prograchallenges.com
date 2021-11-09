@@ -15,7 +15,7 @@
           <b-tab title="Instructions">
             <div class="mt-2 mx-2">
               <b> {{ challenge.title }} </b> <br />
-              <span style="white-space: pre-wrap" v-html="challenge.text" />
+              <span v-html="compiledMarkdown" />
             </div>
           </b-tab>
           <b-tab title="Output" style="background: var(--dark)">
@@ -61,6 +61,8 @@ import firebase from "firebase/app";
 import "firebase/functions";
 import { mapState } from "vuex";
 
+import { marked } from 'marked';
+
 import CodeEditor from "./CodeEditor.vue";
 
 export default {
@@ -76,6 +78,9 @@ export default {
   }),
   computed: {
     ...mapState(["userObject"]),
+    compiledMarkdown() {
+      return marked(this.challenge.text);
+    }
   },
   props: {
     allowRunning: {
@@ -108,7 +113,7 @@ export default {
     async submit() {
       this.activeTab = 1;
       this.compiling = true;
-      
+
       const response = await firebase.functions().httpsCallable("EvaluateChallenge")({
         challengeId: this.$route.params.id,
         code: this.code,

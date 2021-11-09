@@ -38,8 +38,8 @@ export default {
     },
   },
   mounted() {
-    if (this.item.title.length > 23) {
-      this.item.title = this.item.title.slice(0, 20) + "...  ";
+    if (this.challenge.title.length > 23) {
+      this.challenge.title = this.challenge.title.slice(0, 20) + "...  ";
     }
   },
 };

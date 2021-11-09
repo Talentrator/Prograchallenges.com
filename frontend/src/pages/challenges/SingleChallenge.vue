@@ -12,12 +12,11 @@
 </template>
 
 <script>
-import firebase from "firebase";
+import firebase from 'firebase/app';
+import 'firebase/functions';
 import ChallengeModule from "@/components/code-editor/ChallengeModule.vue";
 import Comments from "./single-challenge/Comments.vue";
 import FormulateComment from "./single-challenge/FormulateComment.vue";
-
-import textToHTMLDisplayable from "./helpers/text_to_html_displayble";
 
 export default {
   name: "SingleChallenge",
@@ -33,7 +32,6 @@ export default {
           id: this.$route.params.id,
         })
       ).data;
-      this.challengeData.text = textToHTMLDisplayable(this.challengeData.text);
       this.loaded = true;
     },
   },
