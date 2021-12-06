@@ -6,7 +6,7 @@
 
     <b-row class="max-width">
       <b-col cols="12" md="4">
-        <div class="px-2 my-1 py-2 border border-primary">
+        <div class="px-2 my-1 py-2 border border-primary h-100">
           <h3 class="mt-2">🉐 Code And Learn</h3>
           <p class="">
             We have thousands of challenges which you can attempt and enhance
@@ -15,7 +15,7 @@
         </div>
       </b-col>
       <b-col cols="12" md="4">
-        <div class="px-2 my-1 py-2 border border-primary">
+        <div class="px-2 my-1 py-2 border border-primary h-100">
           <h3 class="mt-2">🤗 Make Friends!</h3>
           <p class="">
             Join our vast community on Telegram and make new Coder Friends !
@@ -23,7 +23,7 @@
         </div>
       </b-col>
       <b-col cols="12" md="4">
-        <div class="px-2 my-1 py-2 border border-primary">
+        <div class="px-2 my-1 py-2 border border-primary h-100">
           <h3 class="mt-2">👷‍♂️ Create</h3>
           <p class="">
             Challenge others by creating custom challenges on our platform
