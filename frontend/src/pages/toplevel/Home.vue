@@ -10,11 +10,12 @@
     <div class="text-center" v-if="!loaded">
       <b-spinner variant="primary" />
     </div>
-    <div v-else>
+    <div class="container w-100" v-else>
+      <h4 class="text-capitalize">Recent Challenges</h4>
       <div
         v-for="challenge in challenges"
         :key="challenge.id"
-        class="my-3 mx-auto max-width"
+        class="my-3 mx-auto"
       >
         <ChallengeCard :challenge="challenge" />
       </div>
