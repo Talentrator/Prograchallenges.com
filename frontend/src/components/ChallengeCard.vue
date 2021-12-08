@@ -15,21 +15,17 @@
   >
     <b-row class="pt-1">
       <b-col>
-        <h5 class="challenge-title">{{ challenge.title }}</h5>
+        <h5 class="challenge-title">{{ challengeTitle }}</h5>
         <p class="text-muted">26 min ago</p>
-        <p class="challenge-description">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate... <a href="#" class="more text-primary">More</a>
-        </p>
+        <p class="challenge-description" v-html="challengeDescription"></p>
         <div class="author-language pt-3 row">
           <div class="col-6">
             <small class="text-muted">by {{ challenge.nickname }}</small>
           </div>
           <div class="col-6 text-end">
-            <small class="text-muted">{{ challenge.programmingLanguage }}</small>
+            <small class="text-muted">{{
+              challenge.programmingLanguage
+            }}</small>
           </div>
         </div>
       </b-col>
@@ -51,15 +47,29 @@ export default {
       type: Object,
     },
   },
-  methods: {
-    redirectToSingleChallenge(id) {
-      this.$router.push({ name: "clg-single", params: { id } });
+  computed: {
+    challengeTitle(){
+      if (this.challenge.title.length > 20) {
+        return this.challenge.title.slice(0, 20) + `...`;
+      }
+
+      return this.challenge.title;
     },
-  },
-  mounted() {
-    if (this.challenge.title.length > 23) {
-      this.challenge.title = this.challenge.title.slice(0, 20) + "...  ";
+    challengeDescription() {
+      if (this.challenge.text.length > 500) {
+        return this.challenge.text.slice(0, 500) + `... <b-link to="${this.challengeLink}" class="more text-primary">More</b-link>`;
+      }
+
+      return this.challenge.text;
+    },
+    challengeLink(){
+      return {name: "clg-single", params: { id: this.challenge.id }};
     }
+  },
+  methods: {
+    redirectToSingleChallenge() {
+      this.$router.push(this.challengeLink);
+    },
   },
 };
 </script>
