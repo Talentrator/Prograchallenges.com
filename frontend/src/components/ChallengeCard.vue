@@ -17,7 +17,7 @@
       <b-col>
         <h5 class="challenge-title">{{ challengeTitle }}</h5>
         <p class="text-muted">26 min ago</p>
-        <p class="challenge-description" v-html="challengeDescription"></p>
+        <p class="challenge-description">{{ challengeDescription }}</p>
         <div class="author-language pt-3 row">
           <div class="col-6">
             <small class="text-muted">by {{ challenge.nickname }}</small>
@@ -29,12 +29,6 @@
           </div>
         </div>
       </b-col>
-      <!-- <b-col cols="3">
-        <p class="m-0">by {{ challenge.nickname }}</p>
-      </b-col>
-      <b-col cols="2">
-        <p class="m-0">{{ challenge.programmingLanguage }}</p>
-      </b-col> -->
     </b-row>
   </b-col>
 </template>
@@ -48,23 +42,19 @@ export default {
     },
   },
   computed: {
-    challengeTitle(){
-      if (this.challenge.title.length > 20) {
-        return this.challenge.title.slice(0, 20) + `...`;
-      }
-
-      return this.challenge.title;
+    challengeTitle() {
+      return this.challenge.title.length > 20
+        ? this.challenge.title.slice(0, 20) + `...`
+        : this.challenge.title;
     },
     challengeDescription() {
-      if (this.challenge.text.length > 500) {
-        return this.challenge.text.slice(0, 500) + `... <b-link to="${this.challengeLink}" class="more text-primary">More</b-link>`;
-      }
-
-      return this.challenge.text;
+      return this.challenge.text.length > 200
+        ? this.challenge.text.slice(0, 200) + "..."
+        : this.challenge.text;
     },
-    challengeLink(){
-      return {name: "clg-single", params: { id: this.challenge.id }};
-    }
+    challengeLink() {
+      return { name: "clg-single", params: { id: this.challenge.id } };
+    },
   },
   methods: {
     redirectToSingleChallenge() {
