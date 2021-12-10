@@ -1,33 +1,24 @@
 <template>
-  <b-col
+   <b-col
     class="
       p-1 p-md-2
-      px-lg-3
       text-white
       border border-primary
-      pc-cursor-pointer
       challenge
-      rounded
-      mb-3
+      pc-cursor-pointer
     "
     cols="12"
     @click="redirectToSingleChallenge(challenge.id)"
   >
     <b-row class="pt-1">
       <b-col>
-        <h5 class="challenge-title">{{ challengeTitle }}</h5>
-        <p class="text-muted">26 min ago</p>
-        <p class="challenge-description">{{ challengeDescription }}</p>
-        <div class="author-language pt-3 row">
-          <div class="col-6">
-            <small class="text-muted">by {{ challenge.nickname }}</small>
-          </div>
-          <div class="col-6 text-end">
-            <small class="text-muted">{{
-              challenge.programmingLanguage
-            }}</small>
-          </div>
-        </div>
+        <h5 class="challenge-title" :title="challengeDescription">{{ challenge.title }}</h5>
+      </b-col>
+      <b-col cols="3">
+        <p class="m-0">by {{ challenge.nickname }}</p>
+      </b-col>
+      <b-col cols="2">
+        <p class="m-0">{{ challenge.programmingLanguage }}</p>
       </b-col>
     </b-row>
   </b-col>
@@ -73,7 +64,7 @@ export default {
     }
   }
   .challenge-title {
-    transition: all 0.2s linear;
+    transition: all 0.1s linear;
     overflow-wrap: break-word;
     word-break: break-word;
   }

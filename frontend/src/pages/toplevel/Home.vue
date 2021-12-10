@@ -11,11 +11,25 @@
       <b-spinner variant="primary" />
     </div>
     <div class="container w-100" v-else>
-      <h4 class="text-capitalize">Recent Challenges</h4>
+      <div class="row mb-1">
+        <div class="col-sm-6">
+          <h4 class="text-capitalize">Recent Challenges</h4>
+        </div>
+        <div class="col-sm-6 text-end">
+          <b-link
+          class="btn btn-primary"
+          style="border: none"
+          :to="{ name: 'clg-create' }"
+        >
+          Create a Challenge
+        </b-link>
+        </div>
+      </div>
+      
       <div
         v-for="challenge in challenges"
         :key="challenge.id"
-        class="my-3 mx-auto"
+        class="my-2 mx-auto"
       >
         <ChallengeCard :challenge="challenge" />
       </div>
