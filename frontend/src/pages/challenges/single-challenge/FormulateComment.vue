@@ -73,23 +73,32 @@
             'form-group--ok': !$v.form.text.$error && $v.form.text.$dirty,
           }"
         >
-        <b-button variant="secondary" size="sm" class="px-1 py-1 mb-1" >Preview</b-button>
-          <b-form-textarea
-            rows="3"
-            v-model="form.text"
-            name="text"
-            placeholder="Leave your answer here..."
-            v-model.trim="$v.form.text.$model"
-            class="form__input"
-            :class="{
-              'mb-2': !$v.form.text.$error,
-            }"
-          />
-          <div v-if="$v.form.text.$dirty">
-            <div class="error mb-2" v-if="!$v.form.text.required">
-              Please input your answer
+          <b-button variant="secondary" size="sm" class="px-1 py-1 mb-1 text-capitalize" @click="previewMarkdown = !previewMarkdown"
+            >{{previewMarkdown ? "Continue Editing": "Preview"}}
+            </b-button
+          >
+          <div v-if="!previewMarkdown">
+            <b-form-textarea
+              rows="3"
+              v-model="form.text"
+              name="text"
+              placeholder="Leave your answer here..."
+              v-model.trim="$v.form.text.$model"
+              class="form__input"
+              :class="{
+                'mb-2': !$v.form.text.$error,
+              }"
+            />
+            <div v-if="$v.form.text.$dirty">
+              <div class="error mb-2" v-if="!$v.form.text.required">
+                Please input your answer
+              </div>
             </div>
           </div>
+
+         <div v-else>
+            <div v-html="markdownToHtml"></div>
+         </div>
         </div>
       </b-form-group>
       <div class="d-md-flex my-2 justify-content-end text-primary">
@@ -100,7 +109,6 @@
         </b-button>
       </div>
     </b-form>
-    <div v-html="markdownToHtml"></div>
   </div>
 </template>
 
@@ -113,7 +121,7 @@ import {
   email,
   maxLength,
 } from "vuelidate/lib/validators";
-import {marked} from "marked";
+import { marked } from "marked";
 
 export default {
   data: () => ({
@@ -123,6 +131,7 @@ export default {
       text: "",
     },
     submitting: false,
+    previewMarkdown: false,
   }),
   computed: {
     markdownToHtml() {
