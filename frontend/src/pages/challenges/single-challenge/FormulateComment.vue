@@ -73,6 +73,7 @@
             'form-group--ok': !$v.form.text.$error && $v.form.text.$dirty,
           }"
         >
+        <b-button variant="secondary" size="sm" class="px-1 py-1 mb-1" >Preview</b-button>
           <b-form-textarea
             rows="3"
             v-model="form.text"
@@ -99,6 +100,7 @@
         </b-button>
       </div>
     </b-form>
+    <div v-html="markdownToHtml"></div>
   </div>
 </template>
 
@@ -111,6 +113,7 @@ import {
   email,
   maxLength,
 } from "vuelidate/lib/validators";
+import {marked} from "marked";
 
 export default {
   data: () => ({
@@ -121,6 +124,11 @@ export default {
     },
     submitting: false,
   }),
+  computed: {
+    markdownToHtml() {
+      return marked(this.form.text);
+    },
+  },
   methods: {
     async handleSubmit() {
       this.$v.$touch();
