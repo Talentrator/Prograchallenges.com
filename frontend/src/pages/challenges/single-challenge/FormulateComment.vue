@@ -156,6 +156,7 @@ export default {
       this.form = { email: "", nickname: "", text: "" };
       this.$v.$reset();
       this.submitting = false;
+      this.previewMarkdown = false;
     },
   },
   validations: {

@@ -12,7 +12,7 @@
   >
     <b-row class="pt-1">
       <b-col>
-        <h5 class="challenge-title" :title="challengeDescription">{{ challenge.title }}</h5>
+        <h5 class="challenge-title">{{ challenge.title }}</h5>
       </b-col>
       <b-col cols="3">
         <p class="m-0">by {{ challenge.nickname }}</p>

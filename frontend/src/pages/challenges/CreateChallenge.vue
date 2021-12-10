@@ -111,24 +111,33 @@
               'form-group--ok': !$v.form.text.$error && $v.form.text.$dirty,
             }"
           >
-            <b-form-textarea
-              v-model="form.text"
-              rows="10"
-              name="text"
-              placeholder="Your awesome challenge here"
-              v-model.trim="$v.form.text.$model"
-              class="form__input"
-              :class="{
-                'mb-2': !$v.form.text.$error,
-              }"
-            />
-            <div v-if="$v.form.text.$dirty">
-              <div class="error mb-2" v-if="!$v.form.text.required">
-                Please input some challenge text
+          <b-button variant="secondary" size="sm" class="px-1 py-1 mb-1 text-capitalize" @click="previewMarkdown = !previewMarkdown"
+            >{{previewMarkdown ? "Continue Editing": "Preview"}}
+            </b-button
+          >
+            <div v-if="!previewMarkdown">
+              <b-form-textarea
+                v-model="form.text"
+                rows="10"
+                name="text"
+                placeholder="Your awesome challenge here"
+                v-model.trim="$v.form.text.$model"
+                class="form__input"
+                :class="{
+                  'mb-2': !$v.form.text.$error,
+                }"
+              />
+              <div v-if="$v.form.text.$dirty">
+                <div class="error mb-2" v-if="!$v.form.text.required">
+                  Please input some challenge text
+                </div>
+                <div class="error mb-2" v-if="!$v.form.text.minLength">
+                  Your challenge description must be at least 20 characters long
+                </div>
               </div>
-              <div class="error mb-2" v-if="!$v.form.text.minLength">
-                Your challenge description must be at least 20 characters long
-              </div>
+            </div>
+            <div v-else>
+              <div v-html="markdownToHtml"></div>
             </div>
             <b-form-group
               class="pt-2"
@@ -199,6 +208,7 @@ import {
 } from "vuelidate/lib/validators";
 import CodeEditor from "@/components/code-editor/CodeEditor.vue";
 import DropDown from "@/components/DropDown.vue";
+import {marked} from "marked";
 
 export default {
   name: "CreateChallenge",
@@ -230,7 +240,13 @@ export default {
       codeOutput: "",
       submitting: false,
       runningCode: false,
+      previewMarkdown: false,
     };
+  },
+  computed: {
+    markdownToHtml() {
+      return marked(this.form.text);
+    },
   },
   methods: {
     async handleSubmit() {
@@ -285,5 +301,3 @@ ${this.form.unitTest}`,
   },
 };
 </script>
-
-<style scoped></style>
