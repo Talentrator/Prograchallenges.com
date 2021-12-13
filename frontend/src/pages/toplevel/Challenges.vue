@@ -1,6 +1,6 @@
 <template>
   <b-container class="text-light">
-    <div class="text-light">
+    <div class="text-light w-100">
       <h1 class="text-center letter-spacing pb-2 display-4 mt-4">Challenges</h1>
       <p class="text-center">
         Choose a challenge, read the problem, write code, submit , that's it!
@@ -12,6 +12,18 @@
 
       <!-- Single challenge component -->
       <div v-else>
+        <div class="mb-3 row">
+          <div class="col-md-9"></div>
+          <div class="col-md-3">
+            <div class="d-flex align-items-center">
+              <label for="" class="fw-bold pe-2">Sort: </label>
+              <b-select name="sort" id="">
+                <option value="newest">Newest</option>
+                <option value="comments">Most Comments</option>
+              </b-select>
+            </div>
+          </div>
+        </div>
         <div
           v-for="challenge in paginatedChallenges"
           :key="challenge.id"

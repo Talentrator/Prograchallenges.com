@@ -73,10 +73,15 @@
             'form-group--ok': !$v.form.text.$error && $v.form.text.$dirty,
           }"
         >
-          <b-button variant="secondary" size="sm" class="px-1 py-1 mb-1 text-capitalize" @click="previewMarkdown = !previewMarkdown"
-            >{{previewMarkdown ? "Continue Editing": "Preview"}}
-            </b-button
+          <b-button
+            variant="secondary"
+            size="sm"
+            class="px-1 py-1 mb-1 text-capitalize"
+            @click="previewMarkdown = !previewMarkdown"
           >
+            {{ previewMarkdown ? "Continue Editing" : "Preview" }}
+          </b-button>
+
           <div v-if="!previewMarkdown">
             <b-form-textarea
               rows="3"
@@ -96,9 +101,24 @@
             </div>
           </div>
 
-         <div v-else>
-            <div v-html="markdownToHtml"></div>
-         </div>
+          <div v-else>
+            <div
+              v-for="(description, idx) in categorizeCodeSnippetsAndText(
+                form.text
+              )"
+              :key="`questionnaire-description-${idx}`"
+            >
+              <span v-if="description.type === 'code'">
+                <CodeEditor
+                  v-model="description.phrase"
+                  :languageId="langToEditor[description.lang] || 'javascript'"
+                  :canEdit="false"
+                  class="d-block"
+                  editorHeight="100px"
+              /></span>
+              <span v-else v-html="markdownToHtml(description.phrase)" />
+            </div>
+          </div>
         </div>
       </b-form-group>
       <div class="d-md-flex my-2 justify-content-end text-primary">
@@ -122,23 +142,40 @@ import {
   maxLength,
 } from "vuelidate/lib/validators";
 import { marked } from "marked";
+import CodeEditor from "@/components/code-editor/CodeEditor.vue";
 
 export default {
+  components: {
+    CodeEditor,
+  },
   data: () => ({
     form: {
       email: "",
       nickname: "",
       text: "",
     },
+    langToEditor: {
+      // language names to editor mappings because ACE uses other names
+      "javascript-node": "javascript",
+      python3: "python",
+      "c-gcc": "c_cpp",
+      "cpp-gcc": "c_cpp",
+      "java-jdk": "java",
+      cs_mono: "csharp",
+      ruby: "ruby",
+      kotlin: "kotlin",
+      swift4: "swift",
+      go: "golang",
+      rust: "rust",
+      scala: "scala",
+    },
     submitting: false,
     previewMarkdown: false,
   }),
-  computed: {
-    markdownToHtml() {
-      return marked(this.form.text);
-    },
-  },
   methods: {
+    markdownToHtml(markdown) {
+      return marked(markdown);
+    },
     async handleSubmit() {
       this.$v.$touch();
       if (this.$v.$invalid) return;
@@ -157,6 +194,37 @@ export default {
       this.$v.$reset();
       this.submitting = false;
       this.previewMarkdown = false;
+    },
+    categorizeCodeSnippetsAndText(text) {
+      const phrases = [];
+      let currentPhrase = "";
+      let backtickCount = 0;
+      let isIteratingThroughCode = false;
+      const occurences = (text.match(/```/g) || []).length;
+      if (occurences === 0 || occurences % 2)
+        phrases.push({ phrase: text, type: "text" });
+      else {
+        text.split("").forEach((currentCharacter) => {
+          if (currentCharacter === "`") {
+            backtickCount += 1;
+            if (backtickCount === 3) {
+              backtickCount = 0;
+              phrases.push({
+                phrase: isIteratingThroughCode ? currentPhrase.substr(currentPhrase.indexOf('\n')).trim() : currentPhrase,
+                type: isIteratingThroughCode ? "code" : "text",
+                lang: isIteratingThroughCode ? currentPhrase.substr(0, currentPhrase.indexOf('\n')).trim() : null,
+              });
+              currentPhrase = "";
+              isIteratingThroughCode = !isIteratingThroughCode;
+            }
+          } else {
+            currentPhrase += currentCharacter;
+          }
+        });
+      }
+      if (currentPhrase.length)
+        phrases.push({ phrase: currentPhrase, type: "text" });
+      return phrases;
     },
   },
   validations: {
