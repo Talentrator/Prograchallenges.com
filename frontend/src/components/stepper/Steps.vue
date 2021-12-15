@@ -59,7 +59,8 @@ export default {
 <style lang="scss">
 .steps {
   margin: 20px 0 20px 20px;
-  max-width: 300px;
+  //   max-width: 300px;
+  width: 100%;
   .step {
     min-height: 50px;
     border: 1px solid #ddd;

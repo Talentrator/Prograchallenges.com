@@ -278,9 +278,11 @@ export default {
   methods: {
     changeStep(step) {
       if (step == 2 && this.isValidStepOne()) {
-        this.currentStep = step;
+        this.currentStep = 2;
       } else if(step == 3 && this.isValidStepTwo()){
-        this.currentStep = step;
+        this.currentStep = 3;
+      }else{
+        this.currentStep = 1;
       }
     },
     isValidStepOne() {
