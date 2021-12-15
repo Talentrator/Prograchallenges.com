@@ -116,7 +116,7 @@
                   class="d-block"
                   editorHeight="100px"
               /></span>
-              <span v-else v-html="markdownToHtml(description.phrase)" />
+              <span v-else v-html="marked(description.phrase)" />
             </div>
           </div>
         </div>
@@ -143,6 +143,7 @@ import {
 } from "vuelidate/lib/validators";
 import { marked } from "marked";
 import CodeEditor from "@/components/code-editor/CodeEditor.vue";
+import { categorizeCodeSnippetsAndText } from "@/pages/challenges/helpers/helpers.js";
 
 export default {
   components: {
@@ -173,9 +174,8 @@ export default {
     previewMarkdown: false,
   }),
   methods: {
-    markdownToHtml(markdown) {
-      return marked(markdown);
-    },
+    marked,
+    categorizeCodeSnippetsAndText,
     async handleSubmit() {
       this.$v.$touch();
       if (this.$v.$invalid) return;
@@ -194,37 +194,6 @@ export default {
       this.$v.$reset();
       this.submitting = false;
       this.previewMarkdown = false;
-    },
-    categorizeCodeSnippetsAndText(text) {
-      const phrases = [];
-      let currentPhrase = "";
-      let backtickCount = 0;
-      let isIteratingThroughCode = false;
-      const occurences = (text.match(/```/g) || []).length;
-      if (occurences === 0 || occurences % 2)
-        phrases.push({ phrase: text, type: "text" });
-      else {
-        text.split("").forEach((currentCharacter) => {
-          if (currentCharacter === "`") {
-            backtickCount += 1;
-            if (backtickCount === 3) {
-              backtickCount = 0;
-              phrases.push({
-                phrase: isIteratingThroughCode ? currentPhrase.substr(currentPhrase.indexOf('\n')).trim() : currentPhrase,
-                type: isIteratingThroughCode ? "code" : "text",
-                lang: isIteratingThroughCode ? currentPhrase.substr(0, currentPhrase.indexOf('\n')).trim() : null,
-              });
-              currentPhrase = "";
-              isIteratingThroughCode = !isIteratingThroughCode;
-            }
-          } else {
-            currentPhrase += currentCharacter;
-          }
-        });
-      }
-      if (currentPhrase.length)
-        phrases.push({ phrase: currentPhrase, type: "text" });
-      return phrases;
     },
   },
   validations: {
