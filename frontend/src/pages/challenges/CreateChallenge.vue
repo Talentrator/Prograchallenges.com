@@ -1,5 +1,5 @@
 <template>
-  <b-container>
+  <b-container fluid="lg">
     <b-row>
       <b-col md="4" class="d-flex align-items-center">
         <steps :currentStep="currentStep" @changeStep="changeStep" />
