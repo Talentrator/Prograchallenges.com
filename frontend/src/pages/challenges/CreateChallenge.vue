@@ -81,7 +81,9 @@
                   </div>
                 </b-col>
                 <div class="text-center mt-2">
-                  <b-button variant="outline-primary" @click="changeStep(2)"> Next </b-button>
+                  <b-button variant="outline-primary" @click="changeStep(2)">
+                    Next
+                  </b-button>
                 </div>
               </b-row>
             </template>
@@ -170,7 +172,9 @@
               </form>
 
               <div class="text-center mt-2">
-                <b-button variant="outline-primary" @click="changeStep(3)"> Next </b-button>
+                <b-button variant="outline-primary" @click="changeStep(3)">
+                  Next
+                </b-button>
               </div>
             </template>
 
@@ -277,11 +281,11 @@ export default {
   },
   methods: {
     changeStep(step) {
-      if (step == 2 && this.isValidStepOne()) {
-        this.currentStep = 2;
-      } else if(step == 3 && this.isValidStepTwo()){
-        this.currentStep = 3;
-      }else{
+      if (step == 2) {
+        return this.isValidStepOne() ? this.currentStep = 2 : '';
+      } else if (step == 3) {
+        return this.isValidStepTwo() ? this.currentStep = 3 : '';
+      } else {
         this.currentStep = 1;
       }
     },

@@ -14,10 +14,10 @@
       <b-col>
         <h5 class="challenge-title">{{ challenge.title }}</h5>
       </b-col>
-      <b-col cols="3">
+      <b-col md="3" class="text-end">
         <p class="m-0">by {{ challenge.nickname }}</p>
       </b-col>
-      <b-col cols="2">
+      <b-col md="2" class="text-end">
         <p class="m-0">{{ challenge.programmingLanguage }}</p>
       </b-col>
     </b-row>

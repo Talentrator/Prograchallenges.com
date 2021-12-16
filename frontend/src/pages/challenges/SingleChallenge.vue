@@ -3,7 +3,7 @@
     <div class="text-center" v-if="!loaded">
       <b-spinner variant="primary" />
     </div>
-    <div v-else>
+    <div v-else class="">
       <ChallengeModule v-model="code" :challenge="challengeData" />
       <FormulateComment @refetch="fetchData()"/>
       <Comments :comments="challengeData.comments" />

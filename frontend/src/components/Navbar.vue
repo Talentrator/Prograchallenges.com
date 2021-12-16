@@ -1,5 +1,5 @@
 <template>
-  <b-navbar toggleable="md" variant="dark" class="text-white px-3">
+  <b-navbar toggleable="md" variant="dark" class="text-white px-xl-3 px-1">
     <b-navbar-brand :to="{ name: 'tld-home' }">
       <b-img :src="require('../assets/logos/logo.svg')" style="max-height:3.5rem"></b-img>
     </b-navbar-brand>
