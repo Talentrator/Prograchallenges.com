@@ -5,7 +5,7 @@
     </h1>
 
     <b-row class="max-width">
-      <b-col cols="12" md="4">
+      <b-col cols="12" md="4" class="mb-2 mb-md-0">
         <div class="px-2 my-1 py-2 border border-primary h-100">
           <h3 class="mt-2">🉐 Code And Learn</h3>
           <p class="">
@@ -14,7 +14,7 @@
           </p>
         </div>
       </b-col>
-      <b-col cols="12" md="4">
+      <b-col cols="12" md="4" class="mb-2 mb-md-0">
         <div class="px-2 my-1 py-2 border border-primary h-100">
           <h3 class="mt-2">🤗 Make Friends!</h3>
           <p class="">
@@ -22,7 +22,7 @@
           </p>
         </div>
       </b-col>
-      <b-col cols="12" md="4">
+      <b-col cols="12" md="4" class="mb-2 mb-md-0">
         <div class="px-2 my-1 py-2 border border-primary h-100">
           <h3 class="mt-2">👷‍♂️ Create</h3>
           <p class="">

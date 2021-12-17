@@ -2,14 +2,25 @@
   <b-container fluid="lg">
     <b-row>
       <b-col md="4" class="d-flex align-items-center">
-        <steps :currentStep="currentStep" @changeStep="changeStep" />
-      </b-col>
-      <b-col md="8">
-        <div class="px-3 py-2 mx-auto max-width">
+        <div class="w-100">
+          <div class="d-block d-md-block mb-3">
           <h1 class="text-center mt-2">Create a challenge</h1>
           <p class="text-muted text-center mb-3">
             Write your own challenge for others to attempt!
           </p>
+        </div>
+
+        <steps :currentStep="currentStep" @changeStep="changeStep" />
+        </div>
+      </b-col>
+      <b-col md="8">
+        <div class="px-1 px-md-3 pt-2 pb-4 mx-auto max-width">
+          <div class="d-none d-md-block">
+            <h1 class="text-center mt-2">Create a challenge</h1>
+            <p class="text-muted text-center mb-3">
+              Write your own challenge for others to attempt!
+            </p>
+          </div>
           <b-form class="px-0 gig-small-container">
             <template v-if="currentStep == 1">
               <h3>About yourself</h3>
@@ -282,9 +293,9 @@ export default {
   methods: {
     changeStep(step) {
       if (step == 2) {
-        return this.isValidStepOne() ? this.currentStep = 2 : '';
+        return this.isValidStepOne() ? (this.currentStep = 2) : "";
       } else if (step == 3) {
-        return this.isValidStepTwo() ? this.currentStep = 3 : '';
+        return this.isValidStepTwo() ? (this.currentStep = 3) : "";
       } else {
         this.currentStep = 1;
       }
