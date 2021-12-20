@@ -1,7 +1,5 @@
 // Variables
 //
-// breakpoints
-@import "~bootstrap/scss/bootstrap-utilities";
 // Colors
 $theme-colors: ( primary: #c07095, secondary: #dbb880, light: #ededed, dark: #151515, info: #131254, success: #080808, warning: #ffc107, danger: #dc3545, );
 $white: #fff;
@@ -40,3 +38,5 @@ $enable-transitions: true;
 $enable-hover-media-query: false;
 $enable-grid-classes: true;
 $enable-print-styles: true;
+// bootstrap utilities i.e. mixins and breakpoints
+@import "~bootstrap/scss/bootstrap-utilities";
