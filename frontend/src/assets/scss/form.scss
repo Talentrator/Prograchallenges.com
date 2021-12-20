@@ -1,0 +1,45 @@
+@import "partials/variables";
+// form styles
+.form-control,
+.form-control:focus {
+  border: 2px solid map-get($theme-colors, dark);
+}
+
+.form-control::-webkit-input-placeholder {
+  color: #bbb;
+}
+
+
+//Form Validation Classes
+.form-group--error {
+    animation-name: shakeError;
+    animation-fill-mode: forwards;
+    animation-duration: 0.6s;
+    animation-timing-function: ease-in-out;
+  }
+  
+  .form-group--ok input,
+  .form-group--ok input:focus,
+  .form-group--ok textarea,
+  .form-group--ok textarea:focus {
+    border: 2px solid var(--primary);
+    box-shadow: unset;
+  }
+  
+  .form__input {
+    transition: border 0.1s ease;
+  }
+  
+  .form-group--error input,
+  .form-group--error input:focus,
+  .form-group--error textarea,
+  .form-group--error textarea:focus {
+    border: 2px solid var(--secondary);
+    box-shadow: unset;
+  }
+  
+  
+  .error {
+    font-size: 0.8rem;
+    color: var(--secondary);
+  }

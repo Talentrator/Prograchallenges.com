@@ -73,20 +73,50 @@
             'form-group--ok': !$v.form.text.$error && $v.form.text.$dirty,
           }"
         >
-          <b-form-textarea
-            rows="3"
-            v-model="form.text"
-            name="text"
-            placeholder="Leave your answer here..."
-            v-model.trim="$v.form.text.$model"
-            class="form__input"
-            :class="{
-              'mb-2': !$v.form.text.$error,
-            }"
-          />
-          <div v-if="$v.form.text.$dirty">
-            <div class="error mb-2" v-if="!$v.form.text.required">
-              Please input your answer
+          <b-button
+            variant="secondary"
+            size="sm"
+            class="px-1 py-1 mb-1 text-capitalize"
+            @click="previewMarkdown = !previewMarkdown"
+          >
+            {{ previewMarkdown ? "Continue Editing" : "Preview" }}
+          </b-button>
+
+          <div v-if="!previewMarkdown">
+            <b-form-textarea
+              rows="3"
+              v-model="form.text"
+              name="text"
+              placeholder="Leave your answer here..."
+              v-model.trim="$v.form.text.$model"
+              class="form__input"
+              :class="{
+                'mb-2': !$v.form.text.$error,
+              }"
+            />
+            <div v-if="$v.form.text.$dirty">
+              <div class="error mb-2" v-if="!$v.form.text.required">
+                Please input your answer
+              </div>
+            </div>
+          </div>
+
+          <div v-else>
+            <div
+              v-for="(description, idx) in categorizeCodeSnippetsAndText(
+                form.text
+              )"
+              :key="`questionnaire-description-${idx}`"
+            >
+              <span v-if="description.type === 'code'">
+                <CodeEditor
+                  v-model="description.phrase"
+                  :languageId="langToEditor[description.lang] || 'javascript'"
+                  :canEdit="false"
+                  class="d-block"
+                  editorHeight="100px"
+              /></span>
+              <span v-else v-html="marked(description.phrase)" />
             </div>
           </div>
         </div>
@@ -111,17 +141,41 @@ import {
   email,
   maxLength,
 } from "vuelidate/lib/validators";
+import { marked } from "marked";
+import CodeEditor from "@/components/code-editor/CodeEditor.vue";
+import { categorizeCodeSnippetsAndText } from "@/pages/challenges/helpers/helpers.js";
 
 export default {
+  components: {
+    CodeEditor,
+  },
   data: () => ({
     form: {
       email: "",
       nickname: "",
       text: "",
     },
+    langToEditor: {
+      // language names to editor mappings because ACE uses other names
+      "javascript-node": "javascript",
+      python3: "python",
+      "c-gcc": "c_cpp",
+      "cpp-gcc": "c_cpp",
+      "java-jdk": "java",
+      cs_mono: "csharp",
+      ruby: "ruby",
+      kotlin: "kotlin",
+      swift4: "swift",
+      go: "golang",
+      rust: "rust",
+      scala: "scala",
+    },
     submitting: false,
+    previewMarkdown: false,
   }),
   methods: {
+    marked,
+    categorizeCodeSnippetsAndText,
     async handleSubmit() {
       this.$v.$touch();
       if (this.$v.$invalid) return;
@@ -139,6 +193,7 @@ export default {
       this.form = { email: "", nickname: "", text: "" };
       this.$v.$reset();
       this.submitting = false;
+      this.previewMarkdown = false;
     },
   },
   validations: {

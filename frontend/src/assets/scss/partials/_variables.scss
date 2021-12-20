@@ -1,0 +1,51 @@
+// Variables
+//
+// Colors
+
+$theme-colors: (
+  primary: #c07095,
+  secondary: #dbb880,
+  light: #ededed,
+  dark: #151515,
+  info: #131254,
+  success: #080808,
+  warning: #ffc107,
+  danger: #dc3545,
+);
+
+$white: #fff;
+$body-bg: #fff;
+$body-color: #222222;
+
+$body-color-inverse: invert($body-color) !default;
+$link-color: map-get($theme-colors, secondary);
+
+
+// Fonts
+$font-family-base: "Gotham Book", -apple-system, BlinkMacSystemFont, "Segoe UI",
+  Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
+  "Segoe UI Emoji", "Segoe UI Symbol";
+$headings-font-family: $font-family-base;
+$display-font-family: $font-family-base;
+$font-weight-normal: 400;
+$headings-font-weight: 400;
+$lead-font-size: 1.4rem;
+
+$spacer: 2rem;
+
+// animation variables
+$duration: 0.2s;
+$distance: 8px;
+$easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+
+// Options
+//
+// Quickly modify global styling by enabling or disabling optional features.
+
+$enable-rounded: false !default;
+$enable-shadows: false;
+$enable-transitions: true;
+$enable-hover-media-query: false;
+$enable-grid-classes: true;
+$enable-print-styles: true;
