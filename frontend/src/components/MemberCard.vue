@@ -37,27 +37,29 @@ export default {
 };
 </script>
 
-<style scoped>
-  .card {
-    width: min-content;
-    border-radius: 0;
-  }
+<style lang="scss" scoped>
+.card {
+  width: 100%;
+  border-radius: 0;
+}
 
+.card-img-top {
+  width: 100%;
+  height: 43vw;
+  max-height: 24rem;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+@include media-breakpoint-down(md) {
   .card-img-top {
-    width: 43vw;
-    max-width: 24rem;
-    height: 43vw;
-    max-height: 24rem;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
+    width: 100%;
+    height: 50vw;
   }
-
-  @media (max-width: 768px) {
-    .card-img-top {
-      width: 80vw;
-      max-width: 24rem;
-      height: 80vw;
-      max-height: 24rem;
-    }
+}
+@include media-breakpoint-down(sm) {
+  .card-img-top {
+    height: 90vw;
   }
+}
 </style>
