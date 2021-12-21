@@ -7,11 +7,11 @@
       </p>
 
       <div class="mb-3 row">
-        <div class="col-md-9"></div>
-        <div class="col-md-3 d-flex justify-content-end mt-3 mt-md-0">
+        <div class="col-md-8"></div>
+        <div class="col-md-4 d-flex justify-content-end mt-3 mt-md-0">
           <div class="d-flex align-items-center">
             <label for="" class="fw-bold pe-2">Sort: </label>
-            <b-select v-model="sortBy" :disabled="!loaded">
+            <b-select v-model="sortBy" :disabled="!loaded" class="form-select">
               <option
                 :value="sortOption.value"
                 v-for="sortOption in sortOptions"

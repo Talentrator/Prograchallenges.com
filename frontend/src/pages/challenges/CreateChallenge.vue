@@ -3,14 +3,14 @@
     <b-row>
       <b-col md="4" class="d-flex align-items-center">
         <div class="w-100">
-          <div class="d-block d-md-block mb-3">
-          <h1 class="text-center mt-2">Create a challenge</h1>
-          <p class="text-muted text-center mb-3">
-            Write your own challenge for others to attempt!
-          </p>
-        </div>
+          <div class="d-block d-md-none mb-3">
+            <h1 class="text-center mt-2">Create a challenge</h1>
+            <p class="text-muted text-center mb-3">
+              Write your own challenge for others to attempt!
+            </p>
+          </div>
 
-        <steps :currentStep="currentStep" @changeStep="changeStep" />
+          <steps :currentStep="currentStep" @changeStep="changeStep" />
         </div>
       </b-col>
       <b-col md="8">
