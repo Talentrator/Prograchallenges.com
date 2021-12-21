@@ -1,24 +1,55 @@
 <template>
-  <div class="steps">
-    <div
-      :class="`step rounded ${index + 1 === currentStep ? 'active' : ''}`"
-      v-for="(step, index) in steps"
-      :key="step.title"
-      @click="changeStep(index + 1)"
-    >
-      <div class="d-flex align-items-center step-title">
-        {{ step.title }} ({{ index + 1 }})
+  <span class="w-100">
+    <div class="steps d-none d-md-block">
+      <div
+        :class="`step rounded ${index + 1 === currentStep ? 'active' : ''}`"
+        v-for="(step, index) in steps"
+        :key="step.title"
+      >
+        <div
+          class="d-flex align-items-center step-title"
+          @click="changeStep($event)"
+          :data-step="index + 1"
+        >
+          {{ step.title }} ({{ index + 1 }})
+        </div>
+        <div class="step-details">
+          <p class="pt-3">
+            {{ step.description }}
+          </p>
+        </div>
       </div>
-      <div class="step-details">
-        <p class="pt-3">
-          {{ step.description }}
+    </div>
+
+    <div class="smallscreen-steps d-md-none d-block w-100">
+      <div class="w-100">
+        <div class="d-flex">
+          <div
+            :class="`step ${index + 1 <= currentStep ? 'active' : ''}`"
+            v-for="(step, index) in steps"
+            :key="step.title"
+          >
+            <div
+              class="border"
+              @click="changeStep"
+              :data-step="index + 1"
+              :title="step.description"
+            >
+              {{ index + 1 }}
+            </div>
+          </div>
+        </div>
+        <p class="text-muted text-center my-4">
+          {{ currentStepDetails.description }}
         </p>
       </div>
     </div>
-  </div>
+  </span>
 </template>
 
 <script>
+import "@/assets/scss/steps.scss";
+
 export default {
   name: "Steps",
   emits: ["changeStep"],
@@ -48,42 +79,16 @@ export default {
       ],
     };
   },
+  computed: {
+    currentStepDetails() {
+      return this.steps[this.currentStep - 1];
+    },
+  },
   methods: {
-    changeStep(step) {
+    changeStep(event) {
+      let step = event.target.dataset.step || 1;
       this.$emit("changeStep", step);
     },
   },
 };
 </script>
-
-<style lang="scss">
-.steps {
-  margin: 20px 0 20px 20px;
-  //   max-width: 300px;
-  width: 100%;
-  .step {
-    min-height: 50px;
-    border: 1px solid #ddd;
-    width: 100%;
-    padding-left: 10px;
-    margin-bottom: 10px;
-    cursor: pointer;
-    .step-title {
-      height: 50px;
-    }
-    &.active {
-      border: 1px solid map-get($map: $theme-colors, $key: primary);
-      .step-title {
-        font-weight: bold;
-      }
-      .step-details {
-        display: block;
-      }
-    }
-    .step-details {
-      display: none;
-      transition: all 0.3s linear;
-    }
-  }
-}
-</style>

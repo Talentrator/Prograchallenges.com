@@ -1,0 +1,20 @@
+@import "~bootstrap/scss/bootstrap-utilities";
+@import "~bootstrap/scss/mixins";
+$mySpacer: 1rem;
+@include media-breakpoint-down(lg) {
+    .btn {
+        padding: calc($mySpacer / 1.8) calc($mySpacer) !important;
+        font-size: calc($mySpacer * 0.9);
+    }
+    .btn-sm {
+        padding: calc($mySpacer / 2) calc($mySpacer * 1.2);
+        font-size: calc($mySpacer * 0.7);
+    }
+}
+
+@include media-breakpoint-between(lg, xl) {
+    .btn {
+        padding: calc($mySpacer / 1.5) calc($mySpacer * 1.3) !important;
+        font-size: calc($mySpacer * 0.9);
+    }
+}

@@ -1,0 +1,99 @@
+.steps {
+  margin: 20px 0 20px 20px;
+  //   max-width: 300px;
+  width: 100%;
+  .step {
+    min-height: 50px;
+    border: 1px solid #ddd;
+    width: 100%;
+    padding-left: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    .step-title {
+      height: 50px;
+    }
+    &.active {
+      border: 1px solid map-get($map: $theme-colors, $key: primary);
+      .step-title {
+        font-weight: bold;
+      }
+      .step-details {
+        display: block;
+      }
+    }
+    .step-details {
+      display: none;
+      transition: all 0.3s linear;
+    }
+  }
+}
+
+.smallscreen-steps {
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-between;
+  overflow-x: hidden;
+  .step {
+    position: relative;
+    width: calc(100% / 3);
+    > div {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      z-index: 2;
+      position: relative;
+      background-color: var(--bs-body-color);
+      cursor: pointer;
+    }
+    display: flex;
+    justify-content: center;
+
+    &.active {
+      &::after,
+      &::before {
+        background: map-get($map: $theme-colors, $key: primary);
+      }
+      > div {
+        background-color: map-get($map: $theme-colors, $key: primary);
+        border: 1px solid map-get($map: $theme-colors, $key: primary) !important;
+      }
+    }
+
+    &:first-child {
+      &::before {
+        border-right: 1px solid map-get($map: $theme-colors, $key: primary) !important;
+      }
+    }
+
+    &::before {
+      position: absolute;
+      content: "";
+      border-bottom: 1px solid map-get($map: $theme-colors, $key: primary) !important;
+      border-top: 1px solid map-get($map: $theme-colors, $key: primary) !important;
+      height: 10px;
+      width: 100%;
+      z-index: 0;
+      left: -50%;
+      bottom: 40%;
+    }
+    &::after {
+      position: absolute;
+      content: "";
+      border-bottom: 1px solid map-get($map: $theme-colors, $key: primary) !important;
+      border-top: 1px solid map-get($map: $theme-colors, $key: primary) !important;
+      height: 10px;
+      width: 100%;
+      z-index: 0;
+      bottom: 40%;
+      left: 0%;
+    }
+    &:last-child {
+      &::after {
+        border-right: 1px solid map-get($map: $theme-colors, $key: primary) !important;
+      }
+    }
+  }
+}

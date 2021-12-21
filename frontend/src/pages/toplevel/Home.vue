@@ -12,12 +12,12 @@
     </div>
     <div class="container w-100" v-else>
       <div class="row mb-1">
-        <div class="col-sm-6">
+        <div class="col-sm-6 order-2 order-sm-1">
           <h4 class="text-capitalize">Recent Challenges</h4>
         </div>
-        <div class="col-sm-6 text-end">
+        <div class="col-sm-6 text-end order-1 order-sm-2 mb-2 mb-sm-0">
           <b-link
-          class="btn btn-primary"
+          class="btn btn-primary px-1 px-lg-2 py-1"
           style="border: none"
           :to="{ name: 'clg-create' }"
         >

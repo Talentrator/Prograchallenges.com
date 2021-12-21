@@ -1,5 +1,5 @@
 <template>
-  <b-navbar toggleable="md" variant="dark" class="text-white px-3">
+  <b-navbar toggleable="md" variant="dark" class="text-white px-xl-3 px-1">
     <b-navbar-brand :to="{ name: 'tld-home' }">
       <b-img :src="require('../assets/logos/logo.svg')" style="max-height:3.5rem"></b-img>
     </b-navbar-brand>
@@ -13,14 +13,13 @@
 
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav style="margin-left: auto">
-        <b-nav-item :to="{ name: 'tld-home' }" class="align-self-center"><span class="text-white">Home</span></b-nav-item>
-        <b-nav-item :to="{ name: 'challenges' }" class="align-self-center"><span class="text-white">Challenges</span></b-nav-item>
-        <b-nav-item :to="{ name: 'usr-coming-soon' }" class="align-self-center"><span class="text-white">Support</span></b-nav-item>
-        <b-nav-item :to="{ name: 'usr-coming-soon' }" class="align-self-center"><span class="text-white">Courses</span></b-nav-item>
-        <b-nav-item :to="{ name: 'usr-coming-soon' }" class="align-self-center nav-btn text-center">
+        <b-nav-item :to="{ name: 'tld-home' }" class="align-self-md-center ps-2 ps-md-0"><span class="text-white">Home</span></b-nav-item>
+        <b-nav-item :to="{ name: 'challenges' }" class="align-self-md-center ps-2 ps-md-0"><span class="text-white">Challenges</span></b-nav-item>
+        <b-nav-item :to="{ name: 'usr-coming-soon' }" class="align-self-md-center ps-2 ps-md-0"><span class="text-white">Support</span></b-nav-item>
+        <b-nav-item :to="{ name: 'usr-coming-soon' }" class="align-self-md-center ps-2 ps-md-0 nav-btn text-md-center">
           <b-button variant="outline-light" size="sm">LOG IN</b-button>
         </b-nav-item>
-        <b-nav-item :to="{name:'usr-coming-soon'}">
+        <b-nav-item :to="{name:'usr-coming-soon'}" class="ps-2 ps-md-0">
           <b-button variant="primary" size="sm">
             SIGN UP
             <b-icon-arrow-right-circle-fill />

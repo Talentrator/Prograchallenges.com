@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-dark text-light p-4 border-top border-primary">
+  <div class="bg-dark text-light py-4 px-md-4 px-1 border-top border-primary">
     <b-container fluid>
       <div class="d-flex w-100 justify-content-around flex-md-row flex-column">
         <div class="my-2 my-md-0">
