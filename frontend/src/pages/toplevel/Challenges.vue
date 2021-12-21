@@ -6,28 +6,34 @@
         Choose a challenge, read the problem, write code, submit , that's it!
       </p>
 
+      <div class="mb-3 row">
+        <div class="col-md-9"></div>
+        <div class="col-md-3 d-flex justify-content-end mt-3 mt-md-0">
+          <div class="d-flex align-items-center">
+            <label for="" class="fw-bold pe-2">Sort: </label>
+            <b-select v-model="sortBy" :disabled="!loaded">
+              <option
+                :value="sortOption.value"
+                v-for="sortOption in sortOptions"
+                :key="sortOption.value"
+              >
+                {{ sortOption.title }}
+              </option>
+            </b-select>
+          </div>
+        </div>
+      </div>
+
       <div class="text-center" v-if="!loaded">
         <b-spinner variant="primary" />
       </div>
 
       <!-- Single challenge component -->
       <div v-else>
-        <div class="mb-3 row">
-          <div class="col-md-9"></div>
-          <div class="col-md-3 d-flex justify-content-end mt-3 mt-md-0">
-            <div class="d-flex align-items-center">
-              <label for="" class="fw-bold pe-2">Sort: </label>
-              <b-select name="sort" id="">
-                <option value="newest">Newest</option>
-                <option value="comments">Most Comments</option>
-              </b-select>
-            </div>
-          </div>
-        </div>
         <div
           v-for="challenge in paginatedChallenges"
           :key="challenge.id"
-          class="my-3 mx-auto max-width d-flex align-items-center flex-column"
+          class="my-3 mx-auto d-flex align-items-center flex-column"
         >
           <Challenge :challenge="challenge" />
         </div>
@@ -65,12 +71,14 @@
 </template>
 
 <script>
-import firebase from "firebase/app";
 import "firebase/functions";
 import Challenge from "../../components/ChallengeCard.vue";
+import sortChallengesMixin from "@/mixins/SortChallengesMixin.js";
+
 export default {
   name: "Challenges",
   components: { Challenge },
+  mixins: [sortChallengesMixin],
   data: function () {
     return {
       challenges: [],
@@ -96,15 +104,6 @@ export default {
     },
     onPageChanged(page) {
       this.paginate(this.perPage, page - 1);
-    },
-    async fetchData() {
-      const getAllChallenges = firebase
-        .functions()
-        .httpsCallable("getAllChallenges");
-      const result = await getAllChallenges();
-      this.challenges = result.data;
-      this.paginate(this.perPage, 0);
-      this.loaded = true;
     },
   },
   mounted() {

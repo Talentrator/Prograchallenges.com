@@ -1,19 +1,24 @@
 const functions = require('firebase-functions')
-const admin = require('firebase-admin')
+const admin = require('firebase-admin');
+const sortOptions = require('./helpers/sort_options');
 
-const getAllChallenges = functions.https.onCall(async () => {
-  let data = [];
+const getAllChallenges = functions.https.onCall(async(options) => {
+    let data = [];
 
-  const result = await admin.firestore().collection('challenges').orderBy("creationTime", "desc").get();
+    const sortBy = options ? options.sortBy : "date_desc";
 
-  result.forEach(doc => {
-    data.push({
-      id: doc.id,
-      ...doc.data(),
-    })
-  });
+    const sort = sortOptions[sortBy];
 
-  return data;
+    const result = await admin.firestore().collection('challenges').orderBy(sort.field, sort.method).get();
+
+    result.forEach(doc => {
+        data.push({
+            id: doc.id,
+            ...doc.data(),
+        })
+    });
+
+    return data;
 })
 
 module.exports = getAllChallenges;
