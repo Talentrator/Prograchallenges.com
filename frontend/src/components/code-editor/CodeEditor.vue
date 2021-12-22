@@ -3,8 +3,8 @@
     <AceEditor
       v-model="code"
       @init="editorInit"
-      :lang="langToEditor[languageId]"
-      theme="github"
+      :lang="langToEditor[lang]"
+      theme="textmate"
       width="100%"
       :height="editorHeight"
       :options="options"
@@ -30,6 +30,8 @@ export default {
       tabSize: 4,
       showPrintMargin: false,
       showGutter: true,
+      enableBasicAutocompletion: true,
+      enableLiveAutocompletion: true,
     },
     langToEditor: {
       // language names to editor mappings because ACE uses other names
@@ -57,6 +59,10 @@ export default {
     languageId: { // use TIO-language-id's. Automatically converts to ACE-language-id's
       type: String,
       default: "javascript",
+    },
+    lang: {
+      type: String,
+      default: "javascript-node",
     },
     canEdit: {
       type: Boolean,
@@ -88,7 +94,7 @@ export default {
       require("brace/mode/kotlin");
       require("brace/mode/swift");
       require("brace/mode/golang");
-      require("brace/theme/github");
+      require("brace/theme/textmate");
     },
   },
 };

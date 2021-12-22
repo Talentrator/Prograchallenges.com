@@ -222,7 +222,7 @@
                 {{ codeOutput }}
               </div>
 
-              {{ form.programmingLanguage }}
+              <!-- {{ form.programmingLanguage }} -->
               <div class="d-md-flex my-2 justify-content-end text-primary">
                 <b-button variant="outline-primary" @click="handleSubmit">
                   SUBMIT
