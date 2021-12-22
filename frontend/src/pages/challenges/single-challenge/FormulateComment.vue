@@ -87,7 +87,7 @@
               rows="3"
               v-model="form.text"
               name="text"
-              placeholder="Leave your answer here..."
+              placeholder="Leave your answer here... P.S You can use markdown"
               v-model.trim="$v.form.text.$model"
               class="form__input"
               :class="{
