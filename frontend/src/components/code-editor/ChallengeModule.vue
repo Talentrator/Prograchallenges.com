@@ -103,7 +103,6 @@ export default {
   },
   created() {
     this.code = this.challenge.boilerplate;
-    console.log(this.challenge);
   },
   watch: {
     code(oldCode, newCode) {
