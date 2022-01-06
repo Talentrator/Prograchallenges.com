@@ -11,6 +11,7 @@ const insertChallenge = functions.https.onCall(async(data) => {
         email: z.string().min(1),
         nickname: z.string().min(1),
         programmingLanguage: z.string().min(1),
+        difficulty: z.string().min(1),
         boilerplate: z.string(),
         unitTest: z.string(),
         exampleSolution: z.string(),
