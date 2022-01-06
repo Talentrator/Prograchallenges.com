@@ -226,8 +226,20 @@
                   <b-spinner small v-else />
                 </b-button>
               </div>
-              <div v-if="codeOutput" class="bg-light text-dark mt-2 px-2">
-                {{ codeOutput }}
+              <div v-if="codeOutput && !runningCode" class="mt-2 px-2">
+                <div class="" v-if="!erronoeusResult(codeOutput)">
+                  <div class="text-secondary d-flex align-items-center">
+                    <b-icon-check2-circle class="text-secondary fs-2" />
+                    <span class="ui-icon-label tab-item-label ps-1"> {{passedTestsFormattedText}} </span>
+                  </div>
+                  <div class="mt-2 text-primary d-flex align-items-center" v-if="failed > 0">
+                    <b-icon-x class="text-primary fs-2" />
+                    <span class="ui-icon-label tab-item-label ps-1"> {{failedTestsFormattedText}}</span>
+                  </div>
+                </div>
+                <span style="white-space: pre-wrap;" v-else>
+                  {{ codeOutput }}
+                </span>
               </div>
 
               <!-- {{ form.programmingLanguage }} -->
@@ -258,9 +270,11 @@ import {
 import CodeEditor from "@/components/code-editor/CodeEditor.vue";
 import { marked } from "marked";
 import Steps from "@/components/stepper/Steps.vue";
+import TestOutputMixin from '@/mixins/TestOutputMixin.js';
 
 export default {
   name: "CreateChallenge",
+  mixins: [TestOutputMixin],
   data() {
     return {
       currentStep: 1,
@@ -334,6 +348,8 @@ export default {
     },
     async runTest() {
       this.runningCode = true;
+      this.failed = this.passed = 0;
+
       this.codeOutput = (
         await firebase.functions().httpsCallable("RunCode")({
           code: `${this.form.exampleSolution}
@@ -342,6 +358,8 @@ ${this.form.unitTest}`,
         })
       ).data;
       this.runningCode = false;
+
+      this.parseResult(this.codeOutput);
     },
   },
   validations: {

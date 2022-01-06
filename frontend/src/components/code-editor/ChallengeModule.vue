@@ -22,14 +22,14 @@
             <div class="mt-2 mx-2 px-2 py-2 text-light">
               <div v-if="compiling"><b>Status: </b>Sending request...</div>
               <div v-else-if="result">
-                <div class="" v-if="!erronoeusResult">
+                <div class="" v-if="!erronoeusResult(result)">
                   <div class="text-secondary d-flex align-items-center">
                     <b-icon-check2-circle class="text-secondary fs-2" />
                     <span class="ui-icon-label tab-item-label ps-1"> {{passedTestsFormattedText}} </span>
                   </div>
                   <div class="mt-2 text-primary d-flex align-items-center" v-if="failed > 0">
                     <b-icon-x class="text-primary fs-2" />
-                    <span class="ui-icon-label tab-item-label ps-1"> {{failed}} test{{ passed > 1 ? 's' : '' }} failed </span>
+                    <span class="ui-icon-label tab-item-label ps-1"> {{failedTestsFormattedText}}</span>
                   </div>
                 </div>
                 <span style="white-space: pre-wrap;" v-else>
@@ -74,9 +74,11 @@ import { mapState } from "vuex";
 import { marked } from 'marked';
 
 import CodeEditor from "./CodeEditor.vue";
+import TestOutputMixin from '@/mixins/TestOutputMixin.js';
 
 export default {
   name: "ChallengeModule",
+  mixins: [TestOutputMixin],
   components: {
     CodeEditor,
   },
@@ -85,21 +87,12 @@ export default {
     activeTab: 0,
     result: "",
     compiling: false,
-    passed: 0,
-    failed: 0,
   }),
   computed: {
     ...mapState(["userObject"]),
     compiledMarkdown() {
       return marked(this.challenge.text);
     },
-    passedTestsFormattedText(){
-      const count = (this.failed == 0 && this.passed > 0) ? 'All': this.passed;
-      return `${count} test${ this.passed > 1 ? 's' : '' } passed`;
-    },
-    erronoeusResult(){
-      return !(this.result.indexOf('true') >= 0 || this.result.indexOf('false') >= 0);
-    }
   },
   props: {
     allowRunning: {
@@ -142,7 +135,7 @@ export default {
 
       this.result = response.data;
       this.compiling = false;
-      this.parseResult();
+      this.parseResult(this.result);
     },
     getLanguageId() {
       const mapping = {
@@ -151,11 +144,7 @@ export default {
       };
       return mapping[this.challenge.programmingLanguage];
     },
-    parseResult(){
-      if (!this.erronoeusResult) {
-        this.result.split(/\s+/).map((res) => res === 'true' ? this.passed++ : this.failed++);
-      }
-    }
+    
   },
 };
 </script>
