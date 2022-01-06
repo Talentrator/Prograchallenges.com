@@ -177,8 +177,16 @@
                   <b-form-select
                     v-model="form.programmingLanguage"
                     :options="languages"
-                    class="w-100 form-select"
+                    :class="[
+                    'w-100 form-select',
+                    {'mb-2': !$v.form.programmingLanguage.$error}
+                    ]"
                   />
+                  <div v-if="$v.form.programmingLanguage.$dirty">
+                    <div class="error mb-2" v-if="!$v.form.programmingLanguage.required">
+                      Please select a programming language
+                    </div>
+                  </div>
                 </b-form-group>
               </form>
 
@@ -261,13 +269,13 @@ export default {
         email: "",
         nickname: "",
         text: "",
-        programmingLanguage: "",
+        programmingLanguage: null,
         boilerplate: "",
         unitTest: "",
         exampleSolution: "",
       },
       languages: [
-        { text: "Please select a programming language", value: null },
+        { text: "Please select a programming language", value: null,  disabled: true, },
         { text: "Javascript", value: "javascript-node" },
         { text: "Python 3", value: "python3" },
         { text: "C", value: "c-gcc" },
@@ -308,8 +316,9 @@ export default {
     isValidStepTwo() {
       this.$v.form.title.$touch();
       this.$v.form.text.$touch();
+      this.$v.form.programmingLanguage.$touch();
 
-      return !this.$v.form.title.$error && !this.$v.form.text.$error;
+      return !this.$v.form.title.$error && !this.$v.form.text.$error && !this.$v.form.programmingLanguage.$error;
     },
     async handleSubmit() {
       this.$v.$touch();
@@ -355,6 +364,9 @@ ${this.form.unitTest}`,
         required,
         minLength: minLength(20),
       },
+      programmingLanguage: {
+        required
+      }
     },
   },
   components: {

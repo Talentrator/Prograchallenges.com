@@ -102,7 +102,7 @@ export default {
     },
   },
   created() {
-    this.code = this.value;
+    this.code = this.challenge.boilerplate;
   },
   watch: {
     code(oldCode, newCode) {

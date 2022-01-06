@@ -73,15 +73,6 @@
             'form-group--ok': !$v.form.text.$error && $v.form.text.$dirty,
           }"
         >
-          <b-button
-            variant="secondary"
-            size="sm"
-            class="px-1 py-1 mb-1 text-capitalize"
-            @click="previewMarkdown = !previewMarkdown"
-          >
-            {{ previewMarkdown ? "Continue Editing" : "Preview" }}
-          </b-button>
-
           <div v-if="!previewMarkdown">
             <b-form-textarea
               rows="3"
@@ -121,7 +112,14 @@
           </div>
         </div>
       </b-form-group>
-      <div class="d-md-flex my-2 justify-content-end text-primary">
+      <div class="d-md-flex my-2 justify-content-between text-primary">
+        <b-button
+            variant="secondary"
+            class="px-1 py-1 mb-1 text-capitalize"
+            @click="previewMarkdown = !previewMarkdown"
+          >
+            {{ previewMarkdown ? "Continue Editing" : "Preview" }}
+          </b-button>
         <b-button variant="outline-primary" @click="handleSubmit">
           POST
           <b-spinner variant="primary" small v-if="submitting" />
