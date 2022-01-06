@@ -109,6 +109,7 @@
                     !$v.form.title.$error && $v.form.title.$dirty,
                 }"
               >
+                <label class="form-label">Challenge Title</label>
                 <b-form-input
                   name="title"
                   v-model="form.title"
@@ -137,19 +138,57 @@
                   'form-group--ok': !$v.form.text.$error && $v.form.text.$dirty,
                 }"
               >
-                <b-button
-                  variant="secondary"
-                  size="sm"
-                  class="px-1 py-1 mb-1 text-capitalize"
-                  @click="previewMarkdown = !previewMarkdown"
-                  >{{ previewMarkdown ? "Continue Editing" : "Preview" }}
-                </b-button>
+                <b-form-group
+                  class="pt-2"
+                  label="Challenge Programming language"
+                  label-class="font-weight-bold"
+                >
+                  <b-form-select
+                    v-model="form.programmingLanguage"
+                    :options="languages"
+                    :class="[
+                      'w-100 form-select',
+                      { 'mb-2': !$v.form.programmingLanguage.$error },
+                    ]"
+                  />
+                  <div v-if="$v.form.programmingLanguage.$dirty">
+                    <div
+                      class="error mb-2"
+                      v-if="!$v.form.programmingLanguage.required"
+                    >
+                      Please select a programming language
+                    </div>
+                  </div>
+                </b-form-group>
+
+                <b-form-group
+                  class="pt-2"
+                  label="Challenge difficulty level"
+                  label-class="font-weight-bold"
+                >
+                  <b-form-select
+                    v-model="form.difficulty"
+                    :options="difficultyLevels"
+                    :class="[
+                      'w-100 form-select',
+                      { 'mb-2': !$v.form.difficulty.$error },
+                    ]"
+                  />
+                  <div v-if="$v.form.difficulty.$dirty">
+                    <div class="error mb-2" v-if="!$v.form.difficulty.required">
+                      Please select the challenge difficulty level
+                    </div>
+                  </div>
+                </b-form-group>
+                <!-- challenge description -->
+                <label class="form-label">Challenge Description</label>
                 <div v-if="!previewMarkdown">
                   <b-form-textarea
+                    label="Challenge description"
                     v-model="form.text"
                     rows="10"
                     name="text"
-                    placeholder="Your awesome challenge here"
+                    placeholder="Provide the description of your challenge here. PS. You can use markup"
                     v-model.trim="$v.form.text.$model"
                     class="form__input"
                     :class="{
@@ -169,32 +208,25 @@
                 <div v-else>
                   <div v-html="markdownToHtml"></div>
                 </div>
-                <b-form-group
-                  class="pt-2"
-                  label="Test Programming language"
-                  label-class="font-weight-bold"
-                >
-                  <b-form-select
-                    v-model="form.programmingLanguage"
-                    :options="languages"
-                    :class="[
-                    'w-100 form-select',
-                    {'mb-2': !$v.form.programmingLanguage.$error}
-                    ]"
-                  />
-                  <div v-if="$v.form.programmingLanguage.$dirty">
-                    <div class="error mb-2" v-if="!$v.form.programmingLanguage.required">
-                      Please select a programming language
-                    </div>
-                  </div>
-                </b-form-group>
               </form>
 
-              <div class="text-center mt-2">
-                <b-button variant="outline-primary" @click="changeStep(3)">
-                  Next
-                </b-button>
-              </div>
+              <b-row>
+                <b-col xs="6">
+                  <!-- toggle preview button -->
+                  <b-button
+                    variant="secondary"
+                    size="sm"
+                    class="px-1 py-1 mb-1 text-capitalize"
+                    @click="previewMarkdown = !previewMarkdown"
+                    >{{ previewMarkdown ? "Continue Editing" : "Preview" }}
+                  </b-button>
+                </b-col>
+                <b-col xs="6">
+                  <b-button variant="outline-primary" @click="changeStep(3)">
+                    Next
+                  </b-button>
+                </b-col>
+              </b-row>
             </template>
 
             <template v-if="currentStep == 3">
@@ -230,14 +262,21 @@
                 <div class="" v-if="!erronoeusResult(codeOutput)">
                   <div class="text-secondary d-flex align-items-center">
                     <b-icon-check2-circle class="text-secondary fs-2" />
-                    <span class="ui-icon-label tab-item-label ps-1"> {{passedTestsFormattedText}} </span>
+                    <span class="ui-icon-label tab-item-label ps-1">
+                      {{ passedTestsFormattedText }}
+                    </span>
                   </div>
-                  <div class="mt-2 text-primary d-flex align-items-center" v-if="failed > 0">
+                  <div
+                    class="mt-2 text-primary d-flex align-items-center"
+                    v-if="failed > 0"
+                  >
                     <b-icon-x class="text-primary fs-2" />
-                    <span class="ui-icon-label tab-item-label ps-1"> {{failedTestsFormattedText}}</span>
+                    <span class="ui-icon-label tab-item-label ps-1">
+                      {{ failedTestsFormattedText }}</span
+                    >
                   </div>
                 </div>
-                <span style="white-space: pre-wrap;" v-else>
+                <span style="white-space: pre-wrap" v-else>
                   {{ codeOutput }}
                 </span>
               </div>
@@ -270,7 +309,7 @@ import {
 import CodeEditor from "@/components/code-editor/CodeEditor.vue";
 import { marked } from "marked";
 import Steps from "@/components/stepper/Steps.vue";
-import TestOutputMixin from '@/mixins/TestOutputMixin.js';
+import TestOutputMixin from "@/mixins/TestOutputMixin.js";
 
 export default {
   name: "CreateChallenge",
@@ -287,9 +326,24 @@ export default {
         boilerplate: "",
         unitTest: "",
         exampleSolution: "",
+        difficulty: null,
       },
+      difficultyLevels: [
+        {
+          text: "Please select the challenge difficulty level ",
+          value: null,
+          disabled: true,
+        },
+        { text: "Easy", value: "easy" },
+        { text: "Intermediate", value: "intermediate" },
+        { text: "Expert", value: "expert" },
+      ],
       languages: [
-        { text: "Please select a programming language", value: null,  disabled: true, },
+        {
+          text: "Please select a programming language",
+          value: null,
+          disabled: true,
+        },
         { text: "Javascript", value: "javascript-node" },
         { text: "Python 3", value: "python3" },
         { text: "C", value: "c-gcc" },
@@ -331,8 +385,14 @@ export default {
       this.$v.form.title.$touch();
       this.$v.form.text.$touch();
       this.$v.form.programmingLanguage.$touch();
+      this.$v.form.difficulty.$touch();
 
-      return !this.$v.form.title.$error && !this.$v.form.text.$error && !this.$v.form.programmingLanguage.$error;
+      return (
+        !this.$v.form.title.$error &&
+        !this.$v.form.text.$error &&
+        !this.$v.form.programmingLanguage.$error &&
+        !this.$v.form.difficulty.$error
+      );
     },
     async handleSubmit() {
       this.$v.$touch();
@@ -383,8 +443,11 @@ ${this.form.unitTest}`,
         minLength: minLength(20),
       },
       programmingLanguage: {
-        required
-      }
+        required,
+      },
+      difficulty: {
+        required,
+      },
     },
   },
   components: {
