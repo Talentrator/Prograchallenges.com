@@ -87,7 +87,7 @@ export default {
   methods: {
     changeStep(event) {
       let step = event.target.dataset.step || 1;
-      this.$emit("changeStep", step);
+      this.$emit("changeStep", step, true);
     },
   },
 };
