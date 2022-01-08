@@ -22,7 +22,7 @@
             <div class="mt-2 mx-2 px-2 py-2 text-light">
               <div v-if="compiling"><b>Status: </b>Sending request...</div>
               <div v-else-if="result">
-                <div class="" v-if="!erronoeusResult(result)">
+                <div class="" v-if="!resultHasError(result)">
                   <div class="text-secondary d-flex align-items-center">
                     <b-icon-check2-circle class="text-secondary fs-2" />
                     <span class="ui-icon-label tab-item-label ps-1"> {{passedTestsFormattedText}} </span>

@@ -15,11 +15,11 @@ export default {
         },
     },
     methods: {
-        erronoeusResult(result) {
+        resultHasError(result) {
             return !(result.indexOf('true') >= 0 || result.indexOf('false') >= 0);
         },
         parseResult(result) {
-            if (!this.erronoeusResult(result)) {
+            if (!this.resultHasError(result)) {
                 result.split(/\s+/).map((res) => res === 'true' ? this.passed++ : this.failed++);
             }
         }

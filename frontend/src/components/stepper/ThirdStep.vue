@@ -29,7 +29,7 @@
       </b-button>
     </div>
     <div v-if="codeOutput && !runningCode" class="mt-2 px-2">
-      <div class="" v-if="!erronoeusResult(codeOutput)">
+      <div class="" v-if="!resultHasError(codeOutput)">
         <div class="text-secondary d-flex align-items-center">
           <b-icon-check2-circle class="text-secondary fs-2" />
           <span class="ui-icon-label tab-item-label ps-1">
