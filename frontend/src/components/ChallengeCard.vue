@@ -10,14 +10,17 @@
     cols="12"
     @click="redirectToSingleChallenge(challenge.id)"
   >
-    <b-row class="pt-1">
-      <b-col>
+    <b-row class="pt-1 align-items-center">
+      <b-col cols="12" md="7">
+        <div class="text-secondary mb-1" v-if="challenge.difficulty">
+          <small class="">{{challenge.difficulty}}</small>
+        </div>
         <h5 class="challenge-title">{{ challenge.title }}</h5>
       </b-col>
-      <b-col md="3" class="text-end">
+      <b-col cols="6" md="3" class="text-md-end">
         <p class="m-0">by {{ challenge.nickname }}</p>
       </b-col>
-      <b-col md="2" class="text-end">
+      <b-col cols="6" md="2" class="text-end">
         <p class="m-0">{{ challenge.programmingLanguage }}</p>
       </b-col>
     </b-row>

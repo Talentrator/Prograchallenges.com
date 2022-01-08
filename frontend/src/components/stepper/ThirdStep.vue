@@ -52,7 +52,7 @@
     </div>
 
     <!-- {{ form.programmingLanguage }} -->
-    <div class="d-md-flex my-2 justify-content-end text-primary">
+    <div class="d-flex my-2 justify-content-end text-primary">
       <b-button variant="outline-primary" @click="changeStep">
         SUBMIT
         <b-spinner variant="primary" small v-if="submitting" />&nbsp;
