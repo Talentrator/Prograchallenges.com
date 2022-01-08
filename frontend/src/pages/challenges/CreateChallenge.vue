@@ -94,7 +94,6 @@ export default {
       submit ? this.handleSubmit() : this.changeStep(this.currentStep + 1);
     },
     allStepsValid() {
-      console.log(this.$refs.thirdStep);
       return (
         this.$refs.firstStep.isValidStep() &&
         this.$refs.secondStep.isValidStep() &&
