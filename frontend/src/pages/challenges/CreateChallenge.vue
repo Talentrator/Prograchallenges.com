@@ -75,21 +75,16 @@ export default {
   },
   methods: {
     changeStep(step, stepper = false) {
-      if (stepper) {
-        if (step == 2 && this.currentStep != 3) {
-          this.validateStep("firstStep");
-        } else if (step == 3) {
-          if (this.$refs.firstStep.isValidStep()) {
-            this.validateStep("secondStep");
-          }
-        } else if (this.currentStep == 3) {
-          this.currentStep = +step;
-        } else {
-          this.currentStep = 1;
-        }
+      const refs = {
+        2: "firstStep",
+        3: "secondStep",
+      };
+      // stepper is a flag to determine if the user clicked on a step from the stepper menu
+      if (!stepper || this.currentStep == 3) {
+        this.currentStep = +step;
         return;
       }
-      this.currentStep = +step;
+      refs[step] ? this.validateStep(refs[step]) : (this.currentStep = 1);
     },
     validateStep(stepRef) {
       this.$refs[stepRef].changeStep();
