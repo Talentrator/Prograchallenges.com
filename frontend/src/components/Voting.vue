@@ -1,10 +1,16 @@
 <template>
   <div class="votes fs-6">
-    <button class="btn btn-sm ms-2 upvote">
+    <button
+      :class="['btn btn-sm ms-2 upvote', { active: userUpvoted }]"
+      @click="upvote"
+    >
       <b-icon-chevron-up class="fs-6" />
     </button>
-    <small class="">{{upvotes}}</small>
-    <button class="btn btn-sm ms-2 text-white upvote">
+    <small class="">{{ localUpvotes }}</small>
+    <button
+      :class="['btn btn-sm ms-2 text-white downvote', { active: userDownoted }]"
+      @click="downvote"
+    >
       <b-icon-chevron-down class="fs-6" />
     </button>
   </div>
@@ -13,6 +19,7 @@
 <script>
 export default {
   name: "Voting",
+  emits: ["upvoted", "downoted"],
   props: {
     upvotes: {
       type: Number,
@@ -20,7 +27,41 @@ export default {
     },
   },
   data() {
-    return {};
+    return {
+      localUpvotes: this.upvotes,
+      userUpvoted: false,
+      userDownoted: false,
+    };
+  },
+  methods: {
+    upvote() {
+      if (!this.userUpvoted) {
+        this.vote('upvote', this.userDownoted ? 2 : 1)
+      }
+    },
+    downvote() {
+      if (!this.userDownoted) {
+        this.vote('downvote', this.userUpvoted ? 2 : 1)
+      }
+    },
+    vote(method, value = 1) {
+      switch (method) {
+        case "upvote":
+          this.localUpvotes += +value;
+          this.userUpvoted = true;
+          this.userDownoted = false;
+          break;
+
+        case "downvote":
+          this.localUpvotes -= +value;
+          this.userUpvoted = false;
+          this.userDownoted = true;
+          break;
+
+        default:
+          break;
+      }
+    },
   },
 };
 </script>
@@ -31,8 +72,13 @@ export default {
     padding-left: calc($spacer / 2) !important;
     padding-right: calc($spacer / 2) !important;
     color: darken($color: $white, $amount: 30) !important;
-    &:hover {
-      color: $white !important;
+    &:not(.active) {
+      &:hover {
+        color: $white !important;
+      }
+    }
+    &.active {
+      color: map-get($map: $theme-colors, $key: "secondary") !important;
     }
   }
 }
