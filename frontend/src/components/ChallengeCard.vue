@@ -8,28 +8,37 @@
       pc-cursor-pointer
     "
     cols="12"
-    @click="redirectToSingleChallenge(challenge.id)"
   >
     <b-row class="pt-1 align-items-center">
-      <b-col cols="12" md="7">
+      <b-col cols="12" md="7" class="mb-2 mb-sm-0">
         <div class="text-secondary mb-1" v-if="challenge.difficulty">
           <small class="">{{challenge.difficulty}}</small>
         </div>
-        <h5 class="challenge-title">{{ challenge.title }}</h5>
+        <div class="d-sm-flex align-items-center mb-1 mb-sm-0">
+          <router-link :to="challengeLink" class="text-white challenge-title">
+            <h5 class="mb-0">{{ challenge.title }}</h5>
+          </router-link>
+          <voting class="d-none d-sm-block ms-2" />
+        </div>
       </b-col>
       <b-col cols="6" md="3" class="text-md-end">
         <p class="m-0">by {{ challenge.nickname }}</p>
       </b-col>
       <b-col cols="6" md="2" class="text-end">
-        <p class="m-0">{{ challenge.programmingLanguage }}</p>
+        <p class="m-0">{{ getProgrammingLanguage(challenge.programmingLanguage) }}</p>
       </b-col>
     </b-row>
   </b-col>
 </template>
 
 <script>
+import Voting from './Voting.vue';
+import ProgrammingLanguagesMixin from "@/mixins/ProgrammingLanguagesMixin.js";
+
 export default {
+  components: { Voting },
   name: "Challenges",
+  mixins: [ProgrammingLanguagesMixin],
   props: {
     challenge: {
       type: Object,
@@ -62,14 +71,15 @@ export default {
 .challenge {
   &:hover {
     box-shadow: 0 3px 6px 0 rgb(255 255 255 / 10%);
-    .challenge-title {
-      color: map-get($map: $theme-colors, $key: primary);
-    }
   }
   .challenge-title {
     transition: all 0.1s linear;
     overflow-wrap: break-word;
     word-break: break-word;
+    &:hover{
+      text-decoration: none !important;
+      color: map-get($map: $theme-colors, $key: primary) !important;
+    }
   }
 }
 </style>

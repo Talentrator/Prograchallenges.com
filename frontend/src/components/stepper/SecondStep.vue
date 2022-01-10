@@ -125,10 +125,12 @@
 <script>
 import { required, minLength, maxLength } from "vuelidate/lib/validators";
 import { marked } from "marked";
+import ProgrammingLanguagesMixin from "@/mixins/ProgrammingLanguagesMixin.js";
 
 export default {
   name: "SecondStep",
   emits: ["nextStep"],
+  mixins: [ProgrammingLanguagesMixin],
   props: {
     data: {
       type: Object,
@@ -153,23 +155,6 @@ export default {
         { text: "Easy", value: "easy" },
         { text: "Intermediate", value: "intermediate" },
         { text: "Expert", value: "expert" },
-      ],
-      languages: [
-        {
-          text: "Please select a programming language",
-          value: null,
-          disabled: true,
-        },
-        { text: "Javascript", value: "javascript-node" },
-        { text: "Python 3", value: "python3" },
-        { text: "C", value: "c-gcc" },
-        { text: "C++", value: "cpp-gcc" },
-        { text: "Java 8", value: "java-jdk" },
-        { text: "C#", value: "cs-mono" },
-        { text: "Ruby", value: "ruby" },
-        { text: "Kotlin", value: "kotlin" },
-        { text: "Swift", value: "swift4" },
-        { text: "Go", value: "go" },
       ],
     };
   },

@@ -112,7 +112,7 @@
           </div>
         </div>
       </b-form-group>
-      <div class="d-md-flex my-2 justify-content-between text-primary">
+      <div class="d-flex my-2 justify-content-between text-primary">
         <b-button
             variant="secondary"
             class="px-1 py-1 mb-1 text-capitalize"
