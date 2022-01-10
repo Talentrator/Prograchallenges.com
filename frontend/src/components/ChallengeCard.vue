@@ -18,14 +18,14 @@
           <router-link :to="challengeLink" class="text-white challenge-title">
             <h5 class="mb-0">{{ challenge.title }}</h5>
           </router-link>
-          <voting class="d-none d-sm-block ms-2" />
+          <voting class="d-none d-sm-block ms-3" />
         </div>
       </b-col>
       <b-col cols="6" md="3" class="text-md-end">
         <p class="m-0">by {{ challenge.nickname }}</p>
       </b-col>
       <b-col cols="6" md="2" class="text-end">
-        <p class="m-0">{{ getProgrammingLanguage(challenge.programmingLanguage) }}</p>
+        <p class="m-0">{{ getProgrammingLanguage(challenge.programmingLanguage) || challenge.programmingLanguage }}</p>
       </b-col>
     </b-row>
   </b-col>
