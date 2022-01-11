@@ -1,14 +1,14 @@
 <template>
   <div class="votes fs-6">
     <button
-      :class="['btn btn-sm ms-2 upvote', { active: userUpvoted }]"
+      :class="['btn btn-sm ms-2 upvote', { active: userUpvoted }]" :disabled="voting"
       @click="upvote"
     >
       <b-icon-chevron-up class="fs-6" />
     </button>
-    <small class="">{{ localUpvotes }}</small>
+    <small class="">{{ upvotes }}</small>
     <button
-      :class="['btn btn-sm ms-2 text-white downvote', { active: userDownoted }]"
+      :class="['btn btn-sm ms-2 text-white downvote', { active: userDownoted }]" :disabled="voting"
       @click="downvote"
     >
       <b-icon-chevron-down class="fs-6" />
@@ -19,12 +19,16 @@
 <script>
 export default {
   name: "Voting",
-  emits: ["upvoted", "downoted"],
+  emits: ["upvoted", "downvoted"],
   props: {
     upvotes: {
       type: Number,
       default: 0,
     },
+    voting: {
+      type: Boolean,
+      default: false,
+    }
   },
   data() {
     return {
@@ -33,15 +37,20 @@ export default {
       userDownoted: false,
     };
   },
+  watch: {
+    upvotes(newValue) {
+      this.localUpvotes = newValue;
+    },
+  },
   methods: {
     upvote() {
       if (!this.userUpvoted) {
-        this.vote('upvote', this.userDownoted ? 2 : 1)
+        this.vote("upvote", this.userDownoted ? 2 : 1);
       }
     },
     downvote() {
       if (!this.userDownoted) {
-        this.vote('downvote', this.userUpvoted ? 2 : 1)
+        this.vote("downvote", this.userUpvoted ? 2 : 1);
       }
     },
     vote(method, value = 1) {
@@ -50,14 +59,14 @@ export default {
           this.localUpvotes += +value;
           this.userUpvoted = true;
           this.userDownoted = false;
-          this.$emit('upvote', value);
+          this.$emit("upvoted", value);
           break;
 
         case "downvote":
           this.localUpvotes -= +value;
           this.userUpvoted = false;
           this.userDownoted = true;
-          this.$emit('upvote', value);
+          this.$emit("downvoted", value);
           break;
 
         default:

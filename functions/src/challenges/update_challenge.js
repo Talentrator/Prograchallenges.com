@@ -8,9 +8,7 @@ const updateChallenge = functions.https.onCall(async(docId, data) => {
 const adminUpdateChallenge = async(docId, data) => {
     let challenge = {};
 
-    challenge = await admin.firestore().collection('challenges').doc(docId);
-
-    return challenge.update(data);
+    return await admin.firestore().collection('challenges').doc(docId).update(data);
 }
 
 module.exports = { updateChallenge, adminUpdateChallenge };
