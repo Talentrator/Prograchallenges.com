@@ -8,7 +8,10 @@
         'border-bottom': comments.indexOf(comment) + 1 !== comments.length,
       }"
     >
-      <p class="text-muted m-0">{{ comment.nickname }}</p>
+     <div class="d-flex justify-content-between">
+        <p class="text-muted m-0">{{ comment.nickname }}</p>
+        <voting />
+     </div>
 
       <div
         v-for="(description, idx) in categorizeCodeSnippetsAndText(
@@ -34,10 +37,12 @@
 import { marked } from "marked";
 import CodeEditor from "@/components/code-editor/CodeEditor.vue";
 import { categorizeCodeSnippetsAndText } from "@/pages/challenges/helpers/helpers.js";
+import Voting from '../../../components/Voting.vue';
 
 export default {
   components: {
     CodeEditor,
+    Voting,
   },
   data() {
     return {

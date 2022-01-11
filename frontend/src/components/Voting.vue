@@ -50,12 +50,14 @@ export default {
           this.localUpvotes += +value;
           this.userUpvoted = true;
           this.userDownoted = false;
+          this.$emit('upvote', value);
           break;
 
         case "downvote":
           this.localUpvotes -= +value;
           this.userUpvoted = false;
           this.userDownoted = true;
+          this.$emit('upvote', value);
           break;
 
         default:
