@@ -10,6 +10,10 @@ const sortOptions = {
     relevance: {
         field: "score",
         method: "desc"
+    },
+    community_votes: {
+        field: "votes",
+        method: "desc"
     }
 }
 
