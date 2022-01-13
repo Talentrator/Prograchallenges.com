@@ -14,7 +14,9 @@
         >
           <b-tab title="Instructions">
             <div class="mt-2 mx-2">
-              <b> {{ challenge.title }} </b> <br />
+              <div class="mb-2">
+                <b> {{ challenge.title }} </b> <span class="float-end badge bg-primary">Easy</span>
+              </div>
               <span v-html="compiledMarkdown" />
             </div>
           </b-tab>
