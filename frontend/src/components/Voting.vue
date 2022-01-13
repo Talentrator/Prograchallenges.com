@@ -1,15 +1,23 @@
 <template>
   <div class="votes fs-6">
     <button
-      :class="['btn btn-sm ms-2 upvote', { active: userUpvoted }]" :disabled="voting"
-      @click="upvote"
+      :class="[
+        'btn btn-sm ms-2 me-1 upvote px-1 text-white-50',
+        { active: userUpvoted },
+      ]"
+      :disabled="voting"
+      @click="updateVotes('upvote')"
     >
       <b-icon-chevron-up class="fs-6" />
     </button>
     <small class="">{{ upvotes }}</small>
     <button
-      :class="['btn btn-sm ms-2 text-white downvote', { active: userDownoted }]" :disabled="voting"
-      @click="downvote"
+      :class="[
+        'btn btn-sm ms-1 downvote px-1 text-white-50',
+        { active: userDownoted },
+      ]"
+      :disabled="voting"
+      @click="updateVotes('downvote')"
     >
       <b-icon-chevron-down class="fs-6" />
     </button>
@@ -19,7 +27,7 @@
 <script>
 export default {
   name: "Voting",
-  emits: ["upvoted", "downvoted"],
+  emits: ["voted"],
   props: {
     upvotes: {
       type: Number,
@@ -28,50 +36,41 @@ export default {
     voting: {
       type: Boolean,
       default: false,
-    }
+    },
   },
   data() {
     return {
-      localUpvotes: this.upvotes,
       userUpvoted: false,
       userDownoted: false,
     };
   },
-  watch: {
-    upvotes(newValue) {
-      this.localUpvotes = newValue;
-    },
-  },
   methods: {
-    upvote() {
-      if (!this.userUpvoted) {
-        this.vote("upvote", this.userDownoted ? 2 : 1);
-      }
-    },
-    downvote() {
-      if (!this.userDownoted) {
-        this.vote("downvote", this.userUpvoted ? 2 : 1);
-      }
-    },
-    vote(method, value = 1) {
-      switch (method) {
-        case "upvote":
-          this.localUpvotes += +value;
-          this.userUpvoted = true;
-          this.userDownoted = false;
-          this.$emit("upvoted", value);
-          break;
+    updateVotes(method) {
+      // if user had already voted return
+      if (
+        (method == "upvote" && this.userUpvoted) ||
+        (method == "donvote" && this.userDownoted)
+      )
+        return;
 
-        case "downvote":
-          this.localUpvotes -= +value;
-          this.userUpvoted = false;
-          this.userDownoted = true;
-          this.$emit("downvoted", value);
-          break;
+      let votes = this.userDownoted || this.userUpvoted ? 2 : 1;
+      // if its a downvote negate the value
+      votes = method == 'downvote' ? votes * -1 : votes;
 
-        default:
-          break;
+      this.vote(votes);
+      this.updateVotingFlags(method);
+    },
+    vote(votes = 1) {
+      this.$emit("voted", votes);
+    },
+    updateVotingFlags(voteMethod) {
+      if (voteMethod == "upvote") {
+        this.userUpvoted = true;
+        this.userDownoted = false;
+        return;
       }
+      this.userUpvoted = false;
+      this.userDownoted = true;
     },
   },
 };
@@ -80,9 +79,6 @@ export default {
 <style lang="scss" scoped>
 .votes {
   button.btn {
-    padding-left: calc($spacer / 2) !important;
-    padding-right: calc($spacer / 2) !important;
-    color: darken($color: $white, $amount: 30) !important;
     &:not(.active) {
       &:hover {
         color: $white !important;

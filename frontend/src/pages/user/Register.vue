@@ -1,12 +1,21 @@
 <template>
   <div
-    class="text-light px-3 pt-2 mx-auto mb-md-5 mb-3 pb-3 border border-primary"
+    class="
+      text-light
+      px-2 px-md-3
+      pt-2
+      mt-3
+      mx-2 mx-md-auto
+      mb-md-5 mb-3
+      border border-primary
+      pb-4
+    "
   >
     <h1 class="text-center my-2 display-4 text-light">SIGN UP</h1>
-    <b-form class="border-bottom border-primary pb-3">
+    <b-form class="pb-3">
       <b-form-group id="input-group-2" class="mt-3">
+        <label for="" class="form-label">Username</label>
         <b-form-input
-          id="input-2"
           type="text"
           placeholder="Username"
           required
@@ -16,8 +25,8 @@
       </b-form-group>
 
       <b-form-group id="input-group-1" class="mt-3">
+        <label for="" class="form-label">Email</label>
         <b-form-input
-          id="input-1"
           type="email"
           placeholder="Email"
           required
@@ -27,8 +36,8 @@
       </b-form-group>
 
       <b-form-group id="input-group-3" class="mt-3">
+        <label for="" class="form-label">Password</label>
         <b-form-input
-          id="input-3"
           type="password"
           placeholder="Password"
           required
@@ -38,8 +47,8 @@
       </b-form-group>
 
       <b-form-group id="input-group-4" class="mt-3">
+        <label for="" class="form-label">Confirm Password</label>
         <b-form-input
-          id="input-4"
           type="password"
           placeholder="Confirm Password"
           required
@@ -48,30 +57,61 @@
         ></b-form-input>
       </b-form-group>
       <center>
-        <div
-          class="text-center mt-3 d-flex justify-content-center btn btn-primary"
-          style="width: 19rem"
+        <button
+          class="
+            text-center
+            mt-5
+            d-flex
+            justify-content-center
+            btn btn-primary
+            w-100
+          "
+          style="width: 18rem"
         >
-          <a href="#" class="text-dark mx-1">SIGN UP</a>
-          <b-icon-arrow-right-square-fill
-            class="my-auto"
-          ></b-icon-arrow-right-square-fill>
-        </div>
+          <span class="mx-1">Sign up</span>
+          <b-icon-arrow-right class="my-auto"></b-icon-arrow-right>
+        </button>
       </center>
     </b-form>
-    <div
-      class="text-center mt-3 d-flex justify-content-center btn btn-secondary"
-      style="width: 19rem"
-    >
-      <b-icon-github class="my-auto"></b-icon-github>
-      <a href="#" class="text-dark mx-1">sign up with github</a>
+    <div class="divider row my-3">
+      <b-col class="d-flex my-auto">
+        <hr class="hr-text text-primary my-0 w-100" />
+      </b-col>
+      <b-col cols="2" class="text-center">
+        <span>OR</span>
+      </b-col>
+      <b-col class="d-flex my-auto">
+        <hr class="hr-text text-primary my-0 w-100" />
+      </b-col>
     </div>
-    <div
-      class="text-center mt-3 d-flex justify-content-center btn btn-secondary"
-      style="width: 19rem"
-    >
-      <b-icon-google class="my-auto"></b-icon-google>
-      <a href="#" class="text-dark mx-1">sign up with google</a>
+    <div class="text-center">
+      <b-row>
+        <b-col md="6">
+          <div class="text-center mt-3">
+            <b-button
+              variant="outline-secondary"
+              class="w-100 d-flex justify-items-center justify-content-center"
+            >
+              <b-icon-github class="my-auto"></b-icon-github>
+              <span class="mx-1">github</span>
+            </b-button>
+          </div>
+        </b-col>
+        <b-col md="6">
+          <div class="text-center mt-3">
+            <b-button
+              variant="outline-secondary"
+              class="d-flex justify-items-center justify-content-center w-100"
+            >
+              <b-icon-google class="my-auto"></b-icon-google>
+              <span class="mx-1">google</span>
+            </b-button>
+          </div>
+        </b-col>
+      </b-row>
+    </div>
+    <div class="text-center pt-3">
+      Already have an account? <router-link :to="{ name: 'usr-login' }">Login</router-link>
     </div>
   </div>
 </template>
@@ -79,7 +119,7 @@
 <script>
 import firebase from "firebase/app";
 import "firebase/functions";
-import 'firebase/auth';
+import "firebase/auth";
 
 export default {
   data: () => ({
@@ -111,9 +151,8 @@ export default {
   },
 };
 </script>
-<style scoped>
-.input-width {
-  width: 60vw;
-  max-width: 40rem;
-}
+<style lang="scss" scoped>
+  input{
+    min-height: 43px;
+  }
 </style>

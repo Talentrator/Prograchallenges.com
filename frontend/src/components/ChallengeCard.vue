@@ -19,8 +19,7 @@
             <h5 class="mb-0">{{ challenge.title }}</h5>
           </router-link>
           <voting
-            @upvoted="upvote"
-            @downvoted="downvote"
+            @voted="vote"
             :upvotes="votes"
             :voting="voting"
             class="d-none d-sm-block ms-3"
@@ -76,20 +75,14 @@ export default {
     redirectToSingleChallenge() {
       this.$router.push(this.challengeLink);
     },
-    async upvote(value) {
-      this.vote("upvote", value);
-    },
-    downvote(value) {
-      this.vote("downvote", value);
-    },
-    async vote(method, votes) {
+    async vote(votes) {
       this.voting = true;
       const challengeVote = firebase.functions().httpsCallable("challengeVote");
       await challengeVote({
         challengeId: this.challenge.id,
-        method,
         votes,
       });
+      
       const challenge = await this.getSingleChallenge();
       this.votes = challenge.data.votes;
       this.voting = false;

@@ -272,3 +272,12 @@ ul.timeline>li:before {
 .btn-outline-primary {
     @include button-outline-variant(map-get($theme-colors, primary), $white);
 }
+
+.input-width {
+    width: 60vw;
+    max-width: 40rem;
+    @include media-breakpoint-down(sm) {
+        max-width: 100%;
+        width: 100%;
+    }
+}
