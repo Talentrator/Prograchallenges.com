@@ -94,8 +94,3 @@
     </div>
   </div>
 </template>
-<style lang="scss" scoped>
-  input{
-    min-height: 43px;
-  }
-</style>
