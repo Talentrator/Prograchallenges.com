@@ -15,6 +15,7 @@ const insertChallenge = functions.https.onCall(async(data) => {
         boilerplate: z.string(),
         unitTest: z.string(),
         exampleSolution: z.string(),
+        tags: z.string().array().optional(),
     });
 
     const inputData = mySchema.parse(data);
