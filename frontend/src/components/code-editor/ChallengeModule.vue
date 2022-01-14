@@ -18,6 +18,7 @@
                 <b> {{ challenge.title }} </b> <span class="float-end badge bg-primary">Easy</span>
               </div>
               <span v-html="compiledMarkdown" />
+              <tags-section :tags="challenge.tags" />
             </div>
           </b-tab>
           <b-tab title="Output" style="background: var(--dark)">
@@ -77,12 +78,14 @@ import { marked } from 'marked';
 
 import CodeEditor from "./CodeEditor.vue";
 import TestOutputMixin from '@/mixins/TestOutputMixin.js';
+import TagsSection from '../challenge/TagsSection.vue';
 
 export default {
   name: "ChallengeModule",
   mixins: [TestOutputMixin],
   components: {
     CodeEditor,
+    TagsSection,
   },
   data: () => ({
     code: "",
