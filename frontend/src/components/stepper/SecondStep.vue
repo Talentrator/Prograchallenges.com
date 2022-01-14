@@ -101,7 +101,16 @@
         <div v-html="markdownToHtml"></div>
       </div>
     </form>
-
+    <div>
+      <label for="tags-basic">Type a new tag and press enter</label>
+      <b-form-tags
+        placeholder=""
+        input-id="tags-basic"
+        v-model="value"
+        tag-variant="primary"
+      ></b-form-tags>
+      <p class="mt-2">Value: {{ value }}</p>
+    </div>
     <b-row>
       <b-col xs="6">
         <!-- toggle preview button -->
@@ -139,6 +148,7 @@ export default {
   },
   data() {
     return {
+      value: ["apple", "orange"],
       previewMarkdown: false,
       form: {
         title: this.data.title || "",
@@ -204,3 +214,32 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.badge-primary {
+  @extend .bg-primary;
+}
+button.close {
+  padding: 0;
+  background-color: transparent;
+  border: 0;
+}
+.close {
+  float: right;
+  line-height: 1;
+  color: $black;
+  text-shadow: 0 1px 0 $white;
+  opacity: 0.5;
+}
+</style>
