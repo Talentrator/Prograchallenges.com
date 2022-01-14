@@ -73,6 +73,11 @@
           </div>
         </div>
       </b-form-group>
+
+      <!-- challenge tags -->
+      <tags-input v-model="form.tags" class="my-2" />
+      <!-- end tags -->
+
       <!-- challenge description -->
       <label class="form-label">Challenge Description</label>
       <div v-if="!previewMarkdown">
@@ -101,16 +106,6 @@
         <div v-html="markdownToHtml"></div>
       </div>
     </form>
-    <div>
-      <label for="tags-basic">Type a new tag and press enter</label>
-      <b-form-tags
-        placeholder=""
-        input-id="tags-basic"
-        v-model="value"
-        tag-variant="primary"
-      ></b-form-tags>
-      <p class="mt-2">Value: {{ value }}</p>
-    </div>
     <b-row>
       <b-col xs="6">
         <!-- toggle preview button -->
@@ -135,8 +130,10 @@
 import { required, minLength, maxLength } from "vuelidate/lib/validators";
 import { marked } from "marked";
 import ProgrammingLanguagesMixin from "@/mixins/ProgrammingLanguagesMixin.js";
+import TagsInput from '../form/TagsInput.vue';
 
 export default {
+  components: { TagsInput },
   name: "SecondStep",
   emits: ["nextStep"],
   mixins: [ProgrammingLanguagesMixin],
@@ -148,13 +145,13 @@ export default {
   },
   data() {
     return {
-      value: ["apple", "orange"],
       previewMarkdown: false,
       form: {
         title: this.data.title || "",
         text: this.data.text || "",
         programmingLanguage: this.data.programmingLanguage || null,
         difficulty: this.data.difficulty || null,
+        tags: this.data.tags || [],
       },
       difficultyLevels: [
         {
@@ -214,32 +211,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss">
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
-.badge-primary {
-  @extend .bg-primary;
-}
-button.close {
-  padding: 0;
-  background-color: transparent;
-  border: 0;
-}
-.close {
-  float: right;
-  line-height: 1;
-  color: $black;
-  text-shadow: 0 1px 0 $white;
-  opacity: 0.5;
-}
-</style>

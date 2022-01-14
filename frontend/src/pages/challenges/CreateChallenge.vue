@@ -69,6 +69,7 @@ export default {
         unitTest: "",
         exampleSolution: "",
         difficulty: null,
+        tags: [],
       },
       submitting: false,
     };
