@@ -1,10 +1,10 @@
 const z = require("zod");
 
 exports.ZODScreateNewUser = z.object({
-    userType: z.string(),
-    firstName: z.string(),
-    lastName: z.string(),
+    username: z.string(),
+    fullName: z.string(),
     email: z.string(),
+    uid: z.string().optional(),
     password: z.string(),
 });
 

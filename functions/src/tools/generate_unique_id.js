@@ -1,25 +1,4 @@
-const admin = require('firebase-admin')
-
-async function idExistsInDb(db, slug) {
-  const ref = admin.firestore().collection(db);
-  const res = await ref.doc(slug).get();
-  return res.exists;
-}
-
-async function newId(db, slug, i) {
-  const id = i + 1;
-  if (!(await idExistsInDb(db, `${slug}-${id}`))) return `${slug}-${id}`;
-  return newId(db, slug, id);
-}
-
-function sanitizeSlug(text) {
-  return text
-    .toString()
-    .toLowerCase()
-    .trim()
-    .replace(/\W+/g, " ")
-    .replace(/ /g, "-");
-}
+const { sanitizeSlug, newId, idExistsInDb } = require('./unique_id_functions');
 
 /**
  * Generates a unique UId for an object which is then going to be used as a slug
@@ -29,9 +8,9 @@ function sanitizeSlug(text) {
  * @async
  */
 async function generateUniqueId(db, slugName) {
-  const slug = sanitizeSlug(slugName);
-  if (!(await idExistsInDb(db, slug))) return slug;
-  return newId(db, slug, 1);
+    const slug = sanitizeSlug(slugName);
+    if (!(await idExistsInDb(db, slug))) return slug;
+    return newId(db, slug, 1);
 };
 
 module.exports = generateUniqueId

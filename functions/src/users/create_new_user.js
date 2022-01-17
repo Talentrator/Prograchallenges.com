@@ -2,38 +2,35 @@ const functions = require("firebase-functions");
 const admin = require("firebase-admin");
 const { getTimeStampOfNow } = require("../tools/get_time_stamp_of_now");
 const {
-  ZODScreateNewUser,
-  ZODSsocialLoginNewUser,
-} = require("../../tools/schemes");
-const generateUniqueId = require("../../tools/generate_unique_id");
+    ZODScreateNewUser,
+    ZODSsocialLoginNewUser,
+} = require("../tools/schemes");
+const generateUniqueId = require("../tools/generate_unique_id");
+const { idExistsInDb } = require('../tools/unique_id_functions');
 
 async function signupNewUser(uid, user) {
-  return admin.auth().createUser({
-    uid,
-    email: user.email,
-    password: user.password,
-  });
+    return admin.auth().createUser({
+        uid,
+        email: user.email,
+        password: user.password,
+    });
 }
 
 async function createUserRecord(uid, user) {
-  let newRecord = {
-    creationTime: getTimeStampOfNow(),
-    firstName: user.firstName,
-    lastName: user.lastName,
-    email: user.email,
-  };
+    let newRecord = {
+        creationTime: getTimeStampOfNow(),
+        username: user.username,
+        fullName: user.fullName,
+        email: user.email,
+    };
 
-  if (user.refId) newRecord.refId = user.refId;
+    if (user.refId) newRecord.refId = user.refId;
 
-  await admin
-    .firestore()
-    .collection("users")
-    .doc(uid)
-    .set(newRecord, { merge: true });
-}
-
-function getFullName(user) {
-  return `${user.firstName.trim()} ${user.lastName.trim()}`;
+    await admin
+        .firestore()
+        .collection("users")
+        .doc(uid)
+        .set(newRecord, { merge: true });
 }
 
 /**
@@ -55,23 +52,35 @@ function getFullName(user) {
  *
  */
 
-exports.default = functions.https.onCall(async (data, context) => {
-  const user = data.socialAuth
-    ? ZODSsocialLoginNewUser.parse(data)
-    : ZODScreateNewUser.parse(data);
+exports.default = functions.https.onCall(async(data, context) => {
+    const user = data.socialAuth ?
+        ZODSsocialLoginNewUser.parse(data) :
+        ZODScreateNewUser.parse(data);
 
-  try {
-    if (user.socialAuth) await admin.auth().deleteUser(user.uid);
+    try {
+        if (user.socialAuth) await admin.auth().deleteUser(user.uid);
 
-    const uid = await generateUniqueId("users", getFullName(user));
-    await signupNewUser(uid, user);
-    await createUserRecord(uid, user);
-  } catch (e) {
-    console.log(e);
-    return {
-      error: true,
-      error_code: e,
-    };
-  }
-  return { error: false };
+        if ((await idExistsInDb("users", user.username))) {
+            throw generateAuthError("Username is already taken");
+        }
+        const uid = await generateUniqueId("users", user.username);
+        await signupNewUser(uid, user);
+        await createUserRecord(uid, user);
+    } catch (e) {
+        console.log(e);
+        return {
+            error: true,
+            error_code: e,
+        };
+    }
+    return { error: false };
 });
+
+function generateAuthError(message, code = "") {
+    return {
+        "errorInfo": {
+            code,
+            message
+        }
+    }
+}
