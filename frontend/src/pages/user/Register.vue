@@ -127,7 +127,7 @@
             <b-icon-arrow-right class="my-auto"></b-icon-arrow-right>
           </span>
 
-          <b-spinner variant="primary" small v-if="loading" />&nbsp;
+          <b-spinner variant="white" small v-if="loading" />&nbsp;
         </button>
       </center>
     </b-form>
@@ -231,12 +231,13 @@ export default {
     },
     async handleEventualErrors(returnedError) {
       if (returnedError.error) {
-        this.alert_text = returnedError.error_code.errorInfo.message;
+        this.alert_text = returnedError?.error_code.errorInfo.message || '';
         this.loading = false;
       } else {
         await firebase.auth().signInWithEmailAndPassword(this.email, this.pw);
-        if (this.$store.state.loggedIn) {
+        if (this.$store.getters['auth/userLoggedIn']) {
           console.log("logged in");
+          this.$router.push({path: 'home'})
         }
       }
     },
