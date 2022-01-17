@@ -59,16 +59,4 @@ export default {
 .badge-primary {
   @extend .bg-primary;
 }
-button.close {
-  padding: 0;
-  background-color: transparent;
-  border: 0;
-}
-.close {
-  float: right;
-  line-height: 1;
-  color: $black;
-  text-shadow: 0 1px 0 $white;
-  opacity: 0.5;
-}
 </style>

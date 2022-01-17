@@ -12,6 +12,9 @@
     "
   >
     <h1 class="text-center my-2 display-4 text-light">SIGN UP</h1>
+    <b-alert v-if="!!alert_text" variant="danger" class="mb-2" show dismissible>
+      {{ alert_text }}
+    </b-alert>
     <b-form class="pb-3">
       <b-form-group id="input-group-2" class="mt-3">
         <label for="" class="form-label">Username</label>
@@ -101,7 +104,7 @@
           <div class="error" v-if="!$v.confirm_password.required">
             Please enter your password
           </div>
-          <div class="error" v-if="!$v.confirm_password.sameAs">
+          <div class="error" v-if="!$v.confirm_password.sameAsPassword">
             Your confirm password should be the same as password
           </div>
         </div>
@@ -119,8 +122,12 @@
           type="button"
           @click="signUp"
         >
-          <span class="mx-1">Sign up</span>
-          <b-icon-arrow-right class="my-auto"></b-icon-arrow-right>
+          <span class="" v-if="!loading">
+            <span class="mx-1">Sign up</span>
+            <b-icon-arrow-right class="my-auto"></b-icon-arrow-right>
+          </span>
+
+          <b-spinner variant="primary" small v-if="loading" />&nbsp;
         </button>
       </center>
     </b-form>
@@ -205,16 +212,33 @@ export default {
       let loginObject = this.bundleLoginData();
 
       // // TODO: take the returned data object which indicates possible errors in signing up!
-      await firebase.functions().httpsCallable("CreateNewUser")(loginObject);
-
+      try {
+        const result = (
+          await firebase.functions().httpsCallable("createUser")(loginObject)
+        ).data;
+        await this.handleEventualErrors(result);
+      } catch (error) {
+        console.log(error);
+      }
     },
     bundleLoginData() {
       return {
         password: this.pw,
-        username: this.usename,
+        username: this.username,
         fullName: this.full_name,
         email: this.email,
       };
+    },
+    async handleEventualErrors(returnedError) {
+      if (returnedError.error) {
+        this.alert_text = returnedError.error_code.errorInfo.message;
+        this.loading = false;
+      } else {
+        await firebase.auth().signInWithEmailAndPassword(this.email, this.pw);
+        if (this.$store.state.loggedIn) {
+          console.log("logged in");
+        }
+      }
     },
   },
   validations: {
