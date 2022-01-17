@@ -16,45 +16,95 @@
       <b-form-group id="input-group-2" class="mt-3">
         <label for="" class="form-label">Username</label>
         <b-form-input
+          v-model="username"
+          v-model.trim="$v.username.$model"
           type="text"
           placeholder="Username"
-          required
-          class="input-width bg-light"
-          style="border: none"
+          class="input-width bg-light border-0"
+          name="username"
         ></b-form-input>
+        <div v-if="$v.username.$dirty">
+          <div class="error" v-if="!$v.username.required">
+            Please enter your username
+          </div>
+        </div>
       </b-form-group>
 
       <b-form-group id="input-group-1" class="mt-3">
         <label for="" class="form-label">Email</label>
         <b-form-input
+          v-model="email"
+          v-model.trim="$v.email.$model"
           type="email"
           placeholder="Email"
-          required
+          class="input-width bg-light border-0"
+        ></b-form-input>
+        <div v-if="$v.email.$dirty">
+          <div class="error" v-if="!$v.email.required">
+            Please enter your email
+          </div>
+          <div class="error mb-2" v-if="!$v.email.email">
+            Please enter a valid email
+          </div>
+        </div>
+      </b-form-group>
+
+      <b-form-group id="input-group-1" class="mt-3">
+        <label for="" class="form-label">Full Name</label>
+        <b-form-input
+          v-model="full_name"
+          v-model.trim="$v.full_name.$model"
+          type="text"
+          placeholder="John Doe"
           class="input-width bg-light"
           style="border: none"
         ></b-form-input>
+        <div v-if="$v.full_name.$dirty">
+          <div class="error" v-if="!$v.full_name.required">
+            Please enter your full name
+          </div>
+        </div>
       </b-form-group>
 
       <b-form-group id="input-group-3" class="mt-3">
         <label for="" class="form-label">Password</label>
         <b-form-input
+          v-model="pw"
+          v-model.trim="$v.pw.$model"
           type="password"
           placeholder="Password"
-          required
           class="input-width bg-light"
           style="border: none"
         ></b-form-input>
+        <div v-if="$v.pw.$dirty">
+          <div class="error" v-if="!$v.pw.required">
+            Please enter your password
+          </div>
+          <div class="error" v-if="!$v.pw.minLength">
+            Your password must be 6 or more characters
+          </div>
+        </div>
       </b-form-group>
 
       <b-form-group id="input-group-4" class="mt-3">
         <label for="" class="form-label">Confirm Password</label>
         <b-form-input
+          v-model="confirm_password"
+          v-model.trim="$v.confirm_password.$model"
           type="password"
           placeholder="Confirm Password"
           required
           class="input-width bg-light"
           style="border: none"
         ></b-form-input>
+        <div v-if="$v.confirm_password.$dirty">
+          <div class="error" v-if="!$v.confirm_password.required">
+            Please enter your password
+          </div>
+          <div class="error" v-if="!$v.confirm_password.sameAs">
+            Your confirm password should be the same as password
+          </div>
+        </div>
       </b-form-group>
       <center>
         <button
@@ -66,7 +116,8 @@
             btn btn-primary
             w-100
           "
-          style="width: 18rem"
+          type="button"
+          @click="signUp"
         >
           <span class="mx-1">Sign up</span>
           <b-icon-arrow-right class="my-auto"></b-icon-arrow-right>
@@ -111,12 +162,20 @@
       </b-row>
     </div>
     <div class="text-center pt-3">
-      Already have an account? <router-link :to="{ name: 'usr-login' }">Login</router-link>
+      Already have an account?
+      <router-link :to="{ name: 'usr-login' }">Login</router-link>
     </div>
   </div>
 </template>
 
 <script>
+import {
+  required,
+  maxLength,
+  minLength,
+  email,
+  sameAs,
+} from "vuelidate/lib/validators";
 import firebase from "firebase/app";
 import "firebase/functions";
 import "firebase/auth";
@@ -125,9 +184,9 @@ export default {
   data: () => ({
     email: "",
     pw: "",
-    first_name: "",
-    last_name: "",
-    acceptTOS: false,
+    confirm_password: "",
+    username: "",
+    full_name: "",
     loading: false,
     alert_text: "",
   }),
@@ -135,18 +194,50 @@ export default {
     async signUp() {
       this.loading = true;
       this.alert_text = "";
-      await firebase.auth().signOut();
+
+      this.$v.$touch();
+      if (this.$v.$invalid) {
+        this.loading = false;
+        return;
+      }
+
+      // await firebase.auth().signOut();
       let loginObject = this.bundleLoginData();
-      await firebase.functions().httpsCallable("CreateNewUser")(loginObject); // TODO: take the returned data object which indicates possible errors in signing up!
+
+      // // TODO: take the returned data object which indicates possible errors in signing up!
+      await firebase.functions().httpsCallable("CreateNewUser")(loginObject);
+
     },
     bundleLoginData() {
       return {
         password: this.pw,
-        userType: this.userType,
-        firstName: this.first_name,
-        lastName: this.last_name,
+        username: this.usename,
+        fullName: this.full_name,
         email: this.email,
       };
+    },
+  },
+  validations: {
+    email: {
+      required,
+      email,
+      maxLength: maxLength(150),
+    },
+    pw: {
+      required,
+      minLength: minLength(6),
+    },
+    confirm_password: {
+      required,
+      sameAsPassword: sameAs("pw"),
+    },
+    username: {
+      required,
+      maxLength: maxLength(150),
+    },
+    full_name: {
+      required,
+      maxLength: maxLength(150),
     },
   },
 };
