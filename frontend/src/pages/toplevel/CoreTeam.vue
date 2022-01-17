@@ -36,7 +36,7 @@ export default {
           name: "James Muriithi",
           image: "james.jpg",
           role: "PROJECT LEAD",
-          bio: "Hello, I am a programmer working on this project. I live in New Nairobi, Kenya",
+          bio: "Hello, I am a programmer working on this project.",
           contact: {
             email: "muriithijames123@gmail.com",
             telegram: "Jam_es",
