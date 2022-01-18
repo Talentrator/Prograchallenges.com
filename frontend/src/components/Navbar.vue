@@ -68,20 +68,16 @@
 </template>
 
 <script>
-import firebase from 'firebase/app';
 import 'firebase/auth';
 import { mapGetters } from "vuex";
+import AuthMixin from '@/mixins/AuthMixin';
 export default {
   name: "Navbar",
+  mixins: [AuthMixin],
   computed: {
     ...mapGetters("auth", ["userDetails", "userLoggedIn"]),
     firstName() {
       return this.userDetails?.fullName?.split(" ")[0] || "";
-    },
-  },
-  methods: {
-    async logOut() {
-      await firebase.auth().signOut();
     },
   },
 };
