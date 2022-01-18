@@ -13,6 +13,9 @@ export default {
     getters: {
         userLoggedIn(state) {
             return state.loggedIn;
+        },
+        userDetails(state) {
+            return state.userObject
         }
     },
     mutations: {
@@ -41,7 +44,7 @@ export default {
     actions: {
         async updateUserObject({ commit }) {
             const uo = (
-                await firebase.functions().httpsCallable('GetOwnUserObject')()
+                await firebase.functions().httpsCallable('getUserDetails')()
             ).data;
             // if (uo.userType) 
             commit('set_user_object', uo);
@@ -57,13 +60,6 @@ export default {
             else commit('set_user_object', {});
 
             commit('data_done_loading');
-        },
-        async update_user_data({ getters }) {
-            if (getters.userLoggedIn)
-                await this.dispatch('update_logged_in_user_data');
-            else this.commit('set_user_object', {});
-
-            this.commit('data_done_loading');
         },
     }
 

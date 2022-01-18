@@ -237,7 +237,7 @@ export default {
         await firebase.auth().signInWithEmailAndPassword(this.email, this.pw);
         if (this.$store.getters['auth/userLoggedIn']) {
           console.log("logged in");
-          this.$router.push({path: 'home'})
+          this.$router.push({name: 'tld-home'})
         }
       }
     },
