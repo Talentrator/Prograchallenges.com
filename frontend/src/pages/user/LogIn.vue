@@ -1,4 +1,3 @@
-
 <template>
   <div
     class="
@@ -10,8 +9,7 @@
       mb-md-5 mb-3
       border border-primary
       pb-4
-    "
-  >
+    ">
     <h1 class="text-center my-2 display-4 text-light">LOG IN</h1>
     <b-form class="pb-3">
       <b-alert
@@ -156,7 +154,7 @@ export default {
 
       const success = await this.loginWithEmailAndPassword();
 
-      if (success) this.$router.push({name: 'tld-home'});
+      if (success) this.$router.push({ name: "tld-home" });
 
       this.loading = false;
     },
@@ -167,7 +165,9 @@ export default {
         .then(() => true)
         .catch((e) => {
           console.log(e);
-          this.alert_text = e.message || "There was an error logging you in, please try again later";
+          this.alert_text =
+            e.message ||
+            "There was an error logging you in, please try again later";
           return false;
         });
     },

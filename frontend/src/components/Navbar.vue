@@ -3,8 +3,8 @@
     <b-navbar-brand :to="{ name: 'tld-home' }">
       <b-img
         :src="require('../assets/logos/logo.svg')"
-        style="max-height: 3.5rem"
-      ></b-img>
+        style="max-height: 3.5rem">
+      </b-img>
     </b-navbar-brand>
 
     <b-navbar-toggle target="nav-collapse" class="border-0 shadow-none">
@@ -16,23 +16,22 @@
 
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav style="margin-left: auto">
-        <b-nav-item :to="{ name: 'tld-home' }" class="align-self-center"
-          ><span class="text-white">Home</span></b-nav-item
-        >
-        <b-nav-item :to="{ name: 'challenges' }" class="align-self-center"
-          ><span class="text-white">Challenges</span></b-nav-item
-        >
-        <b-nav-item :to="{ name: 'usr-coming-soon' }" class="align-self-center"
-          ><span class="text-white">Support</span></b-nav-item
-        >
-        <b-nav-item :to="{ name: 'usr-coming-soon' }" class="align-self-center"
-          ><span class="text-white">Courses</span></b-nav-item
-        >
+        <b-nav-item :to="{ name: 'tld-home' }" class="align-self-center">
+          <span class="text-white">Home</span>
+        </b-nav-item>
+        <b-nav-item :to="{ name: 'challenges' }" class="align-self-center">
+          <span class="text-white">Challenges</span>
+        </b-nav-item>
+        <b-nav-item :to="{ name: 'usr-coming-soon' }" class="align-self-center">
+          <span class="text-white">Support</span>
+        </b-nav-item>
+        <b-nav-item :to="{ name: 'usr-coming-soon' }" class="align-self-center">
+          <span class="text-white">Courses</span>
+        </b-nav-item>
         <span class="d-flex" v-if="!userLoggedIn">
           <b-nav-item
             :to="{ name: 'usr-login' }"
-            class="align-self-center nav-btn text-center"
-          >
+            class="align-self-center nav-btn text-center">
             <b-button variant="outline-light" size="sm">LOG IN</b-button>
           </b-nav-item>
           <b-nav-item :to="{ name: 'usr-register' }" class="ps-2 ps-md-0">
@@ -45,32 +44,26 @@
 
         <b-navbar-nav
           v-else-if="userLoggedIn && !!firstName"
-          class="align-self-center mt-2 mt-md-0"
-        >
+          class="align-self-center mt-2 mt-md-0">
           <b-nav-item-dropdown
             :text="'Hey, ' + firstName"
             left
             toggle-class="text-white ps-3"
-            class="me-1"
-          >
+            class="me-1">
             <b-dropdown-item to="#" @click.prevent="logOut">
               Logout
             </b-dropdown-item>
           </b-nav-item-dropdown>
         </b-navbar-nav>
-
-        <!-- <li class="nav-item align-self-center ps-4 pe-3" v-else>
-          {{firstName}}
-        </li> -->
       </b-navbar-nav>
     </b-collapse>
   </b-navbar>
 </template>
 
 <script>
-import 'firebase/auth';
+import "firebase/auth";
 
-import AuthMixin from '@/mixins/AuthMixin';
+import AuthMixin from "@/mixins/AuthMixin";
 export default {
   name: "Navbar",
   mixins: [AuthMixin],

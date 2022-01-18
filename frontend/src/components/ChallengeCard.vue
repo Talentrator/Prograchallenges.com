@@ -43,13 +43,13 @@
 
 <script>
 import Voting from "./Voting.vue";
-import ProgrammingLanguagesMixin from "@/mixins/ProgrammingLanguagesMixin.js";
+import ProgrammingLanguages from "@/mixins/ProgrammingLanguagesMixin.js";
 import firebase from "firebase/app";
 
 export default {
   components: { Voting },
   name: "Challenges",
-  mixins: [ProgrammingLanguagesMixin],
+  mixins: [ProgrammingLanguages],
   props: {
     challenge: {
       type: Object,

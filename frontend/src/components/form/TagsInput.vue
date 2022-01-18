@@ -1,17 +1,17 @@
 <template>
   <div>
     <slot>
-      <label for="tags-basic" class="form-label"
-        >Challenge Tags (press enter to add)</label
-      >
+      <label for="tags-basic" class="form-label">
+        Challenge Tags (press enter to add)
+      </label>
     </slot>
     <b-form-tags
       placeholder="Input tags here eg. javascript, longest-word"
       input-id="tags-basic"
       v-model="valueLocal"
       tag-variant="primary"
-      :separator="separator"
-    ></b-form-tags>
+      :separator="separator">
+    </b-form-tags>
   </div>
 </template>
 <script>
