@@ -45,13 +45,14 @@
 <script>
 import Voting from "./Voting.vue";
 import ProgrammingLanguages from "@/mixins/ProgrammingLanguagesMixin.js";
-import Auth from "@/mixins/AuthMixin.js";
+import Vote from "@/mixins/Vote.js";
 import firebase from "firebase/app";
+import 'firebase/functions';
 
 export default {
   components: { Voting },
   name: "Challenges",
-  mixins: [ProgrammingLanguages, Auth],
+  mixins: [ProgrammingLanguages, Vote],
   props: {
     challenge: {
       type: Object,
@@ -60,7 +61,6 @@ export default {
   data() {
     return {
       votes: this.challenge.votes,
-      voting: false,
     };
   },
   computed: {
@@ -78,23 +78,12 @@ export default {
       this.$router.push(this.challengeLink);
     },
     async vote(votes) {
-      if (!this.userLoggedIn) return;
-      this.voting = true;
-      const challengeVote = firebase.functions().httpsCallable("vote");
-      const result = (await challengeVote({
-        entityId: this.challenge.id,
-        userId: this.userDetails.id,
-        votes,
-      })).data;
+      const result = await this.submitVote(this.challenge.id, votes);
 
       if (result.errorInfo) {
         alert(result.errorInfo.message);
         return;
       }
-
-      const challenge = await this.getSingleChallenge();
-      this.votes = challenge.data.votes;
-      this.voting = false;
     },
     async getSingleChallenge() {
       const fetchSingleChallenge = firebase
