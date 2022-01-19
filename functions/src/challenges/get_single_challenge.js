@@ -12,7 +12,10 @@ const getSingleChallenge = functions.https.onCall(async(data) => {
     // challenge comments
     const querySnapshot = await admin.firestore().collection('comments').where('challengeId', '==', data.id).get();
     querySnapshot.forEach((doc) => {
-        comments.push(doc.data());
+        comments.push({
+            ...doc.data(),
+            id: doc.id
+        });
     });
 
     if (!challenge || !challenge.exists) {
