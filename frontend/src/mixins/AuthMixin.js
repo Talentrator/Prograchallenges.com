@@ -13,5 +13,5 @@ export default {
         async logOut() {
             await firebase.auth().signOut();
         },
-    }
+    },
 }

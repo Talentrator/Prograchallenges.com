@@ -6,7 +6,7 @@ const getAllChallenges = require('./src/challenges/get_all_challenges');
 const getSingleChallenge = require('./src/challenges/get_single_challenge')
 const insertChallenge = require('./src/challenges/insert_challenge')
 const insertComment = require('./src/challenges/insert_comment')
-const challengeVote = require("./src/challenges/challenge_vote");
+const vote = require("./src/votes/insert_vote");
 const createUser = require("./src/users/create_new_user").default;
 const getUserDetails = require("./src/users/get_user_details").default;
 
@@ -14,7 +14,7 @@ exports.getAllChallenges = getAllChallenges;
 exports.getSingleChallenge = getSingleChallenge;
 exports.insertChallenge = insertChallenge;
 exports.insertComment = insertComment;
-exports.challengeVote = challengeVote;
+exports.vote = vote;
 exports.createUser = createUser;
 exports.getUserDetails = getUserDetails;
 

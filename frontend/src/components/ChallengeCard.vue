@@ -19,6 +19,7 @@
             <h5 class="mb-0">{{ challenge.title }}</h5>
           </router-link>
           <voting
+            v-if="userLoggedIn"
             @voted="vote"
             :upvotes="votes"
             :voting="voting"
@@ -44,12 +45,13 @@
 <script>
 import Voting from "./Voting.vue";
 import ProgrammingLanguages from "@/mixins/ProgrammingLanguagesMixin.js";
+import Auth from "@/mixins/AuthMixin.js";
 import firebase from "firebase/app";
 
 export default {
   components: { Voting },
   name: "Challenges",
-  mixins: [ProgrammingLanguages],
+  mixins: [ProgrammingLanguages, Auth],
   props: {
     challenge: {
       type: Object,
@@ -59,7 +61,7 @@ export default {
     return {
       votes: this.challenge.votes,
       voting: false,
-    }
+    };
   },
   computed: {
     challengeTitle() {
@@ -76,13 +78,20 @@ export default {
       this.$router.push(this.challengeLink);
     },
     async vote(votes) {
+      if (!this.userLoggedIn) return;
       this.voting = true;
-      const challengeVote = firebase.functions().httpsCallable("challengeVote");
-      await challengeVote({
-        challengeId: this.challenge.id,
+      const challengeVote = firebase.functions().httpsCallable("vote");
+      const result = (await challengeVote({
+        entityId: this.challenge.id,
+        userId: this.userDetails.id,
         votes,
-      });
-      
+      })).data;
+
+      if (result.errorInfo) {
+        alert(result.errorInfo.message);
+        return;
+      }
+
       const challenge = await this.getSingleChallenge();
       this.votes = challenge.data.votes;
       this.voting = false;

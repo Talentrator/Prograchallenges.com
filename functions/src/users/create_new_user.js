@@ -1,12 +1,11 @@
 const functions = require("firebase-functions");
 const admin = require("firebase-admin");
 const { getTimeStampOfNow } = require("../tools/get_time_stamp_of_now");
-const {
-    ZODScreateNewUser,
-    ZODSsocialLoginNewUser,
-} = require("../tools/schemes");
 const generateUniqueId = require("../tools/generate_unique_id");
 const { idExistsInDb } = require('../tools/unique_id_functions');
+const { generateError } = require("../tools/error_templates");
+
+const { ZODScreateNewUser, ZODSsocialLoginNewUser } = require("../tools/schemes");
 
 async function signupNewUser(uid, user) {
     return admin.auth().createUser({
@@ -61,7 +60,7 @@ exports.default = functions.https.onCall(async(data, context) => {
         if (user.socialAuth) await admin.auth().deleteUser(user.uid);
 
         if ((await idExistsInDb("users", user.username))) {
-            throw generateAuthError("Username is already taken");
+            throw generateError("Username is already taken");
         }
         const uid = await generateUniqueId("users", user.username);
         await signupNewUser(uid, user);
@@ -75,12 +74,3 @@ exports.default = functions.https.onCall(async(data, context) => {
     }
     return { error: false };
 });
-
-function generateAuthError(message, code = "") {
-    return {
-        "errorInfo": {
-            code,
-            message
-        }
-    }
-}
