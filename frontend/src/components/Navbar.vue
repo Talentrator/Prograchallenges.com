@@ -50,6 +50,9 @@
             left
             toggle-class="text-white ps-3"
             class="me-1">
+            <b-dropdown-item :to="{ name: 'question-create' }">
+              Create Question
+            </b-dropdown-item>
             <b-dropdown-item to="#" @click.prevent="logOut">
               Logout
             </b-dropdown-item>

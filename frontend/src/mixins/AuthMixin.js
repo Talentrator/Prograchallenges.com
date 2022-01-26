@@ -12,6 +12,9 @@ export default {
     methods: {
         async logOut() {
             await firebase.auth().signOut();
+            if (this.$route.meta.requiresAuth) {
+                this.$router.push({ name: 'usr-login', query: { redirect: this.$route.path } })
+            }
         },
     },
 }

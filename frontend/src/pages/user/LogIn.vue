@@ -154,7 +154,7 @@ export default {
 
       const success = await this.loginWithEmailAndPassword();
 
-      if (success) this.$router.push({ name: "tld-home" });
+      if (success) this.$router.push(this.$route.query.redirect || { name: "tld-home" });
 
       this.loading = false;
     },
