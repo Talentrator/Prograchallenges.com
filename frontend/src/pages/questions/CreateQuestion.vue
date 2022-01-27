@@ -256,11 +256,20 @@ export default {
           .functions()
           .httpsCallable("insertQuestion");
 
-        this.form.username = this.userDetails.username  
+        this.form.username = this.userDetails.username;
 
         await insertQuestion(this.form);
         this.$v.$reset();
-        this.$router.push({ name: "tld-home" })
+        this.submitting = false;
+        this.form = {
+          question: "",
+          answers: {},
+          difficulty: null,
+          programmingLanguage: null,
+          correctAnswer: null,
+          score: 1,
+          time: 5,
+        };
       }
     },
   },

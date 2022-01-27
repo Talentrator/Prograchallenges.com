@@ -1,31 +1,30 @@
 <template>
   <div class="home">
     <div class="mb-5 text-center text-light">
-      <div class="display-1"> 🖥️</div>
+      <div class="display-1">🖥️</div>
       <h1 class="pb-2 mt-4">Practice coding</h1>
       <h3>And get from 0️⃣ to 🦸‍♀️!</h3>
     </div>
 
     <!-- Challenges component for homepage -->
+    <b-container class="py-3">
+      <h1 class="py-4">
+        Recent Challenges
+        <span class="float-end">
+          <b-link
+            class="btn btn-primary px-1 px-lg-2 py-1 text-capitalize"
+            style="border: none"
+            :to="{ name: 'clg-create' }"
+          >
+            Create a Challenge
+          </b-link>
+        </span>
+      </h1>
+    </b-container>
     <div class="text-center" v-if="!loaded">
       <b-spinner variant="primary" />
     </div>
     <div class="container w-100" v-else>
-      <div class="row mb-1">
-        <div class="col-sm-6 order-2 order-sm-1">
-          <h4 class="text-capitalize">Recent Challenges</h4>
-        </div>
-        <div class="col-sm-6 text-end order-1 order-sm-2 mb-2 mb-sm-0">
-          <b-link
-          class="btn btn-primary px-1 px-lg-2 py-1"
-          style="border: none"
-          :to="{ name: 'clg-create' }"
-        >
-          Create a Challenge
-        </b-link>
-        </div>
-      </div>
-      
       <div
         v-for="challenge in challenges"
         :key="challenge.id"
@@ -40,21 +39,28 @@
         See all
       </b-button>
     </div>
+
+      <!-- quick questions -->
+
+    <quick-questions />
+
     <OtherSections />
   </div>
 </template>
 
 <script>
-import firebase from 'firebase/app';
-import 'firebase/functions';
+import firebase from "firebase/app";
+import "firebase/functions";
 import ChallengeCard from "../../components/ChallengeCard.vue";
 import OtherSections from "./home/OtherSections.vue";
+import QuickQuestions from "./home/QuickQuestions.vue";
 
 export default {
   name: "Home",
   components: {
     ChallengeCard,
     OtherSections,
+    QuickQuestions,
   },
   data() {
     return {
