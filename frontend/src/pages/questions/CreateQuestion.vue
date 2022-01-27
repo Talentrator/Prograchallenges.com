@@ -91,7 +91,7 @@
               label-class="font-weight-bold"
             >
               <b-form-input
-                v-model="form.score"
+                v-model.number="form.score"
                 :class="[
                   'w-100 form-input',
                   { 'mb-2 ': !$v.form.score.$error },
@@ -117,7 +117,7 @@
               label-class="font-weight-bold"
             >
               <b-form-input
-                v-model="form.time"
+                v-model.number="form.time"
                 :class="['w-100 form-input', { 'mb-2 ': !$v.form.time.$error }]"
               />
               <div v-if="$v.form.time.$dirty">
@@ -179,9 +179,14 @@
         </b-form-group>
 
         <div class="my-4 text-center">
-          <b-button variant="primary" class="text-white" :disabled="submitting" @click="submit">
+          <b-button
+            variant="primary"
+            class="text-white"
+            :disabled="submitting"
+            @click="submit"
+          >
             Submit
-            <b-spinner variant="white" class="ms-2" small v-if="submitting" />&nbsp;
+            <b-spinner variant="white" class="ms-2" small v-if="submitting" />
           </b-button>
         </div>
       </b-col>
@@ -190,18 +195,20 @@
 </template>
 
 <script>
+import firebase from "firebase/app";
+import "firebase/functions";
 import {
   required,
   minLength,
-  maxLength,
   minValue,
   numeric,
 } from "vuelidate/lib/validators";
 import ProgrammingLanguages from "@/mixins/ProgrammingLanguagesMixin.js";
+import Auth from "@/mixins/AuthMixin";
 
 export default {
   name: "QuestionsCreate",
-  mixins: [ProgrammingLanguages],
+  mixins: [ProgrammingLanguages, Auth],
   data() {
     return {
       submitting: false,
@@ -239,12 +246,21 @@ export default {
     };
   },
   methods: {
-    submit() {
+    async submit() {
       this.$v.$touch();
 
       if (!this.$v.$invalid) {
         this.submitting = true;
         // submit question
+        const insertQuestion = firebase
+          .functions()
+          .httpsCallable("insertQuestion");
+
+        this.form.username = this.userDetails.username  
+
+        await insertQuestion(this.form);
+        this.$v.$reset();
+        this.$router.push({ name: "tld-home" })
       }
     },
   },
@@ -253,7 +269,6 @@ export default {
       question: {
         required,
         minLength: minLength(4),
-        maxLength: maxLength(20),
       },
       score: {
         required,
