@@ -31,7 +31,7 @@ export default {
 
 $animation-delay: 0.1s;
 $arrow-size: 12px;
-$arrow-border-color: #{var(--color)};
+$arrow-border-color: rgba(var(--bs-light-rgb), var(--bs-text-opacity)) !important;
 
 .up {
   transform: rotate(-180deg);

@@ -7,7 +7,7 @@
         :direction="arrowDirection"
         :color="styles.color"
       />
-      <kbd class="d-none my-2 d-sm-inline-block px-2" v-html="kbdValue"></kbd>
+      <kbd class="d-none my-2 d-sm-inline-block px-2 bg-primary" v-html="kbdValue"></kbd>
       <p class="fw-bold">{{ arrowDirection == 'down' ? answerText : answerOption }}</p>
     </template>
     <template class="" v-else>
@@ -16,7 +16,7 @@
         :direction="arrowDirection"
         :color="styles.color"
       />
-      <kbd class="d-none my-2 d-sm-inline-block px-2" v-html="kbdValue"></kbd>
+      <kbd class="d-none my-2 d-sm-inline-block px-2 bg-primary" v-html="kbdValue"></kbd>
 
       <div class="">
         <p class="fw-bold">{{ answerOption }}</p>

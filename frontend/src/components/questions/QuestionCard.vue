@@ -1,7 +1,7 @@
 <template>
   <div
     :class="[
-      'question-card h-100 p-3 position-relative',
+      'question-card h-100 p-1 p-md-3 position-relative',
       { 'd-none': !active },
     ]"
     @touchstart="handleTouchStart"
@@ -24,21 +24,21 @@
     <b-row class="justify-content-center align-items-center h-100">
       <div class="text-start text-md-center px-3 col-md-8">
         <p class="question fs-5">
-          {{ question.text }}
+          {{ question.question }}
         </p>
         <!-- time and score -->
-        <b-row class="mx-0 mt-5">
-          <b-col cols="6" class="text-md-center text-start">
+        <b-row class="mx-0 mt-3 mt-lg-5">
+          <b-col cols="6" class="text-start">
             <span>
               {{ formatTime(remainingTime) }}
             </span>
           </b-col>
-          <b-col cols="6" class="text-md-center text-end">
+          <b-col cols="6" class="text-end">
             <span class=""> {{ question.score }} points </span>
           </b-col>
         </b-row>
 
-        <b-row class="text-start px-3 mt-4">
+        <b-row class="text-start px-3 mt-lg-3">
           <b-col cols="6" class="d-flex">
             <answer-option
               :styles="styles"
@@ -128,8 +128,8 @@ export default {
       return this.remainingTime > 0;
     },
     styles() {
-      let background = "#fff",
-        color = "#000";
+      let background = "rgba(var(--bs-dark-rgb), var(--bs-bg-opacity)) !important",
+        color = "rgba(var(--bs-light-rgb), var(--bs-text-opacity)) !important";
       if (this.question.colors) {
         background = this.question.colors.background;
         color = this.question.colors.color;

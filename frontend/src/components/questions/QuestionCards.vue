@@ -34,68 +34,22 @@
 <script>
 import QuestionCard from "./QuestionCard.vue";
 import ResultsCard from "./ResultsCard.vue";
-// import "animate.css";
 
 export default {
   components: { QuestionCard, ResultsCard },
   name: "QuestionCards",
   emits: ["close"],
+  props: {
+    questions: {
+      required: true,
+      type: Array,
+    },
+  },
   data() {
     return {
       activeQuestion: 0,
       userAnswers: [],
       showResults: false,
-      questions: [
-        {
-          id: 1,
-          text: "Which of the following is not a core data type in Python programming?",
-          programmingLanguage: "python",
-          answers: {
-            A: "Lists",
-            B: "Tuples",
-            C: "Dictionary",
-            D: "Class",
-          },
-          correctAnswer: "D",
-          time: 20, //in seconds
-          score: 5,
-          colors: {
-            background: "#F1948A",
-            color: "#fefefe"
-          }
-        },
-        {
-          id: 2,
-          text: "Which keyword is used for function in Python language?",
-          language: "python",
-          options: {
-            A: "Function",
-            B: "Def",
-            C: "Fun",
-            D: "Define",
-          },
-          answer: "B",
-          time: 15, //in seconds
-          score: 5,
-          colors: {
-            background: "#76D7C4",
-            color: "#fefefe"
-          }
-        },
-        {
-          id: 3,
-          text: "Which of the following character is used to give single-line comments in Python?",
-          language: "python",
-          options: { A: "//", B: "#", C: "!", D: "/*" },
-          answer: "B",
-          time: 30, //in seconds
-          score: 5,
-          colors: {
-            background: "#BB8FCE",
-            color: "#fefefe"
-          }
-        },
-      ],
     };
   },
   methods: {

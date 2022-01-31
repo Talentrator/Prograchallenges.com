@@ -3,9 +3,12 @@
     <h1 class="border-primary border-top py-4 border-2">Quick Questions</h1>
 
     <div class="my-4 text-center">
-      <b-button variant="secondary" @click="showFlashScreen">Start</b-button>
+      <b-button variant="secondary" @click="showFlashScreen" :disabled="fetching">
+        Start
+        <b-spinner variant="white" small v-if="fetching" />
+      </b-button>
     </div>
-    <question-cards v-if="show" @close="closeFlashScreen" />
+    <question-cards :questions="questions" v-if="show" @close="closeFlashScreen" />
   </b-container>
 </template>
 
@@ -26,9 +29,9 @@ export default {
   },
   methods: {
     async showFlashScreen() {
+      await this.fetchQuestions()
       document.body.style.overflowY = "hidden";
       document.documentElement.style.overflowY = "hidden";
-      await this.fetchQuestions()
       this.show = true;
     },
     async fetchQuestions(){
@@ -37,11 +40,11 @@ export default {
                 .functions()
                 .httpsCallable("getQuestions");
 
-      const result = await getQuestions({limit: 10}); 
+      const result = await getQuestions({limit: 5}); 
       
       this.questions = result.data;
 
-      console.log(this.questions);
+      this.fetching = false;
 
     },
     closeFlashScreen() {
