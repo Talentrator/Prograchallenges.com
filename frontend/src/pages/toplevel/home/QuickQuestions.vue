@@ -11,19 +11,38 @@
 
 <script>
 import QuestionCards from "@/components/questions/QuestionCards.vue";
+import firebase from "firebase/app";
+import "firebase/functions";
+
 export default {
   components: { QuestionCards },
   name: "QuickQuestions",
   data() {
     return {
       show: false,
+      fetching: false,
+      questions: []
     };
   },
   methods: {
-    showFlashScreen() {
+    async showFlashScreen() {
       document.body.style.overflowY = "hidden";
       document.documentElement.style.overflowY = "hidden";
+      await this.fetchQuestions()
       this.show = true;
+    },
+    async fetchQuestions(){
+      this.fetching = true;
+      const getQuestions = firebase
+                .functions()
+                .httpsCallable("getQuestions");
+
+      const result = await getQuestions({limit: 10}); 
+      
+      this.questions = result.data;
+
+      console.log(this.questions);
+
     },
     closeFlashScreen() {
       this.show = false;

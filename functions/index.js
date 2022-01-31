@@ -3,6 +3,7 @@ const admin = require('firebase-admin')
 admin.initializeApp();
 
 const getAllChallenges = require('./src/challenges/get_all_challenges');
+const getQuestions = require('./src/questions/get_questions');
 const getSingleChallenge = require('./src/challenges/get_single_challenge')
 const insertChallenge = require('./src/challenges/insert_challenge')
 const insertQuestion = require('./src/questions/insert_question')
@@ -12,6 +13,7 @@ const createUser = require("./src/users/create_new_user").default;
 const getUserDetails = require("./src/users/get_user_details").default;
 
 exports.getAllChallenges = getAllChallenges;
+exports.getQuestions = getQuestions;
 exports.getSingleChallenge = getSingleChallenge;
 exports.insertChallenge = insertChallenge;
 exports.insertQuestion = insertQuestion;

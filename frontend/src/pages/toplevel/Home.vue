@@ -42,7 +42,7 @@
 
       <!-- quick questions -->
 
-    <quick-questions />
+    <quick-questions v-if="userLoggedIn" />
 
     <OtherSections />
   </div>
@@ -54,9 +54,11 @@ import "firebase/functions";
 import ChallengeCard from "../../components/ChallengeCard.vue";
 import OtherSections from "./home/OtherSections.vue";
 import QuickQuestions from "./home/QuickQuestions.vue";
+import Auth from "@/mixins/AuthMixin";
 
 export default {
   name: "Home",
+  mixins: [Auth],
   components: {
     ChallengeCard,
     OtherSections,

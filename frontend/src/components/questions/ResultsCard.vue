@@ -51,12 +51,12 @@ export default {
     },
     correctAnswers() {
       return this.questions.filter(
-        (question, index) => question.answer == this.answers[index].answer
+        (question, index) => question.correctAnswer == this.answers[index].answer
       );
     },
     wrongAnswers() {
       return this.questions.filter(
-        (question, index) => question.answer != this.answers[index].answer
+        (question, index) => question.correctAnswer != this.answers[index].answer
       );
     },
     totalScore() {

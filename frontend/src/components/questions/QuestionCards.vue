@@ -49,14 +49,14 @@ export default {
         {
           id: 1,
           text: "Which of the following is not a core data type in Python programming?",
-          language: "python",
-          options: {
+          programmingLanguage: "python",
+          answers: {
             A: "Lists",
             B: "Tuples",
             C: "Dictionary",
             D: "Class",
           },
-          answer: "D",
+          correctAnswer: "D",
           time: 20, //in seconds
           score: 5,
           colors: {

@@ -12,13 +12,13 @@
     <answer-option
       :styles="styles"
       arrowDirection="up"
-      :answerText="question.options['A']"
+      :answerText="question.answers['A']"
       answerOption="A"
     />
     <answer-option
       :styles="styles"
       arrowDirection="down"
-      :answerText="question.options['C']"
+      :answerText="question.answers['C']"
       answerOption="C"
     />
     <b-row class="justify-content-center align-items-center h-100">
@@ -43,7 +43,7 @@
             <answer-option
               :styles="styles"
               arrowDirection="left"
-              :answerText="question.options['D']"
+              :answerText="question.answers['D']"
               answerOption="D"
               :vertical="false"
               class="text-start"
@@ -53,7 +53,7 @@
             <answer-option
               :styles="styles"
               arrowDirection="right"
-              :answerText="question.options['B']"
+              :answerText="question.answers['B']"
               answerOption="B"
               :vertical="false"
               class="text-end position-relative"
