@@ -11,14 +11,16 @@ const insertChallenge = functions.https.onCall(async(data) => {
         email: z.string().min(1),
         nickname: z.string().min(1),
         programmingLanguage: z.string().min(1),
+        difficulty: z.string().min(1),
         boilerplate: z.string(),
         unitTest: z.string(),
         exampleSolution: z.string(),
+        tags: z.string().array().optional(),
     });
 
     const inputData = mySchema.parse(data);
     const uid = await generateUniqueId('challenges', data.title);
-    await admin.firestore().collection('challenges').doc(uid).set({...inputData, creationTime: getTimeStampOfNow(), score: 0 });
+    await admin.firestore().collection('challenges').doc(uid).set({...inputData, creationTime: getTimeStampOfNow(), score: 0, votes: 0 });
     return uid;
 });
 

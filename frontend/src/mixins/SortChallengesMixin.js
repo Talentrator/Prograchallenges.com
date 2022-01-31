@@ -10,6 +10,10 @@ export default {
                     value: "date_desc"
                 },
                 {
+                    title: "Community Votes",
+                    value: "community_votes"
+                },
+                {
                     title: "Relevance",
                     value: "relevance"
                 },

@@ -14,7 +14,7 @@ const insertComment = functions.https.onCall(async(data) => {
 
     const InputData = mySchema.parse(data)
 
-    admin.firestore().collection('comments').add(InputData);
+    admin.firestore().collection('comments').add({...InputData, votes: 0 });
 
     adminUpdateChallenge(InputData.challengeId, { score: admin.firestore.FieldValue.increment(1) });
 })

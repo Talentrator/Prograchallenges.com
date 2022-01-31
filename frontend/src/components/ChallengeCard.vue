@@ -1,5 +1,5 @@
 <template>
-   <b-col
+  <b-col
     class="
       p-1 p-md-2
       text-white
@@ -8,40 +8,66 @@
       pc-cursor-pointer
     "
     cols="12"
-    @click="redirectToSingleChallenge(challenge.id)"
   >
-    <b-row class="pt-1">
-      <b-col>
-        <h5 class="challenge-title">{{ challenge.title }}</h5>
+    <b-row class="pt-1 align-items-center">
+      <b-col cols="12" md="7" class="mb-2 mb-sm-0">
+        <div class="text-secondary mb-1" v-if="challenge.difficulty">
+          <small class="">{{ challenge.difficulty }}</small>
+        </div>
+        <div class="d-sm-flex align-items-center mb-1 mb-sm-0">
+          <router-link :to="challengeLink" class="text-white challenge-title">
+            <h5 class="mb-0">{{ challenge.title }}</h5>
+          </router-link>
+          <voting
+            v-if="userLoggedIn"
+            @voted="vote"
+            :upvotes="votes"
+            :voting="voting"
+            class="d-none d-sm-block ms-3"
+          />
+        </div>
       </b-col>
-      <b-col md="3" class="text-end">
+      <b-col cols="6" md="3" class="text-md-end">
         <p class="m-0">by {{ challenge.nickname }}</p>
       </b-col>
-      <b-col md="2" class="text-end">
-        <p class="m-0">{{ challenge.programmingLanguage }}</p>
+      <b-col cols="6" md="2" class="text-end">
+        <p class="m-0">
+          {{
+            getProgrammingLanguage(challenge.programmingLanguage) ||
+            challenge.programmingLanguage
+          }}
+        </p>
       </b-col>
     </b-row>
   </b-col>
 </template>
 
 <script>
+import Voting from "./Voting.vue";
+import ProgrammingLanguages from "@/mixins/ProgrammingLanguagesMixin.js";
+import Vote from "@/mixins/Vote.js";
+import firebase from "firebase/app";
+import 'firebase/functions';
+
 export default {
+  components: { Voting },
   name: "Challenges",
+  mixins: [ProgrammingLanguages, Vote],
   props: {
     challenge: {
       type: Object,
     },
+  },
+  data() {
+    return {
+      votes: this.challenge.votes,
+    };
   },
   computed: {
     challengeTitle() {
       return this.challenge.title.length > 20
         ? this.challenge.title.slice(0, 20) + `...`
         : this.challenge.title;
-    },
-    challengeDescription() {
-      return this.challenge.text.length > 200
-        ? this.challenge.text.slice(0, 200) + "..."
-        : this.challenge.text;
     },
     challengeLink() {
       return { name: "clg-single", params: { id: this.challenge.id } };
@@ -51,6 +77,20 @@ export default {
     redirectToSingleChallenge() {
       this.$router.push(this.challengeLink);
     },
+    async vote(votes) {
+      const result = await this.submitVote(this.challenge.id, votes);
+
+      if (result.errorInfo) {
+        alert(result.errorInfo.message);
+        return;
+      }
+    },
+    async getSingleChallenge() {
+      const fetchSingleChallenge = firebase
+        .functions()
+        .httpsCallable("getSingleChallenge");
+      return await fetchSingleChallenge({ id: this.challenge.id });
+    },
   },
 };
 </script>
@@ -59,14 +99,15 @@ export default {
 .challenge {
   &:hover {
     box-shadow: 0 3px 6px 0 rgb(255 255 255 / 10%);
-    .challenge-title {
-      color: map-get($map: $theme-colors, $key: primary);
-    }
   }
   .challenge-title {
     transition: all 0.1s linear;
     overflow-wrap: break-word;
     word-break: break-word;
+    &:hover {
+      text-decoration: none !important;
+      color: map-get($map: $theme-colors, $key: primary) !important;
+    }
   }
 }
 </style>

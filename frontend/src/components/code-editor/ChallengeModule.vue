@@ -14,15 +14,28 @@
         >
           <b-tab title="Instructions">
             <div class="mt-2 mx-2">
-              <b> {{ challenge.title }} </b> <br />
+              <div class="mb-2">
+                <b> {{ challenge.title }} </b> <span class="float-end badge bg-primary">Easy</span>
+              </div>
               <span v-html="compiledMarkdown" />
+              <tags-section :tags="challenge.tags" />
             </div>
           </b-tab>
           <b-tab title="Output" style="background: var(--dark)">
             <div class="mt-2 mx-2 px-2 py-2 text-light">
               <div v-if="compiling"><b>Status: </b>Sending request...</div>
               <div v-else-if="result">
-                <span style="white-space: pre-wrap;">
+                <div class="" v-if="!resultHasError(result)">
+                  <div class="text-secondary d-flex align-items-center">
+                    <b-icon-check2-circle class="text-secondary fs-2" />
+                    <span class="ui-icon-label tab-item-label ps-1"> {{passedTestsFormattedText}} </span>
+                  </div>
+                  <div class="mt-2 text-primary d-flex align-items-center" v-if="failed > 0">
+                    <b-icon-x class="text-primary fs-2" />
+                    <span class="ui-icon-label tab-item-label ps-1"> {{failedTestsFormattedText}}</span>
+                  </div>
+                </div>
+                <span style="white-space: pre-wrap;" v-else>
                   {{ result }}
                 </span>
               </div>
@@ -64,11 +77,15 @@ import { mapState } from "vuex";
 import { marked } from 'marked';
 
 import CodeEditor from "./CodeEditor.vue";
+import TestOutputMixin from '@/mixins/TestOutputMixin.js';
+import TagsSection from '../challenge/TagsSection.vue';
 
 export default {
   name: "ChallengeModule",
+  mixins: [TestOutputMixin],
   components: {
     CodeEditor,
+    TagsSection,
   },
   data: () => ({
     code: "",
@@ -80,7 +97,7 @@ export default {
     ...mapState(["userObject"]),
     compiledMarkdown() {
       return marked(this.challenge.text);
-    }
+    },
   },
   props: {
     allowRunning: {
@@ -113,6 +130,7 @@ export default {
     async submit() {
       this.activeTab = 1;
       this.compiling = true;
+      this.failed = this.passed = 0;
 
       const response = await firebase.functions().httpsCallable("EvaluateChallenge")({
         challengeId: this.$route.params.id,
@@ -122,6 +140,7 @@ export default {
 
       this.result = response.data;
       this.compiling = false;
+      this.parseResult(this.result);
     },
     getLanguageId() {
       const mapping = {
@@ -130,6 +149,7 @@ export default {
       };
       return mapping[this.challenge.programmingLanguage];
     },
+    
   },
 };
 </script>

@@ -15,4 +15,6 @@ exports.default = (challenge) => ({
     programmingLanguage: challenge.programmingLanguage,
     boilerplate: challenge.boilerplate,
     score: challenge.score || 0,
+    votes: challenge.votes || 0,
+    tags: challenge.tags || [],
 })

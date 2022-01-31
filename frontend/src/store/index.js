@@ -1,15 +1,23 @@
 import Vue from 'vue'
-import Vuex from 'vuex'
+import Vuex from 'vuex';
+import firebase from '@/firebase';
+
+import auth from './auth';
 
 Vue.use(Vuex)
 
-export default new Vuex.Store({
-  state: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
-  modules: {
-  }
+const store = new Vuex.Store({
+    modules: {
+        auth,
+    },
+    state: {},
+    mutations: {},
+    actions: {},
 })
+
+firebase.auth().onAuthStateChanged((user) => {
+    store.commit('auth/setLoggedIn', !!user);
+    store.dispatch('auth/update_user_data');
+});
+
+export default store;

@@ -8,7 +8,10 @@
         'border-bottom': comments.indexOf(comment) + 1 !== comments.length,
       }"
     >
-      <p class="text-muted m-0">{{ comment.nickname }}</p>
+      <div class="d-flex justify-content-between">
+        <p class="text-muted m-0">{{ comment.nickname }}</p>
+        <voting v-if="userLoggedIn" :upvotes="votes" :voting="voting" @voted="vote(comment.id, $event)" />
+      </div>
 
       <div
         v-for="(description, idx) in categorizeCodeSnippetsAndText(
@@ -34,13 +37,18 @@
 import { marked } from "marked";
 import CodeEditor from "@/components/code-editor/CodeEditor.vue";
 import { categorizeCodeSnippetsAndText } from "@/pages/challenges/helpers/helpers.js";
+import Voting from "../../../components/Voting.vue";
+import Vote from "@/mixins/Vote.js";
 
 export default {
   components: {
     CodeEditor,
+    Voting,
   },
+  mixins: [Vote],
   data() {
     return {
+      votes: 0,
       langToEditor: {
         // language names to editor mappings because ACE uses other names
         "javascript-node": "javascript",
@@ -61,6 +69,14 @@ export default {
   methods: {
     marked,
     categorizeCodeSnippetsAndText,
+    async vote(id, votes) {
+      const result = await this.submitVote(id, votes);
+
+      if (result.errorInfo) {
+        alert(result.errorInfo.message);
+        return;
+      }
+    },
   },
   props: {
     comments: {
