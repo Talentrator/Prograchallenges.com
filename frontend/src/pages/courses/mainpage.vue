@@ -5,7 +5,7 @@
         </center>
         <div>
             <center>
-            <h4 class="text-secondary px-2">Free Premium Courses By Proffesional Programmers to help you in your Coding Journey :)</h4>
+            <h4 class="px-2">Free Premium Courses By Proffesional Programmers to help you in your Coding Journey :)</h4>
             </center>
             <hr>
             <center>
@@ -13,11 +13,11 @@
             </center>
         </div>
 
-        <div class="py-2 px-2 mt-3">
+        <div class="py-2 px-2 mt-5">
             <center>
             <b-link class="text-light"><h4>Full Stack Web Dev Course</h4></b-link>
             <p>Set to release on 1st May</p>
-            <p>By Santanu Lamba</p>
+            <p>By Shantanu Lamba</p>
             </center>
         </div>
     </div>
