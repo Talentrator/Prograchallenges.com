@@ -13,9 +13,9 @@
             </center>
         </div>
 
-        <div class="border border-primary py-2 px-2">
+        <div class="py-2 px-2 mt-3">
             <center>
-            <b-link><h4>Full Stack Web Dev Course</h4></b-link>
+            <b-link class="text-light"><h4>Full Stack Web Dev Course</h4></b-link>
             <p>Set to release on 1st May</p>
             <p>By Santanu Lamba</p>
             </center>
