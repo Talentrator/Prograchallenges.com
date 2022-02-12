@@ -4,6 +4,7 @@ const routes = [
     ...require("./pages/toplevel/routes.js").default,
     ...require("./pages/user/routes.js").default,
     ...require("./pages/challenges/routes.js").default,
+    ...require("./pages/courses/routes.js").default,
 ];
 
 const router = new VueRouter({
