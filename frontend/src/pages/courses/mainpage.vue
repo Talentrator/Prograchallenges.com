@@ -14,7 +14,7 @@
         </div>
         <div class="py-2 px-2 mt-5">
             <center>
-            <b-link class="text-secondary"><h4>Ethereum Development</h4></b-link>
+            <b-link :to="{ name: 'ethereum' }" class="text-secondary"><h4>Ethereum Development</h4></b-link>
             <p>Learn Solidity, Web3 and create amazing Dapps</p>
             <p>By Shantanu Lamba</p>
             </center>
