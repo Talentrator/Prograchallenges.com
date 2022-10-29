@@ -25,7 +25,7 @@
         <b-nav-item :to="{ name: 'usr-coming-soon' }" class="align-self-center">
           <span class="text-white">Support</span>
         </b-nav-item>
-        <b-nav-item :to="{ name: 'usr-coming-soon' }" class="align-self-center">
+        <b-nav-item :to="{ name: 'courses' }" class="align-self-center">
           <span class="text-white">Courses</span>
         </b-nav-item>
         <span class="d-flex" v-if="!userLoggedIn">
